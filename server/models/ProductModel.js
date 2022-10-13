@@ -12,12 +12,12 @@ const productSchema = new mongoose.Schema(
     images: [imageSchema],
     category: { type: String, required: true },
     count: { type: Number, required: true },
-    size: { type: String, required: true },
+    size: { type: Number, required: true },
     price: { type: Number, required: true },
     rating: { type: Number, required: true },
-    rewiewsNumber: { type: Number, required: true },
+    rewiewsNumber: { type: Number },
     sales: { type: Number, default: 0 },
-    attrs: [{ key: { type: String }, value: { type: String } }],
+    attrs: [{ key: { type: String }, value: { type: Array } }],
     reviews: [
       {
         type: mongoose.Schema.Types.ObjectId,

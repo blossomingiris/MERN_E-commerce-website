@@ -11,7 +11,7 @@ const categories = [
         value: ['floral', 'woody', 'oriental', 'fresh'],
       },
       {
-        key: 'volume',
+        key: 'size',
         value: ['10ml', '50ml', '75ml', '100ml'],
       },
     ],
