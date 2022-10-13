@@ -1,11 +1,15 @@
 const mongoose = require('mongoose')
-const Review = require('../models/ReviewModel')
-const Image = require('../models/ImageModel')
+const Review = require('./ReviewModel')
+
+const imageSchema = mongoose.Schema({
+  path: { type: String, required: true },
+})
+
 const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true },
     description: { type: String, required: true },
-    images: [{ ref: Image }],
+    images: [imageSchema],
     category: { type: String, required: true },
     count: { type: Number, required: true },
     size: { type: String, required: true },
@@ -32,5 +36,5 @@ productSchema.index(
 
 productSchema.index({ 'attrs.key': 1, 'attrs.value': 1 })
 
-const Product = mongoose.model('Product', reviewSchema)
+const Product = mongoose.model('Product', productSchema)
 module.exports = Product

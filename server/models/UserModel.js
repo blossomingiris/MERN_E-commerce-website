@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     zipcode: { type: String },
     isAdmin: {
       type: Boolean,
-      rrequired: true,
+      required: true,
       default: false,
     },
   },

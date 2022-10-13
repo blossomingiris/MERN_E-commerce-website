@@ -1,4 +1,4 @@
-//Dummy data category for DB
+// dummy data for products category
 
 const categories = [
   {

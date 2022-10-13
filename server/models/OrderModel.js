@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
-
-const User = require('../models/UserModel')
+const User = require('./UserModel')
 
 const orderSchema = mongoose.Schema(
   {
@@ -10,16 +9,14 @@ const orderSchema = mongoose.Schema(
       ref: User,
     },
     orderTotal: {
-      itemCount: { type: Number, required: true },
+      itemsCount: { type: Number, required: true },
       cartSubtotal: { type: Number, required: true },
     },
     cartItems: [
       {
         name: { type: String, required: true },
         price: { type: Number, required: true },
-        image: {
-          path: { type: String, required: true },
-        },
+        image: { path: { type: String, required: true } },
         quantity: { type: Number, required: true },
         count: { type: Number, required: true },
       },
@@ -37,8 +34,12 @@ const orderSchema = mongoose.Schema(
     paidAt: {
       type: Date,
     },
-    isDelivered: { type: Boolean, default: false },
-    isDeliveredAt: {
+    isDelivered: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    deliveredAt: {
       type: Date,
     },
   },
