@@ -1,0 +1,10 @@
+:root {
+  --base-font: 'Urbanist', sans-serif;
+  --title-font: 'Noto Serif Display', serif;
+  --l-spacing: 3px;
+}
+h1,
+h2 {
+  font-family: var(--title-font);
+  color: var(--title-color);
+}

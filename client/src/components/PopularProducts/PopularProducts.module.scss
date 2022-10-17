@@ -1,0 +1,76 @@
+.popular_container {
+  margin-bottom: 50px;
+}
+
+.popular_container_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.popular_button {
+  padding: 15px 25px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 2px solid var(--rose);
+  letter-spacing: var(--l-spacing);
+  font-weight: bold;
+  color: var(--rose);
+  margin: 20px 0;
+  font-size: 0.75em;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.popular_button:hover {
+  background-color: var(--rose);
+  color: var(--white);
+}
+
+.popular_desc {
+  letter-spacing: var(--l-spacing);
+}
+
+.popular_title {
+  text-transform: uppercase;
+  font-family: var(--title-font);
+  letter-spacing: 1.5px;
+}
+
+//slider
+.product_gallery_container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+  height: 85vh;
+  width: max-content;
+  gap: 15px;
+}
+
+.gallery_slider_arrow_left {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  margin: auto;
+}
+
+.gallery_slider_arrow_right {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  margin: auto;
+}
