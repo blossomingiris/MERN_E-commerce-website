@@ -1,1 +1,11 @@
 @import '../style/global/index.scss';
+
+html {
+  position: relative;
+  // min-width: 100%;
+  // height: 100vh;
+}
+
+body {
+  margin-bottom: 100px;
+}

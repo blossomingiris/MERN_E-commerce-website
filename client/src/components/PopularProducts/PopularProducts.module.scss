@@ -1,5 +1,6 @@
 .popular_container {
-  margin-bottom: 50px;
+  margin: 70px;
+  height: 900px;
 }
 
 .popular_container_wrapper {
@@ -43,34 +44,8 @@
 .product_gallery_container {
   display: flex;
   justify-content: center;
+  // height: 70vh;
   padding: 30px 0;
-  height: 85vh;
   width: max-content;
   gap: 15px;
-}
-
-.gallery_slider_arrow_left {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 10px;
-  bottom: 0;
-  margin: auto;
-}
-
-.gallery_slider_arrow_right {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 10px;
-  bottom: 0;
-  margin: auto;
 }

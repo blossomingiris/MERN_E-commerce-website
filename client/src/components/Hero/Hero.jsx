@@ -9,7 +9,12 @@ function Hero() {
       <div className={styles.hero_container_info}>
         <p>SMALL TEXT</p>
         <h3>MID TEXT</h3>
-        <img src={hero} alt='perfume' className={styles.hero_image} />
+        <img
+          src={hero}
+          alt='perfume'
+          className={styles.hero_image}
+          crossorigin='anonymous'
+        />
         <div>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           <Link to='/products'>

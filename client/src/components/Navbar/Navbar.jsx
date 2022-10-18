@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { MdSearch } from 'react-icons/md'
-// import { BsBag } from 'react-icons/bs'
 import { RiShoppingBagLine } from 'react-icons/ri'
 import { FaRegUser } from 'react-icons/fa'
+import { MdOutlineAdminPanelSettings } from 'react-icons/md'
 import styles from './Navbar.module.scss'
 
 function Navbar() {
@@ -22,6 +22,9 @@ function Navbar() {
           <Link to='/about-us'>About us</Link>
         </div>
         <div className={styles.wrapper_right}>
+          <Link to='/admin/orders'>
+            <MdOutlineAdminPanelSettings className={styles.navbar_icon_admin} />
+          </Link>
           <Link to='/login'>
             <FaRegUser className={styles.navbar_icon_user} />
           </Link>
@@ -40,6 +43,20 @@ function Navbar() {
               />
               <MdSearch className={styles.search_icon} />
             </form>
+          </div>
+          <div className={styles.dropdown}>
+            Username
+            <ul className={styles.dropdown_menu}>
+              <li>
+                <Link to='/user'>My Profile</Link>
+              </li>
+              <li>
+                <Link to='/user/my-orders'>My Orders</Link>
+              </li>
+              <li>
+                <a href='#'>Logout</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

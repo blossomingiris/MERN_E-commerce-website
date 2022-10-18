@@ -64,6 +64,11 @@
   font-size: 20px;
 }
 
+.navbar_icon_admin {
+  font-size: 28px;
+  color: var(--rose);
+}
+
 //search input
 
 .search_container {
@@ -127,5 +132,61 @@
 
 .search_form:hover .search_icon {
   background: var(--black);
-  color: white;
+  color: var(--white);
+}
+
+//dropdown menu
+
+.dropdown {
+  background: transparent;
+  color: var(--text-color);
+  text-transform: capitalize;
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 120px;
+  text-align: center;
+  z-index: 1;
+  // transform: perspective(1000px);
+}
+
+.dropdown_menu {
+  background-color: var(--white);
+  margin: 0;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  text-align: center;
+  top: 0;
+  visibility: hidden;
+  z-index: -99999;
+}
+
+.dropdown_menu li:first-child {
+  cursor: default;
+}
+
+.dropdown_menu a {
+  color: var(--black);
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.dropdown_menu a:hover {
+  background: var(--rose);
+  color: var(--white);
+}
+
+.dropdown:hover .dropdown_menu {
+  background: var(--white);
+  opacity: 1;
+  visibility: visible;
+  top: 100%;
+  width: 100%;
+  -webkit-transition: all 0.5s, background, 2s 0.5s linear;
+  transition: all 0.5s, background 2s 0.5s linear;
 }

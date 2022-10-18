@@ -1,12 +1,11 @@
 .footer_container {
-  // position: absolute;
-  // bottom: 0;
   width: 100%;
   height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--stone);
+  position: absolute;
 }
 
 .footer_wrapper {
