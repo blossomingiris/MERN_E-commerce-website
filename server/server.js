@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 require('dotenv').config()
 
-const apiRoutes = require('./api/routes/apiRoutes')
+const apiRoutes = require('./api/apiRoutes')
 
 app.get('/', (req, res) => {
   res.json({ message: 'API running..' })
@@ -25,7 +25,8 @@ app.use((error, req, res, next) => {
   res.status(500).json({ message: error.message, stack: error.stack })
 })
 
-//middleware
+//middleware to handle json data
+app.use(express.json())
 
 app.use('/api', apiRoutes)
 

@@ -14,9 +14,6 @@ const products = [
       { path: '/assets/products/perfume/perfume_1' },
       ,
     ],
-    rating: 5,
-    reviewsNumber: 5,
-    reviews: [],
     attrs: [{ key: 'Notes', value: ['Vetiver', 'Neroli', 'Amber'] }],
   },
   {
@@ -31,9 +28,6 @@ const products = [
       { path: '/assets/categories/perfume_category.png' },
       { path: '/assets/products/perfume/perfume_2' },
     ],
-    rating: 5,
-    reviewsNumber: 5,
-    reviews: [],
     attrs: [{ key: 'Notes', value: ['Vetiver', 'Neroli', 'Amber'] }],
   },
   {
@@ -97,9 +91,6 @@ const products = [
       { path: '/assets/categories/perfume_category.png' },
       { path: '/assets/products/perfume/perfume_4' },
     ],
-    rating: 4,
-    reviewsNumber: 7,
-    reviews: [],
     attrs: [{ key: 'Notes', value: ['Rosewood', 'Sandalwood', 'Cedarwood'] }],
   },
   {
@@ -114,9 +105,6 @@ const products = [
       { path: '/assets/categories/perfume_category.png' },
       { path: '/assets/products/perfume/perfume_5' },
     ],
-    rating: 4,
-    reviewsNumber: 3,
-    reviews: [],
     attrs: [{ key: 'Notes', value: ['Rosewood', 'Sandalwood', 'Cedarwood'] }],
   },
   {
@@ -131,9 +119,6 @@ const products = [
       { path: '/assets/categories/bath_category.png' },
       { path: '/assets/products/sea_salt/sea_salt_1' },
     ],
-    rating: 1,
-    reviewsNumber: 5,
-    reviews: [],
   },
   {
     name: 'Sea salt2',
@@ -147,9 +132,6 @@ const products = [
       { path: '/assets/categories/bath_category.png' },
       { path: '/assets/products/sea_salt/sea_salt_2' },
     ],
-    rating: 5,
-    reviewsNumber: 5,
-    reviews: [],
   },
   {
     name: 'Shower Gel1',
@@ -163,9 +145,6 @@ const products = [
       { path: '/assets/categories/bath_category.png' },
       { path: '/assets/products/shower_gel/shower_gel_1' },
     ],
-    rating: 5,
-    reviewsNumber: 6,
-    reviews: [],
   },
   {
     name: 'Shower Gel2',
@@ -179,9 +158,6 @@ const products = [
       { path: '/assets/categories/bath_category.png' },
       { path: '/assets/products/shower_gel/shower_gel_2' },
     ],
-    rating: 4,
-    reviewsNumber: 7,
-    reviews: [],
   },
   {
     name: 'Perfume6',
@@ -234,9 +210,6 @@ const products = [
       { path: '/assets/categories/perfume_category.png' },
       { path: '/assets/products/perfume/perfume_8' },
     ],
-    rating: 5,
-    reviewsNumber: 5,
-    reviews: [],
     attrs: [
       {
         key: 'Notes',
@@ -256,9 +229,6 @@ const products = [
       { path: '/assets/categories/perfume_category.png' },
       { path: '/assets/products/perfume/perfume_9' },
     ],
-    rating: 5,
-    reviewsNumber: 6,
-    reviews: [],
     attrs: [
       {
         key: 'Notes',
@@ -278,9 +248,6 @@ const products = [
       { path: '/assets/categories/hands_category.png' },
       { path: '/assets/products/solid_soap/solid_soap_1' },
     ],
-    rating: 4,
-    reviewsNumber: 1,
-    reviews: [],
   },
   {
     name: 'Solid soap2',
@@ -294,9 +261,6 @@ const products = [
       { path: '/assets/categories/hands_category.png' },
       { path: '/assets/products/solid_soap/solid_soap_2' },
     ],
-    rating: 4,
-    reviewsNumber: 2,
-    reviews: [],
   },
   {
     name: 'Hand cream1',
@@ -310,9 +274,6 @@ const products = [
       { path: '/assets/categories/hands_category.png' },
       { path: '/assets/products/hand_cream/hand_cream_1' },
     ],
-    rating: 4,
-    reviewsNumber: 3,
-    reviews: [],
   },
 ]
 

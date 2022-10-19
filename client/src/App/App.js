@@ -1,13 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
-import CartPage from '../pages/CartPage'
-import HomePage from '../pages/HomePage'
-import LoginPage from '../pages/LoginPage'
+import CartPage from '../pages/general/Cart/CartPage'
+import HomePage from '../pages/general/HomePage/HomePage'
+import LoginPage from '../pages/general/Login/LoginPage'
 import Navbar from '../components/Navbar/Navbar'
 import Footer from '../components/Footer/Footer'
-import ProductDetailsPage from '../pages/ProductDetailsPage'
-import ProductsListPage from '../pages/ProductsListPage'
-import SignUpPage from '../pages/SignUpPage'
+import ProductDetailsPage from '../pages/general/ProductDetails/ProductDetailsPage'
+import ProductsListPage from '../pages/general/ProductList/ProductsListPage'
+import SignUpPage from '../pages/general/SignUp/SignUpPage'
+import AboutUsPage from '../pages/general/AboutUs/AboutUsPage'
+import DifferencesPage from '../pages/general/Differences/DifferencesPage'
 
 import ProtectedRoutes from '../other/ProtectedRoutes'
 
@@ -26,8 +28,6 @@ import AdminCreateProductPage from '../pages/admin/AdminCreateProductPage'
 import AdminEditProductPage from '../pages/admin/AdminEditProductPage'
 import AdminOrdersPage from '../pages/admin/AdminOrdersPage'
 import AdminOrderDetailsPage from '../pages/admin/AdminOrderDetailsPage'
-import AboutUsPage from '../pages/AboutUsPage'
-import DifferensesPage from '../pages/DifferensesPage'
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/about-us' element={<AboutUsPage />} />
-        <Route path='/what-makes-us-different' element={<DifferensesPage />} />
+        <Route path='/what-makes-us-different' element={<DifferencesPage />} />
         <Route path='/products' element={<ProductsListPage />} />
         <Route path='/product-details' element={<ProductDetailsPage />} />
         <Route path='/cart' element={<CartPage />} />

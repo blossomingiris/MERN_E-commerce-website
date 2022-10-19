@@ -7,7 +7,7 @@ function ProductItem() {
     <div className={styles.container}>
       <div className={styles.image_container}>
         <img
-          src={require('../../.././assets/popular_products/product_1.jpg')}
+          src={require('../.././assets/popular_products/product_3.jpg')}
           alt='perfume'
         />
       </div>

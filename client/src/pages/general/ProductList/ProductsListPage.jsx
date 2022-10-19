@@ -1,9 +1,8 @@
 import React from 'react'
-import styles from './ProductsList.module.scss'
-import ProductItem from './ProductItem/ProductItem'
-import { popularProducts } from '../.././data/data'
+import styles from './ProductListPage.module.scss'
+import ProductItem from '../../.././components/ProductItem/ProductItem'
 
-function ProductsList() {
+function ProductsListPage() {
   return (
     <section className={styles.container}>
       <h4 className={styles.title}>Search Products</h4>
@@ -22,11 +21,7 @@ function ProductsList() {
         <div className={styles.filter_left}>
           <div className={styles.search_form}>
             <span>Search</span>
-            <input
-              type='text'
-              placeholder='Search for an item...'
-              autocomplete='off'
-            />
+            <input type='text' placeholder='Search for an item...' />
           </div>
 
           <span>Availability</span>
@@ -55,4 +50,4 @@ function ProductsList() {
   )
 }
 
-export default ProductsList
+export default ProductsListPage
