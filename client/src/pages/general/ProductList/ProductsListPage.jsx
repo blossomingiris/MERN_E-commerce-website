@@ -10,7 +10,7 @@ function ProductsListPage() {
       <div className={styles.sort_by}>
         <h4 className={styles.desc}>Sort by:</h4>
         <select className={styles.form_control}>
-          <option value='rating_-1'>Most Popular</option>
+          <option value='sales_-1'>Most Popular</option>
           <option value='price_1'>Price [Lowest to Highest]</option>
           <option value='price_-1'>Price [Highest to Lowest]</option>
           <option value='name_1'>Name [A to Z]</option>

@@ -5,16 +5,6 @@ const categories = [
     name: 'Perfume',
     description: 'Perfume - Lorem Ipsum and others haveBuffer',
     image: '/assets/categories/perfume_category.png',
-    attrs: [
-      {
-        key: 'notes',
-        value: ['floral', 'woody', 'oriental', 'fresh'],
-      },
-      {
-        key: 'size',
-        value: ['10ml', '50ml', '75ml', '100ml'],
-      },
-    ],
   },
 
   {
@@ -50,7 +40,6 @@ const categories = [
     description:
       'Diffusers - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.',
     image: '/assets/categories/diffusers.png',
-    attrs: [{ key: 'volume', value: ['85ml', '212ml', '425ml'] }],
   },
 
   {

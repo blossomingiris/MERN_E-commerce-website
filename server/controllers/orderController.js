@@ -1,5 +1,5 @@
-const getOrders = (req, res) => {
+const getUserOrders = (req, res) => {
   res.send('Handling orders routes')
 }
 
-module.exports = getOrders
+module.exports = getUserOrders
