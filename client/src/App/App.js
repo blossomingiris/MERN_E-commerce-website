@@ -15,7 +15,7 @@ import ProtectedRoutes from '../other/ProtectedRoutes'
 
 //user routes
 import UserProfilePage from '../pages/user/UserProfilePage'
-import UserOrdersPage from '../pages/user/UserOrdersPage'
+import UserOrdersPage from '../pages/user/OrdersPage/UserOrdersPage'
 import UserCartDetailsPage from '../pages/user/UserCartDetailsPage'
 import UserOrderDetailsPage from '../pages/user/UserOrderDetailsPage'
 
@@ -50,7 +50,7 @@ function App() {
           <Route path='/user/my-orders' element={<UserOrdersPage />} />
           <Route path='/user/cart-details' element={<UserCartDetailsPage />} />
           <Route
-            path='/user/order-details/:id'
+            path='/user/order-details'
             element={<UserOrderDetailsPage />}
           />
         </Route>

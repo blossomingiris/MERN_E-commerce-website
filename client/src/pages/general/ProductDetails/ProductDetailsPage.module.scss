@@ -86,7 +86,14 @@
 
 .quantity {
   width: 30%;
-  border: 1px solid var(--text-color);
+  cursor: pointer;
+  width: 50px;
+  padding: 5px;
+  min-height: 40px;
+  border-radius: 8px;
+  border-color: 1 px var(--border-color);
+  background-color: var(--white);
+  font-family: inherit;
 }
 
 .quantity input {
@@ -134,4 +141,3 @@
 .icon svg {
   font-size: 1.5em;
 }
-

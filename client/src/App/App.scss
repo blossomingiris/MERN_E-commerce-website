@@ -1,5 +1,6 @@
 @import '../style/global/index.scss';
 
+
 html {
   position: relative;
   // min-width: 100%;
@@ -8,4 +9,108 @@ html {
 
 body {
   margin-bottom: 100px;
+}
+
+//Style for signup and login forms
+
+.a_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: calc(100vh - 350px);
+  padding: 10px;
+  margin: 80px 0;
+}
+
+.a_form_wrapper {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.a_form_title {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: var(--l-spacing);
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.a_inputs_group_container {
+  width: 100%;
+}
+
+.a_submit_button {
+  width: 100%;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  background-color: var(--gold);
+  letter-spacing: 5px;
+  color: var(--white);
+  margin-top: 40px;
+  font-size: 0.75em;
+  transition: all 0.3s ease-out;
+}
+
+.a_submit_button:hover {
+  opacity: 0.8;
+}
+
+.a_link {
+  text-transform: uppercase;
+  display: flex;
+  gap: 5px;
+  letter-spacing: var(--l-spacing);
+  font-size: 0.8em;
+  margin-top: 30px;
+}
+
+.a_link a {
+  text-decoration: underline;
+}
+
+.a_link a:hover {
+  opacity: 0.8;
+  color: var(--text-color);
+}
+
+//! remove to sign up css component
+.a_user_alert {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  color: var(--rose);
+}
+
+.a_user_alert_success {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  color: var(--title-color);
+}
+
+//spinner
+
+@keyframes round {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .a_container {
+    max-width: 964px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .a_container {
+    max-width: 728px;
+  }
 }

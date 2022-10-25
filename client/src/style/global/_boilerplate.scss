@@ -31,3 +31,7 @@ a {
 a:hover {
   color: var(--gold);
 }
+
+input:focus {
+  outline: none;
+}

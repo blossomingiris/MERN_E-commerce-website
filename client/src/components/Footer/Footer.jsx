@@ -44,16 +44,14 @@ function Footer() {
             We send exclusive offers and information strictly to our email list.
             Sign up so you don't miss out.
           </p>
-          <form action='' className={styles.newsletter_form}>
+          <form className={styles.newsletter_form}>
             <input
               type='email'
               placeholder='email@newsletter.com'
               className={styles.input_field}
               required
             />
-            <span>
-              <button className={styles.newsletter_button}>Join</button>
-            </span>
+            <button className={styles.newsletter_button}>Join</button>
           </form>
         </div>
       </div>
