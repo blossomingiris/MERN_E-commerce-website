@@ -34,7 +34,8 @@ tr:nth-child(odd) {
 
 .title {
   text-transform: uppercase;
-  letter-spacing: var(--l-spacing);
+  font-family: var(--title-font);
+  letter-spacing: var(--l-spacing-lg);
   padding: 10px;
   margin: 40px 0;
   text-align: center;

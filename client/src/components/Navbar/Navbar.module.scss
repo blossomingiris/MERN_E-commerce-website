@@ -16,8 +16,13 @@
 
   .logo h2 {
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: var(--l-spacing-lg);
     color: var(--text-color);
+    transition: 0.5s;
+  }
+
+  .logo h2:hover {
+    color: var(--title-color);
   }
 }
 

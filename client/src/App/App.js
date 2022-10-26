@@ -16,8 +16,8 @@ import ProtectedRoutes from '../other/ProtectedRoutes'
 //user routes
 import UserProfilePage from '../pages/user/UserProfilePage'
 import UserOrdersPage from '../pages/user/OrdersPage/UserOrdersPage'
-import UserCartDetailsPage from '../pages/user/UserCartDetailsPage'
-import UserOrderDetailsPage from '../pages/user/UserOrderDetailsPage'
+import UserCartDetailsPage from '../pages/user/CartDetails/UserCartDetailsPage'
+import UserOrderDetailsPage from '../pages/user/OrderDetails/UserOrderDetailsPage'
 
 //admin routes
 

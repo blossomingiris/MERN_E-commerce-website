@@ -1,6 +1,5 @@
 @import '../style/global/index.scss';
 
-
 html {
   position: relative;
   // min-width: 100%;
@@ -33,10 +32,11 @@ body {
 
 .a_form_title {
   text-transform: uppercase;
-  margin-bottom: 20px;
-  letter-spacing: var(--l-spacing);
+  margin-bottom: 40px;
+  letter-spacing: var(--l-spacing-lg);
   font-weight: bold;
   font-size: 0.9em;
+  font-family: var(--title-font);
 }
 
 .a_inputs_group_container {

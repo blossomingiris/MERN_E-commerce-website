@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Footer.module.scss'
+import { FaInstagram, FaTiktok, FaFacebook } from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -22,7 +23,13 @@ function Footer() {
           <p>Let's be friends</p>
           <div className={styles.footer_social_links}>
             <a href=''>
-              <span>Social</span>
+              <FaInstagram className={styles.social_icon} />
+            </a>
+            <a href=''>
+              <FaTiktok className={styles.social_icon} />
+            </a>
+            <a href=''>
+              <FaFacebook className={styles.social_icon} />
             </a>
           </div>
         </div>

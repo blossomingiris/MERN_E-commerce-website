@@ -11,7 +11,9 @@ function CartPage() {
         <ul>
           <li className={styles.order_navigation_step}>
             Shopping Cart{' '}
-            <span className={styles.order_navigation_number} id = {styles.first_step}>
+            <span
+              className={styles.order_navigation_number}
+            >
               <p>1</p>
             </span>
           </li>
@@ -30,7 +32,7 @@ function CartPage() {
 
       <div className={styles.orders_wrapper}>
         <div className={styles.left_wrapper}>
-          <h4 className={styles.title}>Your shopping cart</h4>
+          <h4 className={styles.title}>My shopping cart</h4>
           <ul>
             {Array.from({ length: 4 }).map((item) => (
               <CartItem key={uuid()} />
@@ -42,7 +44,7 @@ function CartPage() {
           <ul>
             <li>
               <h4 className={styles.title}>
-                1 item, total (excluding delivery):
+                4 items, total (excluding delivery):
               </h4>
             </li>
             <li className={styles.price_container}>
@@ -50,7 +52,7 @@ function CartPage() {
             </li>
             <li>(Delivery cost will be calculate in the next step)</li>
             <li>
-              <Link to='/user/order-details'>
+              <Link to='/user/cart-details'>
                 <button className={styles.checkout_button}>
                   Place an order
                 </button>
