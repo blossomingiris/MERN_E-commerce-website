@@ -1,14 +1,31 @@
 .navbar {
   height: 100px;
-  background-color: var(--stone);
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.navbar_animated {
+  background-color: var(--bg-color);
+  width: 100%;
+  z-index: 1;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
 }
 
 .navbar_wrapper {
-  padding: 30px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: color 0.2s linear;
+  padding: 10px 20px;
 }
 
 .wrapper_left {
@@ -17,12 +34,13 @@
   .logo h2 {
     text-transform: uppercase;
     letter-spacing: var(--l-spacing-lg);
-    color: var(--text-color);
-    transition: 0.5s;
+    font-size: 1.2em;
+    // color: var(--text-color);
+    transition: 0.8s;
   }
 
   .logo h2:hover {
-    color: var(--title-color);
+    color: var(--gold);
   }
 }
 
@@ -36,6 +54,18 @@
   flex: 1;
   display: flex;
   gap: 50px;
+}
+
+.wrapper_center a,
+.wrapper_right a,
+.wrapper_left a {
+  color: var(--black);
+}
+
+.wrapper_center a:hover,
+.wrapper_right a:hover,
+.wrapper_left a:hover {
+  color: var(--gold);
 }
 
 .wrapper_right {
@@ -120,7 +150,7 @@
   top: 0;
   right: 0;
   border-radius: 50%;
-  color: var(--text-color);
+  color: var(--black);
   text-align: center;
   font-size: 1.2em;
   transition: all 1s;
@@ -144,7 +174,7 @@
 
 .dropdown {
   background: transparent;
-  color: var(--text-color);
+  color: var(--black);
   text-transform: capitalize;
   cursor: pointer;
   height: 50px;

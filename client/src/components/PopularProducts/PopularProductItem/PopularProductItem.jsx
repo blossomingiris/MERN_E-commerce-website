@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './PopularProductItem.module.scss'
 
 function PopularProductItem({ item }) {
@@ -14,6 +15,9 @@ function PopularProductItem({ item }) {
       </div>
       <div className={styles.title}>{item.title}</div>
       <div className={styles.price}>${item.price}</div>
+      <Link to='/product-details'>
+        <button className={styles.button}>Buy Now</button>{' '}
+      </Link>
     </div>
   )
 }

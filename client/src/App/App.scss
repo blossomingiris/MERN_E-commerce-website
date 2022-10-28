@@ -94,14 +94,38 @@ body {
 
 //spinner
 
-@keyframes round {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+//animated navbar
+.navbar {
+  height: 100px;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  transition: 0.7s;
+  padding: 20px;
 }
+
+.navbar_animated {
+  background-color: var(--bg-color);
+  width: 100%;
+  z-index: 1;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+}
+
+// @keyframes round {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
 
 @media screen and (min-width: 1024px) and (max-width: 1365px) {
   .a_container {

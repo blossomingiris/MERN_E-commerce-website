@@ -3,11 +3,15 @@ import { MdSearch } from 'react-icons/md'
 import { RiShoppingBagLine } from 'react-icons/ri'
 import { FaRegUser } from 'react-icons/fa'
 import { MdOutlineAdminPanelSettings } from 'react-icons/md'
+import { useScrollPosition } from '../../hooks/useScrollPosition'
 import styles from './Navbar.module.scss'
 
 function Navbar() {
+  //animated sticky navbar
+  const scrollPosition = useScrollPosition()
+
   return (
-    <nav className={styles.navbar}>
+    <nav className={scrollPosition > 0 ? 'navbar_animated' : 'navbar'}>
       <div className={styles.navbar_wrapper}>
         <div className={styles.wrapper_left}>
           <div className={styles.logo}>

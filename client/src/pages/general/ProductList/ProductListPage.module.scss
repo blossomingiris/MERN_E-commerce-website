@@ -1,5 +1,6 @@
 .container {
   padding: 20px;
+  margin-top: 30px;
 }
 
 .filter_container {
@@ -9,7 +10,8 @@
 
 .title {
   margin: 30px 0;
-  letter-spacing: var(--l-spacing);
+  margin-left: 20px;
+  letter-spacing: var(--l-spacing-lg);
   text-transform: uppercase;
   font-family: var(--title-font);
 }
@@ -17,6 +19,7 @@
 .desc {
   letter-spacing: var(--l-spacing);
   font-weight: 300;
+  margin-left: 20px;
 }
 
 .filter_left {
@@ -67,6 +70,10 @@
   margin: 0 auto;
   display: grid;
   grid-gap: 1rem;
+}
+
+.form_control {
+  font-family: inherit;
 }
 
 // TODO fix media for large screen

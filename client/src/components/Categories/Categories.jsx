@@ -24,7 +24,7 @@ function Categories() {
           <video
             src={video}
             className={styles.categories_video}
-            // autoPlay
+            autoPlay
             loop
             playsInline
             muted

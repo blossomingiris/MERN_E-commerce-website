@@ -79,23 +79,23 @@ function UserProfilePage() {
       defaultValue: '',
     },
 
-    // {
-    //   name: 'password',
-    //   type: 'password',
-    //   errorMessage:
-    //     'Password should be 6-20 characters and include at least 1 letter, 1 number and 1 special character',
-    //   label: 'Password',
-    //   pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
-    //   required: true,
-    // },
-    // {
-    //   name: 'confirmPassword',
-    //   type: 'password',
-    //   errorMessage: 'Both passwords should match',
-    //   label: 'Confirm Password',
-    //   pattern: values.password,
-    //   required: true,
-    // },
+    {
+      name: 'password',
+      type: 'password',
+      errorMessage:
+        'Password should be 6-20 characters and include at least 1 letter, 1 number and 1 special character',
+      label: 'Password',
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
+      required: true,
+    },
+    {
+      name: 'confirmPassword',
+      type: 'password',
+      errorMessage: 'Both passwords should match',
+      label: 'Confirm Password',
+      pattern: values.password,
+      required: true,
+    },
   ]
 
   const handleSubmit = (e) => {

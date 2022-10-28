@@ -1,8 +1,12 @@
 import React from 'react'
 import styles from './ProductListPage.module.scss'
 import ProductItem from '../../.././components/ProductItem/ProductItem'
+import axios from 'axios'
+import uuid from 'react-uuid'
 
 function ProductsListPage() {
+  axios.get('/api/products').then((res) => console.log(res))
+
   return (
     <section className={styles.container}>
       <h4 className={styles.title}>Search Products</h4>
@@ -39,8 +43,8 @@ function ProductsListPage() {
         </div>
         <div className={styles.filter_right}>
           <div className={styles.product_items_container}>
-            {Array.from({ length: 8 }).map((index) => (
-              <ProductItem key={index} />
+            {Array.from({ length: 8 }).map(() => (
+              <ProductItem key={uuid()} />
             ))}
           </div>
         </div>

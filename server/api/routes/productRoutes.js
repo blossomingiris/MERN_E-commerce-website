@@ -6,6 +6,8 @@ const {
   getBestsellers,
 } = require('../../../server/controllers/productController')
 
+const { verifyIsAdmin } = require('../../middleware/verifyIsAdmin')
+
 //get products from specific category
 router.get('/category/:categoryName', getProducts)
 
@@ -23,5 +25,9 @@ router.get('/:id', getProductById)
 router.get('/best/selling', getBestsellers)
 
 router.get('/', getProducts)
+
+//check for admin or regular user
+
+router.use(verifyIsAdmin)
 
 module.exports = router
