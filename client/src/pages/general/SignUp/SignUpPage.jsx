@@ -1,37 +1,47 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import uuid from 'react-uuid'
+import { useDispatch } from 'react-redux'
+import { setReduxUserState } from '../../../redux/actions/userActions'
+import axios from 'axios'
 import InputForm from '../../.././components/Auth/InputForm'
 
 function SignUpPage() {
   const [values, setValues] = useState({
     name: '',
-    surname: '',
+    lastName: '',
     email: '',
     password: '',
     confirmPassword: '',
   })
 
+  const dispatch = useDispatch()
+  const [responseStateRegisterUser, setResponseStateRegisterUser] = useState({
+    success: '',
+    error: '',
+  })
+
+  console.log('responseStateRegisterUser', responseStateRegisterUser)
+
+  //todo: for refactoring code
   const inputs = [
     {
       name: 'name',
-      defaultValue: 'My default value',
       type: 'text',
       errorMessage:
-        'Name should be 3-16 characters and should not include any special character',
-      label: 'Username',
-      pattern: '^[A-Za-z0-9]{3,16}$',
+        'Name should be 2-16 characters and should not include any special character',
+      label: 'Name',
+      pattern: `^[A-Za-z0-9]{3,16}$`,
       required: true,
     },
 
     {
-      name: 'surname',
+      name: 'lastName',
       type: 'text',
       errorMessage:
-        'Surname should be 3-16 characters and should not include any special character',
-      label: 'Surname',
-      pattern: '^[A-Za-z0-9]{3,16}$',
+        'Last name should be 2-16 characters and should not include any special character',
+      label: 'Last Name',
+      pattern: `^[A-Za-z0-9]{2,16}$`,
       required: true,
     },
 
@@ -49,7 +59,7 @@ function SignUpPage() {
       errorMessage:
         'Password should be 6-20 characters and include at least 1 letter, 1 number and 1 special character',
       label: 'Password',
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
+      // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
       required: true,
     },
     {
@@ -64,11 +74,52 @@ function SignUpPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const name = values.name
+    const email = values.email
+    const lastName = values.lastName
+    const password = values.password
+
+    if (
+      name &&
+      lastName &&
+      email &&
+      password &&
+      password === values.confirmPassword
+    ) {
+      registerNewUserApiRequest(name, lastName, email, password)
+        .then((data) => {
+          dispatch(setReduxUserState(data.userCreated))
+          if (data.success === 'User created successfully')
+            setResponseStateRegisterUser({ success: data.success })
+          //delay before redirecting to user profile page
+          setTimeout(function () {
+            window.location.href = '/user'
+          }, 3000)
+        })
+        .catch((er) =>
+          setResponseStateRegisterUser({
+            error: er.response.data.message
+              ? er.response.data.message
+              : er.response.data,
+          })
+        )
+    }
   }
 
   const handleChange = (e) => {
-    console.log(e.target.value)
     setValues({ ...values, [e.target.name]: e.target.value })
+  }
+
+  //Api request to register new user
+
+  const registerNewUserApiRequest = async (name, lastName, email, password) => {
+    const { data } = await axios.post('/api/users/register', {
+      name,
+      lastName,
+      email,
+      password,
+    })
+    return data
   }
 
   return (
@@ -76,9 +127,9 @@ function SignUpPage() {
       <div className='a_form_wrapper'>
         <p className='a_form_title'>Sign Up</p>
         <form className='a_inputs_group_container' onSubmit={handleSubmit}>
-          {inputs.map((input) => (
+          {inputs.map((input, idx) => (
             <InputForm
-              key={uuid()}
+              key={idx}
               {...input}
               value={values[input.name]}
               handleChange={handleChange}
@@ -86,11 +137,27 @@ function SignUpPage() {
           ))}
           <button className='a_submit_button'>Submit</button>
 
-          <div className='a_user_alert'>
-            User with that email already exists!
+          <div
+            className={
+              responseStateRegisterUser &&
+              responseStateRegisterUser.error ===
+                'user with this email already exists'
+                ? 'a_user_alert_success'
+                : 'a_user_alert_hidden'
+            }
+          >
+            An account with email address <b>{values.email}</b> already exists.
+            Please login using this email address or reset the password.
           </div>
-          <div className='a_user_alert_success'>
-            User account was successfully created!
+          <div
+            className={
+              responseStateRegisterUser &&
+              responseStateRegisterUser.success === 'User created successfully'
+                ? 'a_user_alert_success'
+                : 'a_user_alert_hidden'
+            }
+          >
+            Your account was successfully created!
           </div>
         </form>
         <div className='a_link'>

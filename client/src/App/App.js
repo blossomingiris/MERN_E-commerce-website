@@ -21,8 +21,8 @@ import UserOrderDetailsPage from '../pages/user/OrderDetails/UserOrderDetailsPag
 
 //admin routes
 
-import AdminUsersPage from '../pages/admin/AdminEditUserPage'
-import AdminEditUserPage from '../pages/admin/AdminEditUserPage'
+import AdminUsersPage from '../pages/admin/AdminUsersPage/AdminUsersPage'
+import AdminEditUserPage from '../pages/admin/AdminUsersPage/AdminUsersPage'
 import AdminProductsPage from '../pages/admin/AdminProductsPage'
 import AdminCreateProductPage from '../pages/admin/AdminCreateProductPage'
 import AdminEditProductPage from '../pages/admin/AdminEditProductPage'
@@ -58,7 +58,7 @@ function App() {
         {/* admin protected routes: */}
         <Route element={<ProtectedRoutes admin={true} />}>
           <Route path='/admin/users' element={<AdminUsersPage />} />
-          <Route path='/admin/edit-user/:id' element={<AdminEditUserPage />} />
+          {/* <Route path='/admin/edit-user/:id' element={<AdminEditUserPage />} />
           <Route path='/admin/products' element={<AdminProductsPage />} />
           <Route
             path='/admin/create-new-product'
@@ -72,7 +72,7 @@ function App() {
           <Route
             path='/admin/order-details/:id'
             element={<AdminOrderDetailsPage />}
-          />
+          /> */}
         </Route>
       </Routes>
       <Footer />

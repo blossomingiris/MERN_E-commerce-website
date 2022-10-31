@@ -8,17 +8,19 @@ const orderRoutes = require('./routes/orderRoutes')
 
 const jwt = require('jsonwebtoken')
 
-// app.get('/logout', (req, res) => {
-//   return res.clearCookie('access_token').send('access token cleared')
-// })
+//logout route, delete cookies when user/admin is logged out
+app.get('/logout', (req, res) => {
+  return res.clearCookie('access_token').send('access token was deleted')
+})
 
+//route to check token for login as user or admin
 app.get('/get-token', (req, res) => {
   try {
     const accessToken = req.cookies['access_token']
     const decoded = jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
     return res.json({ token: decoded.name, isAdmin: decoded.isAdmin })
   } catch (err) {
-    return res.status(401).send('Unauthorized. Invalid Token')
+    return res.status(401).send('Unauthorized. Invalid token')
   }
 })
 

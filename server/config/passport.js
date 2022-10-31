@@ -1,6 +1,7 @@
-const GoogleStrategy = require('passport-google-oauth20').Strategy
+const GoogleStrategy = require('passport-google-oauth').Strategy
+// var GoogleStrategy = require('passport-google-oidc')
 const passport = require('passport')
-const User = require('.././models/UserModel')
+const User = require('../models/UserModel')
 require('dotenv').config()
 
 passport.use(
@@ -8,7 +9,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/auth/google/callback',
+      callbackURL: 'http://localhost:5000/api/users/google/callback',
       passReqToCallback: true,
     },
     async (request, accessToken, refreshToken, profile, done) => {
@@ -36,3 +37,27 @@ passport.use(
     }
   )
 )
+
+// const GoogleStrategy = require('passport-google-oauth20').Strategy
+// const passport = require('passport')
+
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: process.env.GOOGLE_CLIENT_ID,
+//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//       callbackURL: 'http://localhost:5000/api/users/google/callback',
+//     },
+//     function (accessToken, refreshToken, profile, done) {
+//       done(null, profile)
+//     }
+//   )
+// )
+
+passport.serializeUser((user, done) => {
+  done(null, user)
+})
+
+passport.deserializeUser((user, done) => {
+  done(null, user)
+})

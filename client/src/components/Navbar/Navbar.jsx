@@ -4,11 +4,16 @@ import { RiShoppingBagLine } from 'react-icons/ri'
 import { FaRegUser } from 'react-icons/fa'
 import { MdOutlineAdminPanelSettings } from 'react-icons/md'
 import { useScrollPosition } from '../../hooks/useScrollPosition'
+import { logout } from '../../redux/actions/userActions'
+import { useDispatch } from 'react-redux'
 import styles from './Navbar.module.scss'
 
 function Navbar() {
-  //animated sticky navbar
+  //animated navbar when scroll it using custom hook
   const scrollPosition = useScrollPosition()
+
+  //logout functionality
+  const dispatch = useDispatch()
 
   return (
     <nav className={scrollPosition > 0 ? 'navbar_animated' : 'navbar'}>
@@ -26,7 +31,7 @@ function Navbar() {
           <Link to='/about-us'>About us</Link>
         </div>
         <div className={styles.wrapper_right}>
-          <Link to='/admin/orders'>
+          <Link to='/admin/users'>
             <MdOutlineAdminPanelSettings className={styles.navbar_icon_admin} />
           </Link>
           <Link to='/login'>
@@ -57,8 +62,8 @@ function Navbar() {
               <li>
                 <Link to='/user/my-orders'>My Orders</Link>
               </li>
-              <li>
-                <a href='#'>Logout</a>
+              <li className={styles.logout} onClick={() => dispatch(logout())}>
+                <p> Logout </p>
               </li>
             </ul>
           </div>

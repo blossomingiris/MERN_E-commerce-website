@@ -120,7 +120,7 @@ const loginUserGoogleFail = (req, res, next) => {
   try {
     res.status(401).json({
       success: false,
-      message: 'fail to logging in',
+      message: 'fail to logged in',
     })
   } catch (err) {
     next(err)

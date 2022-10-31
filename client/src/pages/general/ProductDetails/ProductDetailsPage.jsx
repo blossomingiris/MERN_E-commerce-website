@@ -3,8 +3,19 @@ import styles from './ProductDetailsPage.module.scss'
 import image from '../../.././assets/popular_products/product_1.jpg'
 import { AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai'
 import { FaPinterest } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../../redux/actions/cartActions'
 
 function ProductDetailsPage() {
+  //add product to cart
+  const dispatch = useDispatch()
+
+  const addProductToCartHandler = () => {
+    dispatch(addToCart())
+  }
+
+  const products = useSelector((state) => state.cart.value)
+
   return (
     <section className={styles.container}>
       <div className={styles.container_left}>
@@ -35,7 +46,9 @@ function ProductDetailsPage() {
                 min='1'
               />
             </div>
-            <button className={styles.button}>Add to Bag</button>
+            <button className={styles.button} onClick={addProductToCartHandler}>
+              Add to Bag
+            </button>
           </div>
 
           <div className={styles.desc_container}>

@@ -5,9 +5,9 @@ import styles from './UserOrderDetailsPage.module.scss'
 
 function UserOrderDetailsPage() {
   return (
-    <section>
+    <section className = {styles.container}>
       <h4 className={styles.main_title}>Order Details</h4>
-      <div className={styles.container}>
+      <div className={styles.wrapper}>
         <div className={styles.content}>
           <ul className={styles.shipping_details}>
             <li>

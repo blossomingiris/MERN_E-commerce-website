@@ -7,18 +7,18 @@ function Hero() {
   return (
     <section className={styles.hero_container}>
       <div className={styles.hero_container_info}>
-        <p className={styles.desc}>Sensual. Exuberant. Addictive.</p>
         <h3>
           Be free with <br />
           your scent
         </h3>
+        <p className={styles.desc}>Sensual. Exuberant. Addictive.</p>
         <img
           src={hero}
           alt='perfume'
           className={styles.hero_image}
-          crossorigin='anonymous'
+          crossOrigin='anonymous'
         />
-        <div>
+        <div className={styles.button_wrapper}>
           {/* <p className={styles.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p> */}

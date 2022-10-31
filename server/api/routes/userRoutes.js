@@ -23,9 +23,14 @@ router.post('/login', loginUser)
 
 //user logged in with google routes
 
-router.get('/login/google/success', loginUserGoogleSuccess)
+router.get('/login/success', loginUserGoogleSuccess)
 
-router.get('/login/google/failed', loginUserGoogleFail)
+router.get('/login/success', loginUserGoogleFail)
+
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('http://localhost:3000/users/login')
+})
 
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
@@ -33,19 +38,19 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     successRedirect: 'http://localhost:3000/',
-    failureRedirect: '/login/google/failed',
+    failureRedirect: '/login/failed',
   })
 )
 
 // user profile info route
-router.use(verifyIsLoggedIn)
+// router.use(verifyIsLoggedIn)
 router.put('/profile', updateUserProfile)
 
 //get user profile with added info
 router.get('/profile/:id', getUserProfile)
 
 //admin routes
-router.use(verifyIsAdmin)
+// router.use(verifyIsAdmin)
 router.get('/', getUsers)
 
 module.exports = router
