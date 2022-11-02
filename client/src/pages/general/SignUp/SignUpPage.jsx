@@ -21,8 +21,6 @@ function SignUpPage() {
     error: '',
   })
 
-  console.log('responseStateRegisterUser', responseStateRegisterUser)
-
   //todo: for refactoring code
   const inputs = [
     {

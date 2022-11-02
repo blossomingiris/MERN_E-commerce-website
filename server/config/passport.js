@@ -1,5 +1,4 @@
 const GoogleStrategy = require('passport-google-oauth').Strategy
-// var GoogleStrategy = require('passport-google-oidc')
 const passport = require('passport')
 const User = require('../models/UserModel')
 require('dotenv').config()

@@ -95,12 +95,12 @@ function LoginPage() {
             />
           ))}
           <button className='a_submit_button'>Submit</button>
-          <div className={styles.login_options}>OR</div>
+          {/* <div className={styles.login_options}>OR</div> */}
           <div>
-            <button className={styles.button_google_login} onClick={google}>
+            {/* <button className={styles.button_google_login} onClick={google}>
               <FaGoogle className={styles.icon}></FaGoogle>
               Login with Google
-            </button>
+            </button> */}
             <div
               className={
                 responseState ? 'a_user_alert_show' : 'a_user_alert_hidden'

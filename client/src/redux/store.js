@@ -5,21 +5,38 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import thunk from 'redux-thunk'
 
-import { counterReducer } from './reducers/cartReducer'
+import { cartReducer } from './reducers/cartReducer'
 import { userRegisterLoginReducer } from './reducers/userReducer'
 
 const reducer = combineReducers({
-  cart: counterReducer,
+  cart: cartReducer,
   userRegisterLogin: userRegisterLoginReducer,
 })
 
-//take user data from localStorage
+//read user data from localStorage
 const userInfoInLocalStorage = JSON.parse(localStorage.getItem('userInfo'))
+
+//read product details data from localStorage
+const cartItemsInLocalStorage = localStorage.getItem('cart')
+  ? JSON.parse(localStorage.getItem('cart'))
+  : []
 
 //save initial state
 const INITIAL_STATE = {
   cart: {
-    value: 0,
+    cartItems: cartItemsInLocalStorage,
+    itemsCount: cartItemsInLocalStorage
+      ? cartItemsInLocalStorage.reduce(
+          (quantity, item) => Number(item.quantity) + quantity,
+          0
+        )
+      : 0,
+    cartSubtotal: cartItemsInLocalStorage
+      ? cartItemsInLocalStorage.reduce(
+          (price, item) => price + item.price * item.quantity,
+          0
+        )
+      : 0,
   },
   userRegisterLogin: { userInfo: userInfoInLocalStorage },
 }

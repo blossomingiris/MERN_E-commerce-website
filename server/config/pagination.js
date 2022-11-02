@@ -1,3 +1,3 @@
-const productsPerPage = 3
+const productsPerPage = 7
 
 module.exports = productsPerPage

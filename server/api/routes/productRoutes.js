@@ -19,7 +19,7 @@ router.get('/search/:searchQuery', getProducts)
 
 //get product details
 
-router.get('/:id', getProductById)
+router.get('/get-one/:id', getProductById)
 
 //get popular products (best selling products)
 router.get('/best/selling', getBestsellers)

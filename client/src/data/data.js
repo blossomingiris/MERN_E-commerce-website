@@ -47,24 +47,24 @@ export const popularProducts = [
     title: 'Lorem ipsum dolor sit amet',
     price: '50.00',
   },
-  // {
-  //   id: 5,
-  //   img: 'product_2',
-  //   title: 'Lorem ipsum dolor',
-  //   price: '50.00',
-  // },
-  // {
-  //   id: 6,
-  //   img: 'product_3',
-  //   title: 'Lorem ipsum dolor sit amet',
-  //   price: '50.00',
-  // },
-  // {
-  //   id: 7,
-  //   img: 'product_1',
-  //   title: 'Lorem Ipsum',
-  //   price: '50.00',
-  // },
+  {
+    id: 5,
+    img: 'product_2',
+    title: 'Lorem ipsum dolor',
+    price: '50.00',
+  },
+  {
+    id: 6,
+    img: 'product_3',
+    title: 'Lorem ipsum dolor sit amet',
+    price: '50.00',
+  },
+  {
+    id: 7,
+    img: 'product_1',
+    title: 'Lorem Ipsum',
+    price: '50.00',
+  },
 ]
 
 //todo: for refactoring code

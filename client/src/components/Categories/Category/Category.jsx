@@ -15,7 +15,9 @@ function Category({ item }) {
         </Link>
       </div>
       <div className={styles.category_content}>
-        <a href=''>{item.title}</a>
+        <a className={styles.category_content_links} href='/products'>
+          {item.title}
+        </a>
       </div>
     </div>
   )

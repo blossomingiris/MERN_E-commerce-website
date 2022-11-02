@@ -1,20 +1,24 @@
-import React from 'react'
 import styles from './ProductDetailsPage.module.scss'
 import image from '../../.././assets/popular_products/product_1.jpg'
 import { AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai'
 import { FaPinterest } from 'react-icons/fa'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/actions/cartActions'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 function ProductDetailsPage() {
-  //add product to cart
+  //get product id from url endpoint
+  const { id } = useParams()
+
+  //redux state management
   const dispatch = useDispatch()
 
-  const addProductToCartHandler = () => {
-    dispatch(addToCart())
-  }
+  const [quantity, setQuantity] = useState(1)
 
-  const products = useSelector((state) => state.cart.value)
+  const addToCartHandler = () => {
+    dispatch(addToCart(id, quantity))
+  }
 
   return (
     <section className={styles.container}>
@@ -44,9 +48,11 @@ function ProductDetailsPage() {
                 placeholder='1'
                 maxLength='10'
                 min='1'
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
-            <button className={styles.button} onClick={addProductToCartHandler}>
+            <button className={styles.button} onClick={addToCartHandler}>
               Add to Bag
             </button>
           </div>

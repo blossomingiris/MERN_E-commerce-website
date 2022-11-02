@@ -38,7 +38,7 @@ function App() {
         <Route path='/about-us' element={<AboutUsPage />} />
         <Route path='/what-makes-us-different' element={<DifferencesPage />} />
         <Route path='/products' element={<ProductsListPage />} />
-        <Route path='/product-details' element={<ProductDetailsPage />} />
+        <Route path='/product-details/:id' element={<ProductDetailsPage />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/login' element={<LoginPage />} />
@@ -58,21 +58,6 @@ function App() {
         {/* admin protected routes: */}
         <Route element={<ProtectedRoutes admin={true} />}>
           <Route path='/admin/users' element={<AdminUsersPage />} />
-          {/* <Route path='/admin/edit-user/:id' element={<AdminEditUserPage />} />
-          <Route path='/admin/products' element={<AdminProductsPage />} />
-          <Route
-            path='/admin/create-new-product'
-            element={<AdminCreateProductPage />}
-          />
-          <Route
-            path='/admin/edit-product/:id'
-            element={<AdminEditProductPage />}
-          />
-          <Route path='/admin/orders' element={<AdminOrdersPage />} />
-          <Route
-            path='/admin/order-details/:id'
-            element={<AdminOrderDetailsPage />}
-          /> */}
         </Route>
       </Routes>
       <Footer />

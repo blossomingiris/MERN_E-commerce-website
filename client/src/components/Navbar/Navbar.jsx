@@ -5,7 +5,7 @@ import { FaRegUser } from 'react-icons/fa'
 import { MdOutlineAdminPanelSettings } from 'react-icons/md'
 import { useScrollPosition } from '../../hooks/useScrollPosition'
 import { logout } from '../../redux/actions/userActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'
 
 function Navbar() {
@@ -14,6 +14,13 @@ function Navbar() {
 
   //logout functionality
   const dispatch = useDispatch()
+
+  //read user data from redux
+  const { userInfo } = useSelector((state) => state.userRegisterLogin)
+
+  //read products details data from redux
+
+  const itemsCount = useSelector((state) => state.cart.itemsCount)
 
   return (
     <nav className={scrollPosition > 0 ? 'navbar_animated' : 'navbar'}>
@@ -31,16 +38,39 @@ function Navbar() {
           <Link to='/about-us'>About us</Link>
         </div>
         <div className={styles.wrapper_right}>
-          <Link to='/admin/users'>
-            <MdOutlineAdminPanelSettings className={styles.navbar_icon_admin} />
-          </Link>
-          <Link to='/login'>
-            <FaRegUser className={styles.navbar_icon_user} />
-          </Link>
+          {!userInfo ? (
+            <Link to='/login'>
+              <FaRegUser className={styles.navbar_icon_user} />
+            </Link>
+          ) : userInfo.name && userInfo.isAdmin ? (
+            <Link to='/admin/users'>
+              <MdOutlineAdminPanelSettings
+                className={styles.navbar_icon_admin}
+              />
+            </Link>
+          ) : (
+            <div className={styles.dropdown}>
+              {userInfo.name} {userInfo.lastName}
+              <ul className={styles.dropdown_menu}>
+                <li>
+                  <Link to='/user'>My Profile</Link>
+                </li>
+                <li>
+                  <Link to='/user/my-orders'>My Orders</Link>
+                </li>
+                <li
+                  className={styles.logout}
+                  onClick={() => dispatch(logout())}
+                >
+                  <p> Logout </p>
+                </li>
+              </ul>
+            </div>
+          )}
           <Link to='/cart'>
             <div className={styles.navbar_icons_group}>
               <RiShoppingBagLine className={styles.navbar_icon_bag} />
-              <p>(0)</p>
+              <p>({itemsCount === 0 ? '0' : itemsCount})</p>
             </div>
           </Link>
           <div className={styles.search_container}>
@@ -52,20 +82,6 @@ function Navbar() {
               />
               <MdSearch className={styles.search_icon} />
             </form>
-          </div>
-          <div className={styles.dropdown}>
-            Username
-            <ul className={styles.dropdown_menu}>
-              <li>
-                <Link to='/user'>My Profile</Link>
-              </li>
-              <li>
-                <Link to='/user/my-orders'>My Orders</Link>
-              </li>
-              <li className={styles.logout} onClick={() => dispatch(logout())}>
-                <p> Logout </p>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

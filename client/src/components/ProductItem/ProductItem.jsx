@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './ProductItem.module.scss'
 
-function ProductItem() {
+function ProductItem({ productID, name, description, price, images }) {
   return (
     <div className={styles.container}>
       <div className={styles.image_container}>
@@ -11,12 +11,14 @@ function ProductItem() {
           alt='perfume'
         />
       </div>
-      <div className={styles.title}>Lorem, ipsum.</div>
-      <div className={styles.price}>$50.00</div>
-      <div>
-        <Link to='/product-details'>
-          <button className={styles.button}>Buy Now</button>
-        </Link>
+      <div className={styles.item_card_info_container}>
+        <div className={styles.title}>{name}</div>
+        <div className={styles.price}>${price.toFixed(2)}</div>
+        <div>
+          <Link to={`/product-details/${productID}`}>
+            <button className={styles.button}>Buy Now</button>
+          </Link>
+        </div>
       </div>
     </div>
   )

@@ -101,45 +101,44 @@ const loginUser = async (req, res, next) => {
   }
 }
 
-const loginUserGoogleSuccess = (req, res, next) => {
-  try {
-    if (req.user) {
-      res.status(200).json({
-        success: true,
-        message: 'login success',
-        user: req.user,
-        //   cookies: req.cookies
-      })
-    }
-  } catch (err) {
-    next(err)
-  }
-}
+// const loginUserGoogleSuccess = (req, res, next) => {
+//   try {
+//     if (req.user) {
+//       res.status(200).json({
+//         success: true,
+//         message: 'login success',
+//         user: req.user,
+//         //   cookies: req.cookies
+//       })
+//     }
+//   } catch (err) {
+//     next(err)
+//   }
+// }
 
-const loginUserGoogleFail = (req, res, next) => {
-  try {
-    res.status(401).json({
-      success: false,
-      message: 'fail to logged in',
-    })
-  } catch (err) {
-    next(err)
-  }
-}
+// const loginUserGoogleFail = (req, res, next) => {
+//   try {
+//     res.status(401).json({
+//       success: false,
+//       message: 'fail to logged in',
+//     })
+//   } catch (err) {
+//     next(err)
+//   }
+// }
 
 //updated user profile with additional information
 
 const updateUserProfile = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id).orFail()
-    console.log(user)
     user.name = req.body.name || user.name
     user.lastName = req.body.lastName || user.lastName
     user.email = req.body.email || user.email
     user.phoneNumber = req.body.phoneNumber
     user.address = req.body.address
     user.country = req.body.country
-    user.zipCode = req.body.zipCode
+    user.postcode = req.body.postcode
     user.city = req.body.city
     user.state = req.body.state
     if (req.body.password !== user.password) {
@@ -175,8 +174,8 @@ module.exports = {
   getUsers,
   registerUser,
   loginUser,
-  loginUserGoogleFail,
-  loginUserGoogleSuccess,
+  // loginUserGoogleFail,
+  // loginUserGoogleSuccess,
   updateUserProfile,
   getUserProfile,
 }

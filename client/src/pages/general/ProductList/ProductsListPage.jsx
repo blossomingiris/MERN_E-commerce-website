@@ -1,16 +1,30 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import styles from './ProductListPage.module.scss'
 import ProductItem from '../../.././components/ProductItem/ProductItem'
 import axios from 'axios'
-import uuid from 'react-uuid'
 
 function ProductsListPage() {
-  axios.get('/api/products').then((res) => console.log(res))
+  const [products, setProducts] = useState([])
+  const [totalProducts, setTotalProducts] = useState(null)
+
+  //fetch products data
+  const getProducts = async () => {
+    const { data } = await axios.get('/api/products')
+    setTotalProducts(data.totalProducts)
+    return data
+  }
+
+  useEffect(() => {
+    getProducts()
+      .then((products) => setProducts(products.products))
+      // .then((data) => setTotalProducts(data.totalProducts))
+      .catch((err) => console.log(err))
+  }, [])
 
   return (
     <section className={styles.container}>
-      <h4 className={styles.title}>Search Products</h4>
-      <h4 className={styles.desc}>Store / Search: 100 matches</h4>
+      <h4 className={styles.title}>Search: {totalProducts} Products</h4>
+      <h4 className={styles.desc}>Store / Search: matches</h4>
       <div className={styles.sort_by}>
         <h4 className={styles.desc}>Sort by:</h4>
         <select className={styles.form_control}>
@@ -43,8 +57,15 @@ function ProductsListPage() {
         </div>
         <div className={styles.filter_right}>
           <div className={styles.product_items_container}>
-            {Array.from({ length: 8 }).map(() => (
-              <ProductItem key={uuid()} />
+            {products.map((product) => (
+              <ProductItem
+                key={product._id}
+                images={product.images}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                productID={product._id}
+              />
             ))}
           </div>
         </div>

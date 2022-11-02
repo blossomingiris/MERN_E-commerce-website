@@ -4,7 +4,7 @@ import styles from './PopularProductItem.module.scss'
 
 function PopularProductItem({ item }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.slider_card}>
       <div className={styles.popular_product_image}>
         <a href=''>
           <img
@@ -13,11 +13,13 @@ function PopularProductItem({ item }) {
           />
         </a>
       </div>
-      <div className={styles.title}>{item.title}</div>
-      <div className={styles.price}>${item.price}</div>
-      <Link to='/product-details'>
-        <button className={styles.button}>Buy Now</button>{' '}
-      </Link>
+      <div className={styles.slider_card_body}>
+        <div className={styles.slider_card_title}>{item.title}</div>
+        <div className={styles.price}>${item.price}</div>
+        <Link to='/product-details'>
+          <button className={styles.button}>Buy Now</button>{' '}
+        </Link>
+      </div>
     </div>
   )
 }

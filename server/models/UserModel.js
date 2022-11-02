@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema(
     address: { type: String },
     country: { type: String },
     city: { type: String },
-    zipcode: { type: String },
+    state: { type: String },
+    postcode: { type: String },
     isAdmin: {
       type: Boolean,
       required: true,

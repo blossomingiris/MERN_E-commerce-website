@@ -1,19 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import uuid from 'react-uuid'
 import CartItem from '../../../components/CartItem/CartItem'
 import styles from './CartPage.module.scss'
+import { useSelector, useDispatch } from 'react-redux'
+import { addToCart } from '../../../redux/actions/cartActions'
 
 function CartPage() {
+  const cartItems = useSelector((state) => state.cart.cartItems)
+  const cartSubtotal = useSelector((state) => state.cart.cartSubtotal)
+  const reduxDispatch = useDispatch()
+
+  const changeCount = (productID, count) => {
+    reduxDispatch(addToCart(productID, count))
+  }
+
   return (
     <section className={styles.container}>
       <div className={styles.order_navigation}>
         <ul>
           <li className={styles.order_navigation_step}>
-            Shopping Cart{' '}
-            <span
-              className={styles.order_navigation_number}
-            >
+            Shopping Cart
+            <span className={styles.order_navigation_number}>
               <p>1</p>
             </span>
           </li>
@@ -34,8 +41,8 @@ function CartPage() {
         <div className={styles.left_wrapper}>
           <h4 className={styles.title}>My shopping cart</h4>
           <ul>
-            {Array.from({ length: 4 }).map((item) => (
-              <CartItem key={uuid()} />
+            {cartItems.map((item, idx) => (
+              <CartItem key={idx} changeCount={changeCount} item={item} />
             ))}
           </ul>
           <span className={styles.message}>Your cart is empty</span>
