@@ -1,16 +1,22 @@
-import React from 'react'
 import styles from './CartItem.module.scss'
-import image from '../../assets/popular_products/product_4.jpg'
-import { MdClose } from 'react-icons/md'
+import RemoveFromCart from '../RemoveFromCart/RemoveFromCart'
 
-function CartItem({ item, orderCreated = false, changeCount = false }) {
+function CartItem({
+  item,
+  changeCount = false,
+  removeProductFromCartHandler = false,
+}) {
   return (
     <li className={styles.li_cart_item}>
       <div className={styles.image_container}>
-        <img src={image} alt='' crossOrigin='anonymous' />
+        <img
+          src={require(`../../assets/products/${item.image.path}`)}
+          alt={item.name}
+          crossOrigin='anonymous'
+        />
       </div>
       <div>{item.name}</div>
-      <div className={styles.price}>${item.price}</div>
+      <div className={styles.price}>${item.price.toFixed(2)}</div>
       <input
         onChange={
           changeCount
@@ -24,9 +30,12 @@ function CartItem({ item, orderCreated = false, changeCount = false }) {
         maxLength='20'
         min='1'
       />
-      <button className={styles.delete_button}>
-        <MdClose className={styles.icon}></MdClose>
-      </button>
+      <RemoveFromCart
+        removeProductFromCartHandler={removeProductFromCartHandler}
+        productID={item.productID}
+        quantity={item.quantity}
+        price={item.price}
+      />
     </li>
   )
 }

@@ -1,8 +1,14 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Category.module.scss'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 function Category({ item }) {
+  useEffect(() => {
+    AOS.init({})
+  }, [])
+
   return (
     <div className={styles.category_container}>
       <div className={styles.category_image}>
@@ -14,7 +20,7 @@ function Category({ item }) {
           />
         </Link>
       </div>
-      <div className={styles.category_content}>
+      <div className={styles.category_content} data-aos='zoom-in'>
         <a className={styles.category_content_links} href='/products'>
           {item.title}
         </a>

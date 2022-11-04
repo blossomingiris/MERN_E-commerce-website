@@ -1,5 +1,5 @@
-import React from 'react'
 import styles from './Footer.module.scss'
+import heart from '../../assets/other/heart.png'
 import { FaInstagram, FaTiktok, FaFacebook } from 'react-icons/fa'
 
 function Footer() {
@@ -8,27 +8,32 @@ function Footer() {
       <div className={styles.footer_wrapper}>
         <div className={styles.footer_links_container}>
           <ul className={styles.footer_links}>
-            <a href=''>
+            <a href='#'>
               <li>About Us</li>
             </a>
-            <a href=''>
+            <a href='#'>
               <li>Social Responsibility</li>
             </a>
-            <a href=''>
+            <a href='#'>
               <li>Transparent Beauty</li>
             </a>
           </ul>
         </div>
         <div className={styles.footer_links_container}>
-          <p>Let's be friends</p>
+          <div className= {styles.social_decs}>
+            {' '}
+            <p>Let's be friends</p>
+            <img src={heart} alt='heart' />
+          </div>
+
           <div className={styles.footer_social_links}>
-            <a href=''>
+            <a href='#' alt='Instagram'>
               <FaInstagram className={styles.social_icon} />
             </a>
-            <a href=''>
+            <a href='#' alt='TikTok'>
               <FaTiktok className={styles.social_icon} />
             </a>
-            <a href=''>
+            <a href='#' alt='Facebook'>
               <FaFacebook className={styles.social_icon} />
             </a>
           </div>

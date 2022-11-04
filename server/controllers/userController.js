@@ -141,9 +141,9 @@ const updateUserProfile = async (req, res, next) => {
     user.postcode = req.body.postcode
     user.city = req.body.city
     user.state = req.body.state
-    if (req.body.password !== user.password) {
-      user.password = hashedPassword(req.body.password)
-    }
+    // if (req.body.password !== user.password) {
+    //   user.password = hashedPassword(req.body.password)
+    // }
     await user.save()
 
     res.json({

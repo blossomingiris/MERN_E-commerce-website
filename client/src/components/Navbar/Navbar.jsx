@@ -28,7 +28,7 @@ function Navbar() {
         <div className={styles.wrapper_left}>
           <div className={styles.logo}>
             <Link to='/'>
-              <h2>Kupos</h2>
+              <h2>Kipos</h2>
             </Link>
           </div>
         </div>
@@ -50,7 +50,9 @@ function Navbar() {
             </Link>
           ) : (
             <div className={styles.dropdown}>
-              {userInfo.name} {userInfo.lastName}
+              <p className={styles.user_info}>
+                {userInfo.name} {userInfo.lastName}
+              </p>
               <ul className={styles.dropdown_menu}>
                 <li>
                   <Link to='/user'>My Profile</Link>

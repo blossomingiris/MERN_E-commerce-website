@@ -1,0 +1,15 @@
+.remove_button {
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  color: var(--rose);
+  transition: 0.3s;
+}
+
+.remove_button:hover {
+  color: var(--gold);
+}
+
+.icon {
+  font-size: 1.2em;
+}

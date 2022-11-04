@@ -12,14 +12,14 @@ const {
   getUsersOrdersForAdmin,
 } = require('../../../server/controllers/orderController')
 
-//user routes
+//user order routes
 router.use(verifyIsLoggedIn)
 router.get('/', getUserOrders)
 router.get('/user/:id', getOrderDetails)
-router.post('/', createOrder)
+router.post('/create', createOrder)
 router.put('/paid/:id', updateOrderPaymentStatus)
 
-//admin routes
+//admin order routes
 router.use(verifyIsAdmin)
 router.put('/delivered/:id', updateOrderToBeDelivered)
 router.get('/admin', getUsersOrdersForAdmin)

@@ -28,6 +28,7 @@ import AdminCreateProductPage from '../pages/admin/AdminCreateProductPage'
 import AdminEditProductPage from '../pages/admin/AdminEditProductPage'
 import AdminOrdersPage from '../pages/admin/AdminOrdersPage'
 import AdminOrderDetailsPage from '../pages/admin/AdminOrderDetailsPage'
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop'
 
 function App() {
   return (
@@ -50,7 +51,7 @@ function App() {
           <Route path='/user/my-orders' element={<UserOrdersPage />} />
           <Route path='/user/cart-details' element={<UserCartDetailsPage />} />
           <Route
-            path='/user/order-details'
+            path='/user/order-details/:id'
             element={<UserOrderDetailsPage />}
           />
         </Route>
@@ -61,6 +62,7 @@ function App() {
         </Route>
       </Routes>
       <Footer />
+      <ScrollToTop />
     </BrowserRouter>
   )
 }

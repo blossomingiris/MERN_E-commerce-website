@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setReduxUserState } from '../../../redux/actions/userActions'
 import axios from 'axios'
@@ -20,6 +20,8 @@ function SignUpPage() {
     success: '',
     error: '',
   })
+
+  const navigate = useNavigate()
 
   //todo: for refactoring code
   const inputs = [
@@ -91,7 +93,7 @@ function SignUpPage() {
             setResponseStateRegisterUser({ success: data.success })
           //delay before redirecting to user profile page
           setTimeout(function () {
-            window.location.href = '/user'
+            navigate('/user', { replace: true })
           }, 3000)
         })
         .catch((er) =>

@@ -7,8 +7,8 @@ function ProductItem({ productID, name, description, price, images }) {
     <div className={styles.container}>
       <div className={styles.image_container}>
         <img
-          src={require('../.././assets/popular_products/product_3.jpg')}
-          alt='perfume'
+          src={require(`../../assets/products/${images[1].path}`)}
+          alt={name}
         />
       </div>
       <div className={styles.item_card_info_container}>

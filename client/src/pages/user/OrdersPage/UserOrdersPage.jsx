@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import styles from './UserOrdersPage.module.scss'
-import uuid from 'react-uuid'
 import { BsCheck2, BsX } from 'react-icons/bs'
 
 const UserOrdersPage = () => {
@@ -19,7 +18,7 @@ const UserOrdersPage = () => {
         </thead>
         <tbody>
           {[<BsCheck2 />, <BsX />].map((item, idx) => (
-            <tr key={uuid()}>
+            <tr key={idx}>
               <td>{idx + 1}</td>
               <td>2022-10-25</td>
               <td>$100.00</td>

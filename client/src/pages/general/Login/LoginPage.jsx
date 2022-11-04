@@ -77,9 +77,9 @@ function LoginPage() {
 
   //login with google account
 
-  const google = () => {
-    window.open('http://localhost:5000/api/users/google/callback', '_self')
-  }
+  // const google = () => {
+  //   window.open('http://localhost:5000/api/users/google/callback', '_self')
+  // }
 
   return (
     <div className='a_container'>

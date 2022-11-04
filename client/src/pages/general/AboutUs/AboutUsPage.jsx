@@ -1,18 +1,44 @@
-import React from 'react'
+import { useEffect } from 'react'
 import styles from './AboutUsPage.module.scss'
-import image from '../../../assets/other/about_us.jpg'
+import about_us_img from '../../../assets/other/about_us.jpg'
+import star_i from '../../../assets/other/star2.png'
+import { Parallax } from 'react-parallax'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function AboutUsPage() {
+  useEffect(() => {
+    AOS.init({})
+  }, [])
+
   return (
     <section className={styles.container}>
-      <div className={styles.image_container}>
-        <img src={image} alt='founders' />
+      <div
+        className={styles.image_container}
+        data-aos='fade-down'
+        data-aos-duration='2000'
+      >
+        <Parallax bgImage={about_us_img} strength={500}>
+          <div style={{ height: '100vh' }}></div>
+        </Parallax>
       </div>
 
-      <div className={styles.content_wrapper}>
-        {' '}
+      <div
+        className={styles.content_wrapper}
+        data-aos='fade-up'
+        data-aos-duration='3000'
+      >
         <h6>Our story</h6>
-        <h1>Who we are</h1>
+        <div className={styles.icon_container}>
+          <h1>Who we are</h1>
+          <img
+            src={star_i}
+            alt='star'
+            data-aos='zoom-in'
+            data-aos-duration='3000'
+          />
+        </div>
+
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt sit
           amet voluptas ea dolorem odit totam dolor tempora, est facilis non

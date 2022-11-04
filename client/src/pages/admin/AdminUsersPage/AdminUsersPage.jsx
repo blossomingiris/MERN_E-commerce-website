@@ -5,7 +5,6 @@ import { FaRegEdit, FaBan } from 'react-icons/fa'
 import { logout } from '../../../redux/actions/userActions'
 import { useDispatch } from 'react-redux'
 import styles from './AdminUsersPage.module.scss'
-import uuid from 'react-uuid'
 import axios from 'axios'
 import AdminLinks from '../../../components/AdminLinks/AdminLinks'
 
@@ -45,7 +44,7 @@ function AdminUsersPage() {
           </thead>
           <tbody>
             {users.map((user, idx) => (
-              <tr key={uuid()}>
+              <tr key={idx}>
                 <td>{idx + 1}</td>
                 <td>{user.name}</td>
                 <td>{user.lastName}</td>

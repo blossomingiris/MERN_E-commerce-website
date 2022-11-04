@@ -1,8 +1,7 @@
 import styles from './ProductDetailsPage.module.scss'
-import image from '../../.././assets/popular_products/product_1.jpg'
 import { AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai'
-import { FaPinterest } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
+import { FaCommentsDollar, FaPinterest } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../redux/actions/cartActions'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -12,30 +11,35 @@ function ProductDetailsPage() {
   const { id } = useParams()
 
   //redux state management
+  // const cartItems = useSelector((state) => state.cart.cartItems)
   const dispatch = useDispatch()
 
   const [quantity, setQuantity] = useState(1)
 
   const addToCartHandler = () => {
     dispatch(addToCart(id, quantity))
+    window.alert('Product was added successfully! Please check your cart.')
   }
 
   return (
     <section className={styles.container}>
       <div className={styles.container_left}>
         <div className={styles.images_container}>
-          <img className={styles.main_image} src={image} alt='' />
-          <div className={styles.images_details_container}>
+          <img
+            className={styles.main_image}
+            // src={require(`../../../assets/products/${cartItems[0].image.path}`)}
+            src={require('../../../assets/products/bath_salt_05.jpg')}
+            alt=''
+          />
+          {/* <div className={styles.images_details_container}>
             <img className={styles.image_details} src={image} alt='' />
             <img className={styles.image_details} src={image} alt='' />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.container_right}>
         <div className={styles.info_container}>
-          <h2 className={styles.title}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </h2>
+          <h2 className={styles.title}>Lorem, ipsum.</h2>
           <p className={styles.price}>$50.00</p>
 
           <div className={styles.quantity_container}>

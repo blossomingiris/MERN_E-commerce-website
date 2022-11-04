@@ -2,11 +2,20 @@ import styles from './Categories.module.scss'
 import video from '../../assets/other/video.mp4'
 import { categories } from '../../data/data'
 import Category from './Category/Category'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 function Categories() {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
+  }, [])
+
   return (
     <section className={styles.categories_container}>
-      <div className={styles.categories_desc}>
+      <div data-aos='fade-up' className={styles.categories_desc}>
         <p>
           Meet our Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Dignissimos facilis laborum non iusto praesentium distinctio obcaecati

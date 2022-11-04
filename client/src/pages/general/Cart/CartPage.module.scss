@@ -101,7 +101,14 @@
   justify-content: space-between;
   gap: 20px;
 }
+
+.price_container p {
+  flex: 60%;
+  font-size: 0.8em;
+}
+
 .price_container span {
+  flex: 30%;
   font-weight: bold;
   display: block;
   color: var(--gold);

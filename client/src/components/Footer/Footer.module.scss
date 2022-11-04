@@ -27,6 +27,17 @@
   flex: 1;
 }
 
+.social_decs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.social_decs img {
+  width: 25px;
+  height: 25px;
+}
+
 .footer_links {
   display: flex;
   flex-direction: column;

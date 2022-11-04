@@ -183,6 +183,13 @@
   width: 120px;
   text-align: center;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_info {
+  line-height: 1.8em;
 }
 
 .dropdown_menu {

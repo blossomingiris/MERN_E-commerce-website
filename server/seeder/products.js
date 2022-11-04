@@ -2,7 +2,7 @@
 
 const products = [
   {
-    name: 'Perfume1',
+    name: 'Perfume_01',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 5,
@@ -10,11 +10,7 @@ const products = [
     price: 100,
     sales: 10,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_1' },
-      ,
-    ],
+    images: [{ path: 'category.png' }, { path: 'perfume_01.jpg' }],
     attrs: [
       {
         key: 'notes',
@@ -23,7 +19,7 @@ const products = [
     ],
   },
   {
-    name: 'Perfume2',
+    name: 'Perfume_02',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 5,
@@ -31,10 +27,7 @@ const products = [
     price: 100,
     sales: 5,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_2' },
-    ],
+    images: [{ path: '/category.png' }, { path: 'perfume_02.jpg' }, ,],
     attrs: [
       {
         key: 'notes',
@@ -43,20 +36,17 @@ const products = [
     ],
   },
   {
-    name: 'Candles1',
+    name: 'Candles_01',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 5,
     size: 170,
     price: 45,
     category: 'Home/Candles',
-    images: [
-      { path: '/assets/categories/home_category.png' },
-      { path: '/assets/products/candles/candles_1' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'candle_01.jpg' }],
   },
   {
-    name: 'Diffuser1',
+    name: 'Diffuser_01',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 5,
@@ -64,23 +54,17 @@ const products = [
     price: 100,
     sales: 100,
     category: 'Home/Diffusers',
-    images: [
-      { path: '/assets/categories/home_category.png' },
-      { path: '/assets/products/diffusers/diffuser_1' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'diffuser_01.jpg' }],
   },
   {
-    name: 'Perfume3 Lorem ipsum dolor sit amet',
+    name: 'Perfume_03',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 10,
     size: 100,
     price: 200,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_3' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'perfume_03.jpg' }],
     rating: 5,
     reviewsNumber: 6,
     reviews: [],
@@ -92,17 +76,14 @@ const products = [
     ],
   },
   {
-    name: 'Perfume4',
+    name: 'Perfume_04',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 15,
     size: 100,
     price: 200,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_4' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'perfume_04.jpg' }],
     attrs: [
       {
         key: 'notes',
@@ -111,17 +92,14 @@ const products = [
     ],
   },
   {
-    name: 'Perfume5',
+    name: 'Perfume_05',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 20,
     size: 75,
     price: 150,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_5' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'perfume_05.jpg' }],
     attrs: [
       {
         key: 'notes',
@@ -130,83 +108,87 @@ const products = [
     ],
   },
   {
-    name: 'Sea salt1',
+    name: 'Bath_salt_01',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 25,
     size: 500,
     price: 30,
     category: 'Bath',
-    images: [
-      { path: '/assets/categories/bath_category.png' },
-      { path: '/assets/products/sea_salt/sea_salt_1' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'bath_salt_01.jpg' }],
   },
   {
-    name: 'Sea salt2',
+    name: 'Bath salt_02',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 5,
     size: 500,
     price: 30,
     category: 'Home',
-    images: [
-      { path: '/assets/categories/bath_category.png' },
-      { path: '/assets/products/sea_salt/sea_salt_2' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'bath_salt_02.jpg' }],
+  },
+
+  {
+    name: 'Bath salt_03',
+    description:
+      'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
+    count: 5,
+    size: 500,
+    price: 30,
+    category: 'Home',
+    images: [{ path: 'category.png' }, { path: 'bath_salt_03.jpg' }],
+  },
+
+  {
+    name: 'Bath salt_04',
+    description:
+      'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
+    count: 5,
+    size: 500,
+    price: 30,
+    category: 'Home',
+    images: [{ path: 'category.png' }, { path: 'bath_salt_04.jpg' }],
   },
   {
-    name: 'Shower Gel1',
+    name: 'Candle_02',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 40,
-    size: 300,
+    size: 170,
     price: 25,
-    category: 'Bath',
-    images: [
-      { path: '/assets/categories/bath_category.png' },
-      { path: '/assets/products/shower_gel/shower_gel_1' },
-    ],
+    category: 'Home',
+    images: [{ path: 'category.png' }, { path: 'candle_02.jpg' }],
   },
   {
-    name: 'Shower Gel2',
+    name: 'Candle_03',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 15,
     size: 300,
     price: 25,
     category: 'Bath',
-    images: [
-      { path: '/assets/categories/bath_category.png' },
-      { path: '/assets/products/shower_gel/shower_gel_2' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'candle_03.jpg' }],
   },
   {
-    name: 'Perfume6',
+    name: 'Perfume_06',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 20,
     size: 100,
     price: 200,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_6' },
-    ],
+    images: [{ path: 'category.jpg' }, { path: 'perfume_06.jpg' }],
     attrs: [{ key: 'notes', value: ['fresh', 'green'] }],
   },
   {
-    name: 'Perfume7',
+    name: 'Perfume_07',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 25,
     size: 10,
     price: 50,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_7' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'perfume_07.jpg' }],
     rating: 5,
     reviewsNumber: 4,
     reviews: [],
@@ -218,17 +200,14 @@ const products = [
     ],
   },
   {
-    name: 'Perfume8',
+    name: 'Perfume_08',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 5,
     size: 10,
     price: 100,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_8' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'perfume_08.jpg' }],
     attrs: [
       {
         key: 'notes',
@@ -237,17 +216,31 @@ const products = [
     ],
   },
   {
-    name: 'Perfume9',
+    name: 'Diffuser_02',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 0,
-    size: 50,
+    size: 85,
     price: 100,
     category: 'Perfume',
-    images: [
-      { path: '/assets/categories/perfume_category.png' },
-      { path: '/assets/products/perfume/perfume_9' },
+    images: [{ path: 'home.png' }, { path: 'diffuser_02.jpg' }],
+    attrs: [
+      {
+        key: 'notes',
+        value: ['woody', 'fruity'],
+      },
     ],
+  },
+
+  {
+    name: 'Diffuser_03',
+    description:
+      'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
+    count: 0,
+    size: 85,
+    price: 100,
+    category: 'Home',
+    images: [{ path: 'home.png' }, { path: 'diffuser_03.jpg' }],
     attrs: [
       {
         key: 'notes',
@@ -256,43 +249,57 @@ const products = [
     ],
   },
   {
-    name: 'Solid soap1',
+    name: 'soap_01',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 0,
     size: 75,
     price: 7,
     category: 'Hands',
-    images: [
-      { path: '/assets/categories/hands_category.png' },
-      { path: '/assets/products/solid_soap/solid_soap_1' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'soap_01.jpg' }],
   },
   {
-    name: 'Solid soap2',
+    name: 'Solid soap_02',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 20,
     size: 75,
     price: 7,
     category: 'Hands',
-    images: [
-      { path: '/assets/categories/hands_category.png' },
-      { path: '/assets/products/solid_soap/solid_soap_2' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'soap_02.jpg' }],
   },
+
   {
-    name: 'Hand cream1',
+    name: 'Solid soap_03',
+    description:
+      'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
+    count: 20,
+    size: 75,
+    price: 7,
+    category: 'Hands',
+    images: [{ path: 'category.png' }, { path: 'soap_03.jpg' }],
+  },
+
+  {
+    name: 'Hand cream_01',
     description:
       'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
     count: 50,
     size: 50,
     price: 15,
     category: 'Hands',
-    images: [
-      { path: '/assets/categories/hands_category.png' },
-      { path: '/assets/products/hand_cream/hand_cream_1' },
-    ],
+    images: [{ path: 'category.png' }, { path: 'hand_cream_01.jpg' }],
+  },
+
+  {
+    name: 'Hand cream_02',
+    description:
+      'Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.',
+    count: 50,
+    size: 50,
+    price: 15,
+    category: 'Hands',
+    images: [{ path: 'category.png' }, { path: 'hand_cream_02.jpg' }],
   },
 ]
 

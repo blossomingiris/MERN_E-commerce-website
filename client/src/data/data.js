@@ -115,3 +115,22 @@ export const popularProducts = [
 //     required: true,
 //   },
 // ]
+
+export const differences = [
+  {
+    title: 'Formula',
+    desc: 'text',
+    image: 'formula.jpg',
+  },
+
+  {
+    title: 'Materials',
+    desc: 'text',
+    image: 'materials.jpg',
+  },
+  {
+    title: 'Price ',
+    desc: 'text',
+    image: 'price.jpg',
+  },
+]

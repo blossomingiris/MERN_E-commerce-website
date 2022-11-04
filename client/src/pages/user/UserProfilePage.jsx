@@ -15,8 +15,8 @@ function UserProfilePage() {
     country: '',
     city: '',
     state: '',
-    password: '',
-    confirmPassword: '',
+    // password: '',
+    // confirmPassword: '',
   })
 
   const [updateUserMsgResponse, setUpdateUserMsgResponse] = useState({
@@ -29,7 +29,7 @@ function UserProfilePage() {
   const [updatedUserProfile, setUpdatedUserProfile] = useState({})
 
   //read user id from redux to fetch user profile data
-  const { userInfo } = useSelector((state) => state.userRegisterLogin)
+  const userInfo = useSelector((state) => state.userRegisterLogin.userInfo)
 
   //update user profile page with fetched data
 
@@ -37,21 +37,21 @@ function UserProfilePage() {
     fetchUpdatedUserProfile(userInfo._id)
       .then((data) => setUpdatedUserProfile(data))
       .catch((er) => console.log(er))
-  }, [userInfo._id])
+  }, [])
 
   const inputs = [
     {
       name: 'name',
       label: 'Name',
       type: 'text',
-      placeholder: updatedUserProfile.name,
+      placeholder: userInfo.name,
     },
 
     {
       type: 'text',
       name: 'lastName',
       label: 'Last name',
-      placeholder: updatedUserProfile.lastName,
+      placeholder: userInfo.lastName,
     },
 
     {
@@ -60,7 +60,7 @@ function UserProfilePage() {
       label: 'E-mail',
       required: true,
       disabled: true,
-      placeholder: updatedUserProfile.email,
+      placeholder: userInfo.email,
     },
 
     {
@@ -109,23 +109,23 @@ function UserProfilePage() {
       placeholder: updatedUserProfile.state,
     },
 
-    {
-      name: 'password',
-      type: 'password',
-      errorMessage:
-        'Password should be 6-20 characters and include at least 1 letter, 1 number and 1 special character',
-      label: 'Change password',
-      placeholder: 'Enter new password',
-      // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
-    },
-    {
-      name: 'confirmPassword',
-      type: 'password',
-      errorMessage: 'Both passwords should match',
-      label: 'Confirm new password',
-      pattern: values.password,
-      placeholder: 'Confirm new password',
-    },
+    // {
+    //   name: 'password',
+    //   type: 'password',
+    //   errorMessage:
+    //     'Password should be 6-20 characters and include at least 1 letter, 1 number and 1 special character',
+    //   label: 'Change password',
+    //   placeholder: 'Enter new password',
+    //   // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
+    // },
+    // {
+    //   name: 'confirmPassword',
+    //   type: 'password',
+    //   errorMessage: 'Both passwords should match',
+    //   label: 'Confirm new password',
+    //   pattern: values.password,
+    //   placeholder: 'Confirm new password',
+    // },
   ]
 
   const dispatch = useDispatch()
@@ -142,7 +142,7 @@ function UserProfilePage() {
     const country = values.country
     const city = values.city
     const state = values.state
-    const password = values.password
+    // const password = values.password
 
     updateUserProfileRequest(
       name,
@@ -153,8 +153,8 @@ function UserProfilePage() {
       country,
       postcode,
       city,
-      state,
-      password
+      state
+      // password
     )
       .then((data) => {
         setUpdateUserMsgResponse({ success: data.success, error: '' })
@@ -193,8 +193,8 @@ function UserProfilePage() {
     country,
     postcode,
     city,
-    state,
-    password
+    state
+    // password
   ) => {
     const { data } = await axios.put('api/users/profile', {
       name,
@@ -206,7 +206,7 @@ function UserProfilePage() {
       postcode,
       city,
       state,
-      password,
+      // password,
     })
     return data
   }

@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom'
 import styles from './PopularProducts.module.scss'
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
-
-// import arrow_l from '../../assets/other/arrow_left.png'
-// import arrow_r from '../../assets/other/arrow_right.png'
-
 import { popularProducts } from '../../data/data'
 import PopularProductItem from './PopularProductItem/PopularProductItem'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 function PopularProducts() {
   //product cards slider
@@ -24,28 +23,49 @@ function PopularProducts() {
     slider.scrollLeft = slider.scrollLeft + 300
   }
 
+  useEffect(() => {
+    AOS.init({})
+  }, [])
+
   return (
     <section className={styles.popular_container}>
       <div className={styles.popular_container_wrapper}>
-        <div className={styles.popular_title}>
-          <h2>Your favorite scent can always be with you</h2>
-        </div>
-        <div className={styles.popular_desc}>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
-            voluptatem.
-          </p>
+        <div data-aos='fade-up' data-aos-duration='1000'>
+          {' '}
+          <div className={styles.popular_title}>
+            <h2>Your favorite scent can always be with you</h2>
+          </div>
+          <div className={styles.popular_desc}>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
+              voluptatem.
+            </p>
+          </div>
         </div>
         <Link to='/products'>
-          <button className={styles.popular_button}>Shop Now</button>
+          <button
+            className={styles.popular_button}
+            data-aos='fade-up'
+            data-aos-duration='1500'
+          >
+            Shop Now
+          </button>
         </Link>{' '}
-        <div className={styles.product_gallery_container}>
+        <div
+          className={styles.product_gallery_container}
+          data-aos='fade-up'
+          data-aos-duration='2000'
+        >
           <div className={styles.slider} id='cards_slider'>
             {popularProducts.map((item) => (
               <PopularProductItem item={item} key={item.id} />
             ))}
           </div>
-          <div className={styles.slider_icons_container}>
+          <div
+            className={styles.slider_icons_container}
+            data-aos='fade-up'
+            data-aos-duration='2000'
+          >
             {' '}
             <BsArrowLeft
               className={styles.slider_icon_left}
