@@ -39,7 +39,7 @@ function UserOrderDetailsPage() {
           paymentMethod: data.paymentMethod,
           cartSubtotal: data.orderTotal.cartSubtotal,
           oderNumber: data._id,
-          isPaid: data.paidAt,
+          paidAt: data.paidAt,
         })
       })
       .catch((err) => console.log(err))
@@ -67,7 +67,13 @@ function UserOrderDetailsPage() {
               <p>
                 <b>Paid at:</b>
               </p>
-              <p>{orderDetails.paidAt}</p>
+              <p>
+                {orderDetails.paidAt !== undefined ? (
+                  orderDetails.paidAt.substring(0, 10)
+                ) : (
+                  <p>Not paid yet</p>
+                )}
+              </p>
             </li>
             <li>
               <p>

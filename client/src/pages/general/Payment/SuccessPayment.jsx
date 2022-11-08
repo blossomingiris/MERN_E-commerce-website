@@ -1,4 +1,5 @@
 import styles from './SuccessPayment.module.scss'
+import { BsCheckCircle } from 'react-icons/bs'
 import { removeItemFromCart } from '../../../redux/actions/cartActions'
 import { useEffect } from 'react'
 
@@ -30,9 +31,9 @@ function SuccessPayment() {
         </ul>
       </div>
       <h3 className={styles.desc}>
-        Thank you! Your order was placed. <br />
-        Your will receive it soon.
+        Your order placed successfully! <br />
       </h3>
+      <BsCheckCircle className={styles.icon} />
     </section>
   )
 }

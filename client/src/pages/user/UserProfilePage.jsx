@@ -166,7 +166,7 @@ function UserProfilePage() {
           JSON.stringify({ ...data.userUpdated })
         )
 
-        window.location.href = '/user/cart-details'
+        window.location.href = '/cart'
       })
       .catch((err) =>
         setUpdateUserMsgResponse({

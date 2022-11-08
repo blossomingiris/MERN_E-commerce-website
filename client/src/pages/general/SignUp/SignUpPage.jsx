@@ -16,6 +16,7 @@ function SignUpPage() {
   })
 
   const dispatch = useDispatch()
+
   const [responseStateRegisterUser, setResponseStateRegisterUser] = useState({
     success: '',
     error: '',
@@ -89,12 +90,13 @@ function SignUpPage() {
       registerNewUserApiRequest(name, lastName, email, password)
         .then((data) => {
           dispatch(setReduxUserState(data.userCreated))
+          sessionStorage.setItem('userInfo', JSON.stringify(data.userCreated))
           if (data.success === 'User created successfully')
             setResponseStateRegisterUser({ success: data.success })
           //delay before redirecting to user profile page
           setTimeout(function () {
             navigate('/user', { replace: true })
-          }, 3000)
+          }, 2500)
         })
         .catch((er) =>
           setResponseStateRegisterUser({

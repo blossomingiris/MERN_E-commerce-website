@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setReduxUserState } from '../../../redux/actions/userActions'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
 import axios from 'axios'
 import styles from './LoginPage.module.scss'
@@ -35,8 +35,6 @@ function LoginPage() {
 
   //message for users for success/failure logged in
   const [responseState, setResponseState] = useState(false)
-
-  const navigate = useNavigate()
 
   const reduxDispatch = useDispatch()
 

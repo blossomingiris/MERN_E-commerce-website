@@ -13,8 +13,12 @@ const reducer = combineReducers({
   userRegisterLogin: userRegisterLoginReducer,
 })
 
-//read user data from localStorage
-const userInfoInLocalStorage = JSON.parse(localStorage.getItem('userInfo'))
+//read user data from localStorage/session storage
+const userInfoInLocalStorage = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : sessionStorage.getItem('userInfo')
+  ? JSON.parse(sessionStorage.getItem('userInfo'))
+  : {}
 
 //read product details data from localStorage
 const cartItemsInLocalStorage = localStorage.getItem('cart')

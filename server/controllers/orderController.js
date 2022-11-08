@@ -4,10 +4,10 @@ const ObjectId = require('mongodb').ObjectId
 
 const getUserOrders = async (req, res, next) => {
   try {
-    const orders = await Order.findOne({ user: ObjectId(req.user._id) })
+    const orders = await Order.find({ user: ObjectId(req.user._id) })
     res.send(orders)
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    next(error)
   }
 }
 

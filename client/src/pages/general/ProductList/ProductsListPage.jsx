@@ -62,6 +62,7 @@ function ProductsListPage() {
                 key={product._id}
                 images={product.images}
                 name={product.name}
+                size={product.size}
                 description={product.description}
                 price={product.price}
                 productID={product._id}
