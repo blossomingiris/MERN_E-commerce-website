@@ -8,6 +8,7 @@ const {
   getOrderDetails,
   createOrder,
   updateOrderPaymentStatus,
+  updatePaymentMethod,
   updateOrderToBeDelivered,
   getUsersOrdersForAdmin,
 } = require('../../../server/controllers/orderController')
@@ -18,6 +19,7 @@ router.get('/', getUserOrders)
 router.get('/user/:id', getOrderDetails)
 router.post('/create', createOrder)
 router.put('/paid/:id', updateOrderPaymentStatus)
+router.put('/payment/:id', updatePaymentMethod)
 
 //admin order routes
 router.use(verifyIsAdmin)

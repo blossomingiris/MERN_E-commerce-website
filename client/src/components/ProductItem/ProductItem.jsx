@@ -13,7 +13,7 @@ function ProductItem({ productID, name, description, price, images }) {
       </div>
       <div className={styles.item_card_info_container}>
         <div className={styles.title}>{name}</div>
-        <div className={styles.price}>${price.toFixed(2)}</div>
+        <div className={styles.price}>€ {price.toFixed(2)}</div>
         <div>
           <Link to={`/product-details/${productID}`}>
             <button className={styles.button}>Buy Now</button>

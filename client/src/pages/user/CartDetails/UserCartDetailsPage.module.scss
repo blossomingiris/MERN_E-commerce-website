@@ -78,7 +78,7 @@
 }
 
 .checkout_button {
-  width: 50%;
+  width: 100%;
   padding: 15px 25px;
   text-transform: uppercase;
   background-color: var(--gold);
@@ -155,4 +155,18 @@
 
 .user_info {
   text-transform: capitalize;
+}
+
+.message {
+  text-align: center;
+  color: var(--rose);
+  font-style: italic;
+
+  a {
+    color: var(--rose);
+    text-decoration: underline;
+  }
+  a:hover {
+    opacity: 0.8;
+  }
 }

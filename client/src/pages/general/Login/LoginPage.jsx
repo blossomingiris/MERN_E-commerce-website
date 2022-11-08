@@ -54,8 +54,10 @@ function LoginPage() {
           }
 
           if (res.success === 'user logged in' && !res.userLoggedIn.isAdmin)
-            navigate('/user', { replace: true })
-          else navigate('/admin/users', { replace: true })
+            // navigate('/user', { replace: true })
+            window.location.href = '/user'
+          // else navigate('/admin/users', { replace: true })
+          else window.location.href = '/user'
         })
 
         .catch((err) => {

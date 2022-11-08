@@ -69,6 +69,17 @@ const updateOrderPaymentStatus = async (req, res, next) => {
   }
 }
 
+const updatePaymentMethod = async (req, res, next) => {
+  try {
+    const order = await Order.findById(req.params.id).orFail()
+    order.paymentMethod = req.body.paymentMethod
+    const updatedOrder = await order.save()
+    res.send(updatedOrder)
+  } catch (err) {
+    next(err)
+  }
+}
+
 const updateOrderToBeDelivered = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id).orFail()
@@ -98,5 +109,6 @@ module.exports = {
   createOrder,
   updateOrderPaymentStatus,
   updateOrderToBeDelivered,
+  updatePaymentMethod,
   getUsersOrdersForAdmin,
 }

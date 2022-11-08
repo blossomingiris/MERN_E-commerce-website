@@ -8,7 +8,6 @@ function UserProfilePage() {
   const [values, setValues] = useState({
     name: '',
     lastName: '',
-    email: '',
     phoneNumber: '',
     address: '',
     postcode: '',
@@ -55,12 +54,11 @@ function UserProfilePage() {
     },
 
     {
-      name: 'email',
       type: 'email',
       label: 'E-mail',
       required: true,
       disabled: true,
-      placeholder: userInfo.email,
+      defaultValue: userInfo.email,
     },
 
     {
@@ -135,7 +133,6 @@ function UserProfilePage() {
     e.preventDefault()
     const name = values.name
     const lastName = values.lastName
-    const email = values.email
     const address = values.address
     const postcode = values.postcode
     const phoneNumber = values.phoneNumber
@@ -147,7 +144,6 @@ function UserProfilePage() {
     updateUserProfileRequest(
       name,
       lastName,
-      email,
       phoneNumber,
       address,
       country,
@@ -169,6 +165,8 @@ function UserProfilePage() {
           'userInfo',
           JSON.stringify({ ...data.userUpdated })
         )
+
+        window.location.href = '/user/cart-details'
       })
       .catch((err) =>
         setUpdateUserMsgResponse({
@@ -187,7 +185,6 @@ function UserProfilePage() {
   const updateUserProfileRequest = async (
     name,
     lastName,
-    email,
     phoneNumber,
     address,
     country,
@@ -199,7 +196,6 @@ function UserProfilePage() {
     const { data } = await axios.put('api/users/profile', {
       name,
       lastName,
-      email,
       phoneNumber,
       address,
       country,

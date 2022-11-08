@@ -1,12 +1,32 @@
 import styles from './Difference.module.scss'
+import { useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
-function Difference({ title, image }) {
-  console.log(image)
+function Difference({ title, image, icon }) {
+  useEffect(() => {
+    AOS.init({})
+  }, [])
+
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      data-aos='fade-left'
+      data-aos-duration='2000'
+    >
       <div className={styles.content}>
         <h6 className={styles.desc}>Transparency</h6>
-        <h1 className={styles.title}>{title}</h1>
+        <div>
+          {' '}
+          <h1 className={styles.title}>{title}</h1>
+          <img
+            className={styles.icon}
+            src={require(`../../assets/other/${icon}`)}
+            alt=''
+            data-aos='zoom-in'
+            data-aos-duration='2000'
+          />
+        </div>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta
           corrupti molestiae, quos quas ipsa fugit explicabo cumque quia, facere
@@ -26,8 +46,7 @@ function Difference({ title, image }) {
         <br />
       </div>
       <div className={styles.image_wrapper}>
-        {/* <img src={require(`../../assets/others/${image}`)} alt={title} /> */}
-        <img src={require(`../../assets/other/${image}`)} alt='' />
+        <img src={require(`../../assets/other/${image}`)} alt={title} />
       </div>
     </div>
   )

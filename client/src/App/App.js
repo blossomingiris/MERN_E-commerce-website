@@ -22,13 +22,9 @@ import UserOrderDetailsPage from '../pages/user/OrderDetails/UserOrderDetailsPag
 //admin routes
 
 import AdminUsersPage from '../pages/admin/AdminUsersPage/AdminUsersPage'
-import AdminEditUserPage from '../pages/admin/AdminUsersPage/AdminUsersPage'
-import AdminProductsPage from '../pages/admin/AdminProductsPage'
-import AdminCreateProductPage from '../pages/admin/AdminCreateProductPage'
-import AdminEditProductPage from '../pages/admin/AdminEditProductPage'
-import AdminOrdersPage from '../pages/admin/AdminOrdersPage'
-import AdminOrderDetailsPage from '../pages/admin/AdminOrderDetailsPage'
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop'
+import SuccessPayment from '../pages/general/Payment/SuccessPayment'
+import ErrorPage from '../pages/general/ErrorPage/ErrorPage'
 
 function App() {
   return (
@@ -43,13 +39,17 @@ function App() {
         <Route path='/cart' element={<CartPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/login' element={<LoginPage />} />
-        <Route path='*' element="404. Sorry, this page does't exist" />
+        <Route path='/checkout-success' element={<SuccessPayment />}></Route>
+        <Route path='*' element={<ErrorPage />} />
 
         {/* user protected routes: */}
         <Route element={<ProtectedRoutes admin={false} />}>
           <Route path='/user' element={<UserProfilePage />} />
           <Route path='/user/my-orders' element={<UserOrdersPage />} />
-          <Route path='/user/cart-details' element={<UserCartDetailsPage />} />
+          <Route
+            path='/user/cart-details/:id'
+            element={<UserCartDetailsPage />}
+          />
           <Route
             path='/user/order-details/:id'
             element={<UserOrderDetailsPage />}

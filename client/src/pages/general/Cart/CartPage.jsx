@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import CartItem from '../../../components/CartItem/CartItem'
 import styles from './CartPage.module.scss'
 import { useSelector, useDispatch } from 'react-redux'
@@ -7,16 +7,52 @@ import {
   addToCart,
   removeItemFromCart,
 } from '../../../redux/actions/cartActions'
+import axios from 'axios'
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems)
   const itemsCount = useSelector((state) => state.cart.itemsCount)
   const cartSubtotal = useSelector((state) => state.cart.cartSubtotal)
   const reduxDispatch = useDispatch()
+  const navigate = useNavigate()
 
   // fire change count of products in card
   const changeCount = (productID, count) => {
     reduxDispatch(addToCart(productID, count))
+  }
+
+  //create order
+  const createOrder = async (orderData) => {
+    const { data } = await axios.post('/api/orders/create', { ...orderData })
+    return data
+  }
+
+  const orderHandler = () => {
+    const orderData = {
+      orderTotal: {
+        itemsCount: itemsCount,
+        cartSubtotal: cartSubtotal,
+      },
+      cartItems: cartItems.map((item) => {
+        return {
+          productID: item.productID,
+          name: item.name,
+          price: item.price,
+          image: { path: item.image ? item.image.path ?? null : null },
+          quantity: item.quantity,
+          count: item.count,
+        }
+      }),
+      paymentMethod: 'CreditCard',
+    }
+    createOrder(orderData)
+      .then((data) => {
+        if (data) {
+          console.log('Order created', data)
+          navigate('/user/cart-details/' + data._id)
+        }
+      })
+      .catch((err) => console.log(err))
   }
 
   // remove products from cart
@@ -43,7 +79,7 @@ function CartPage() {
             Payment <span className={styles.order_navigation_number}>3</span>
           </li>
           <li className={styles.order_navigation_step}>
-            Finish <span className={styles.order_navigation_number}>4</span>
+            Delivery <span className={styles.order_navigation_number}>4</span>
           </li>
         </ul>
       </div>
@@ -78,19 +114,18 @@ function CartPage() {
               </h4>
             </li>
             <li className={styles.price_container}>
-              <p>Total amount:</p> <span>${cartSubtotal.toFixed(2)}</span>
+              <p>Total amount:</p> <span>€{cartSubtotal.toFixed(2)}</span>
             </li>
             <li>(Delivery cost will be calculate in the next step)</li>
             <li>
-              <Link to='/user/cart-details'>
-                <button
-                  className={styles.checkout_button}
-                  //if cart subtotal is 0 disable button
-                  disabled={cartSubtotal === 0}
-                >
-                  Place an order
-                </button>
-              </Link>
+              <button
+                className={styles.checkout_button}
+                onClick={orderHandler}
+                //if cart subtotal is 0 disable button
+                disabled={cartSubtotal === 0}
+              >
+                Place an order
+              </button>
             </li>
           </ul>
         </div>

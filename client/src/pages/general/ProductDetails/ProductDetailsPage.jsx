@@ -1,10 +1,10 @@
 import styles from './ProductDetailsPage.module.scss'
 import { AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai'
-import { FaCommentsDollar, FaPinterest } from 'react-icons/fa'
+import { FaPinterest } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../redux/actions/cartActions'
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 function ProductDetailsPage() {
   //get product id from url endpoint
@@ -40,7 +40,7 @@ function ProductDetailsPage() {
       <div className={styles.container_right}>
         <div className={styles.info_container}>
           <h2 className={styles.title}>Lorem, ipsum.</h2>
-          <p className={styles.price}>$50.00</p>
+          <p className={styles.price}>€ 50.00</p>
 
           <div className={styles.quantity_container}>
             <h5>In Stock</h5>

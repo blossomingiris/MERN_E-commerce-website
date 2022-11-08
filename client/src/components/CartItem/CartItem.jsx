@@ -16,7 +16,7 @@ function CartItem({
         />
       </div>
       <div>{item.name}</div>
-      <div className={styles.price}>${item.price.toFixed(2)}</div>
+      <div className={styles.price}>€ {item.price.toFixed(2)}</div>
       <input
         onChange={
           changeCount

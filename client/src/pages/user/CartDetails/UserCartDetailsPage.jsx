@@ -1,21 +1,27 @@
 import CartItem from '../../../components/CartItem/CartItem'
+import { loadScript } from '@paypal/paypal-js'
 import styles from './UserCartDetailsPage.module.scss'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  removeItemFromCart,
+  addToCart,
+} from '../../../redux/actions/cartActions'
 import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 
 function UserCartDetailsPage() {
   const cartItems = useSelector((state) => state.cart.cartItems)
   const cartSubtotal = useSelector((state) => state.cart.cartSubtotal)
-  const itemsCount = useSelector((state) => state.cart.itemsCount)
   const userInfo = useSelector((state) => state.userRegisterLogin.userInfo)
-  const navigate = useNavigate()
 
   //if user doest have address or phone disable payment button
   const [buttonDisabled, setButtonDisabled] = useState(false)
+  const [orderButtonMessage, setOrderButtonMessage] = useState('Pay for order')
   const [userAddress, setUserAddress] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState('creditCard')
+  const reduxDispatch = useDispatch()
+  const { id } = useParams()
 
   // get user profile data
   const getUser = async () => {
@@ -24,17 +30,19 @@ function UserCartDetailsPage() {
   }
 
   useEffect(() => {
-    // setButtonDisabled(false)
     getUser()
       .then((data) => {
         if (
-          data.address &&
-          data.city &&
-          data.country &&
-          data.postcode &&
-          data.phoneNumber
+          !data.address &&
+          !data.city &&
+          !data.country &&
+          !data.postcode &&
+          !data.phoneNumber &&
+          !data.state
         ) {
           setButtonDisabled(true)
+          setOrderButtonMessage('button disabled')
+        } else {
           setUserAddress({
             address: data.address,
             city: data.city,
@@ -48,51 +56,138 @@ function UserCartDetailsPage() {
       .catch((err) => console.log(err))
   }, [])
 
-  //handler for 'pay for order' button
-  const handleClick = () => {
-    if (!buttonDisabled) {
-      window.alert(
-        'Please provide your profile with additional information (delivery address, phone number, etc.)'
-      )
-    } else {
-      window.alert('Your order was successfully created')
-      const orderData = {
-        orderTotal: {
-          itemsCount: itemsCount,
-          cartSubtotal: cartSubtotal,
-        },
-        cartItems: cartItems.map((item) => {
-          return {
-            productID: item.productID,
-            name: item.name,
-            price: item.price,
-            image: item.image,
-            quantity: item.quantity,
-            count: item.count,
-          }
-        }),
-        paymentMethod: paymentMethod,
-      }
-      createOrder(orderData)
-        .then((data) => {
-          if (data) {
-            navigate('/user/order-details/' + data._id)
+  //TODO: remove to separate file
+  //pay pal handlers
+
+  const onCancelHandler = function () {
+    console.log('cancel')
+  }
+
+  const onApproveHandler = function () {
+    console.log('onApproveHandler')
+  }
+
+  const onErrorHandler = function (err) {
+    console.log('error')
+  }
+
+  //update order with paid info in db
+  const updateOrder = async (orderID) => {
+    const { data } = await axios.put('/api/orders/paid/' + orderID)
+    return data
+  }
+
+  const updatePaymentMethod = async (orderID) => {
+    const { data } = await axios.put('/api/orders/payment/' + orderID, {
+      paymentMethod: paymentMethod,
+    })
+    return data
+  }
+
+  const handleCheckout = () => {
+    updatePaymentMethod(id).then((data) => {
+      console.log('order was updated')
+    })
+    if (cartItems.length === 0) {
+      window.alert('Your cart is empty! Please add something to your cart.')
+    } else if (paymentMethod === 'creditCard') {
+      axios
+        .post('/api/stripe/create-checkout-session', {
+          cartItems,
+          userID: userInfo._id,
+        })
+        .then((res) => {
+          if (res.data.url) {
+            window.location.href = res.data.url
           }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err.message))
+      updateOrder(id)
+    } else if (paymentMethod === 'PayPal') {
+      setOrderButtonMessage(
+        'To pay for your order click one of the buttons below'
+      )
+      setButtonDisabled(true)
+      loadScript({
+        'client-id':
+          'Ad7gq9u1HmzPCiNXVRccA0fmaJQTffsUE7egau0MMns_By0GmUBz9jhG7b-TAxVu8Cpbk1qrfv5v8vSE',
+      })
+        .then((paypal) => {
+          paypal
+            .Buttons(buttons(cartSubtotal, cartItems, id))
+            .render('#paypal-container-element')
+        })
+        .catch((err) => {
+          console.error('failed to load the PayPal JS SDK script', err)
+        })
+    } else if (paymentMethod === 'Cash') {
+      window.alert(
+        'Your order was successfully created. You will be pay on delivery.'
+      )
+      window.location.href = '/checkout-success'
     }
   }
 
+  //paypal payment processing for order
+  const buttons = (cartSubtotal, cartItems, id) => {
+    return {
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: cartSubtotal,
+                breakdown: {
+                  item_total: {
+                    currency_code: 'USD',
+                    value: cartSubtotal,
+                  },
+                },
+              },
+              items: cartItems.map((product) => {
+                return {
+                  name: product.name,
+                  unit_amount: {
+                    currency_code: 'USD',
+                    value: product.price,
+                  },
+                  quantity: product.quantity,
+                }
+              }),
+            },
+          ],
+        })
+      },
+      onCancel: onCancelHandler,
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (orderData) {
+          var transaction = orderData.purchase_units[0].payments.captures[0]
+          if (
+            transaction.status === 'COMPLETED' &&
+            Number(transaction.amount.value) === Number(cartSubtotal)
+          ) {
+            updateOrder(id)
+            window.location.href = '/checkout-success'
+          }
+        })
+      },
+      onError: onErrorHandler,
+    }
+  }
   //handler for choose payment method option
-
   const paymentHandler = (e) => {
     setPaymentMethod(e.target.value)
   }
 
-  //save user order data in db
-  const createOrder = async (orderData) => {
-    const { data } = await axios.post('/api/orders/create', { ...orderData })
-    return data
+  //remove product from cart
+  const removeProductFromCartHandler = (productID, quantity, price) => {
+    if (window.confirm('Are you sure you want to remove product from cart?'))
+      reduxDispatch(removeItemFromCart(productID, quantity, price))
+  }
+
+  //  change count of products in card
+  const changeCount = (productID, count) => {
+    reduxDispatch(addToCart(productID, count))
   }
 
   return (
@@ -113,9 +208,22 @@ function UserCartDetailsPage() {
             Payment <span className={styles.order_navigation_number}>3</span>
           </li>
           <li className={styles.order_navigation_step}>
-            Finish <span className={styles.order_navigation_number}>4</span>
+            Delivery <span className={styles.order_navigation_number}>4</span>
           </li>
         </ul>
+      </div>
+      <div className={styles.message}>
+        {orderButtonMessage === 'button disabled' ? (
+          <p>
+            Before create your order please provide your{' '}
+            <Link to='/user' className={styles.link}>
+              profile page
+            </Link>{' '}
+            with additional information (delivery address, phone number, etc.)'
+          </p>
+        ) : (
+          ''
+        )}
       </div>
       <div className={styles.wrapper}>
         <div className={styles.container_right}>
@@ -138,10 +246,12 @@ function UserCartDetailsPage() {
                 userAddress.city &&
                 userAddress.country &&
                 userAddress.postcode &&
+                userAddress.state &&
                 userAddress.phoneNumber ? (
                   <p>
-                    {userAddress.address}, {userAddress.city},
-                    {userAddress.country}, {userAddress.postcode}
+                    {userAddress.address}, {userAddress.city},{' '}
+                    {userAddress.state}, {userAddress.country},{' '}
+                    {userAddress.postcode}
                   </p>
                 ) : (
                   <b>
@@ -170,7 +280,7 @@ function UserCartDetailsPage() {
                 <b>Items price (after tax):</b>
               </p>
               <p>
-                <b>${cartSubtotal.toFixed(2)}</b>
+                <b>€ {cartSubtotal.toFixed(2)}</b>
               </p>
             </li>
             <li>
@@ -192,9 +302,9 @@ function UserCartDetailsPage() {
                   className={styles.select_payment_method}
                   onChange={paymentHandler}
                 >
-                  <option value='creditCard'>Credit Card</option>
-                  <option value='payPal'>PayPal</option>
-                  <option value='cash'>Cash on Delivery</option>
+                  <option value='Credit Card'>Credit Card</option>
+                  <option value='PayPal'>PayPal</option>
+                  <option value='Cash'>Cash on Delivery</option>
                 </select>
               </div>
             </li>
@@ -202,18 +312,28 @@ function UserCartDetailsPage() {
               <p>
                 <b>Total price:</b>
               </p>
-              <p>${cartSubtotal.toFixed(2)}</p>
+              <p>€ {cartSubtotal.toFixed(2)}</p>
             </li>
             <div className={styles.checkout_button_container}>
-              <button className={styles.checkout_button} onClick={handleClick}>
-                Pay for the order
+              <button
+                className={styles.checkout_button}
+                onClick={handleCheckout}
+                disabled={buttonDisabled}
+              >
+                {orderButtonMessage}
               </button>
             </div>
+            <div id='paypal-container-element'></div>
           </ul>
         </div>
         <div className={styles.container_left}>
           {cartItems.map((item, idx) => (
-            <CartItem key={idx} item={item} />
+            <CartItem
+              key={idx}
+              item={item}
+              removeProductFromCartHandler={removeProductFromCartHandler}
+              changeCount={changeCount}
+            />
           ))}
         </div>
       </div>

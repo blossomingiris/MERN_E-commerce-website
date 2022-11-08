@@ -25,7 +25,7 @@ function PopularProductItem({ item }) {
 
         <div className={styles.slider_card_body}>
           <div className={styles.slider_card_title}>{item.title}</div>
-          <div className={styles.price}>${item.price}</div>
+          <div className={styles.price}>€ {item.price}</div>
           <button className={styles.button}>Buy Now</button>{' '}
         </div>
       </div>

@@ -31,10 +31,21 @@
 .desc,
 .title {
   text-transform: uppercase;
-  text-transform: uppercase;
   letter-spacing: var(--l-spacing);
+  margin: 0;
 }
 
 .desc {
   color: var(--rose);
+}
+
+.content div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
 }

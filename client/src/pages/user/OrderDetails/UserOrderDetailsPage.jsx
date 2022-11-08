@@ -8,7 +8,7 @@ function UserOrderDetailsPage() {
   const userInfo = useSelector((state) => state.userRegisterLogin.userInfo)
   const [userAddress, setUserAddress] = useState({})
   const [orderDetails, setOrderDetails] = useState({})
-  const id = useParams()
+  const { id } = useParams()
 
   //fetch user profile data from db
 
@@ -35,12 +35,15 @@ function UserOrderDetailsPage() {
   useEffect(() => {
     getOrder(id)
       .then((data) => {
-        setOrderDetails(data.paymentMethod)
+        setOrderDetails({
+          paymentMethod: data.paymentMethod,
+          cartSubtotal: data.orderTotal.cartSubtotal,
+          oderNumber: data._id,
+          isPaid: data.paidAt,
+        })
       })
       .catch((err) => console.log(err))
   }, [])
-
-  // console.log(orderDetails)
 
   //fetch order details data from db
   const getOrder = async (orderId) => {
@@ -58,25 +61,25 @@ function UserOrderDetailsPage() {
               <p>
                 <b>Order number:</b>
               </p>
-              <p>001</p>
+              <p>{orderDetails.oderNumber}</p>
             </li>
             <li>
               <p>
                 <b>Paid at:</b>
               </p>
-              <p>10/25/2022</p>
+              <p>{orderDetails.paidAt}</p>
             </li>
             <li>
               <p>
                 <b>Total amount:</b>
               </p>
-              <p>$400.00</p>
+              <p>€ {orderDetails.cartSubtotal}</p>
             </li>
             <li>
               <p>
                 <b>Payment method:</b>
               </p>
-              <p>Credit card</p>
+              <p>{orderDetails.paymentMethod}</p>
             </li>
             <li>
               <p>

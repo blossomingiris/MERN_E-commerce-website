@@ -121,16 +121,19 @@ export const differences = [
     title: 'Formula',
     desc: 'text',
     image: 'formula.jpg',
+    icon: 'flower_01.png',
   },
 
   {
     title: 'Materials',
     desc: 'text',
     image: 'materials.jpg',
+    icon: 'flower_02.png',
   },
   {
     title: 'Price ',
     desc: 'text',
     image: 'price.jpg',
+    icon: 'flower_03.png',
   },
 ]

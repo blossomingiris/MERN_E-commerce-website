@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import styles from './AboutUsPage.module.scss'
 import about_us_img from '../../../assets/other/about_us.jpg'
-import star_i from '../../../assets/other/star2.png'
+import icon from '../../../assets/other/flower_04.png'
 import { Parallax } from 'react-parallax'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -32,10 +32,10 @@ function AboutUsPage() {
         <div className={styles.icon_container}>
           <h1>Who we are</h1>
           <img
-            src={star_i}
+            src={icon}
             alt='star'
             data-aos='zoom-in'
-            data-aos-duration='3000'
+            data-aos-duration='2500'
           />
         </div>
 

@@ -16,7 +16,7 @@ function Category({ item }) {
           <img
             src={require(`../../.././assets/categories/${item.img}.jpg`)}
             alt={item.img}
-            crossorigin='anonymous'
+            crossOrigin='anonymous'
           />
         </Link>
       </div>

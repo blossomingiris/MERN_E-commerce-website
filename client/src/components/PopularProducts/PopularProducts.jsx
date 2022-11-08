@@ -6,20 +6,18 @@ import { popularProducts } from '../../data/data'
 import PopularProductItem from './PopularProductItem/PopularProductItem'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function PopularProducts() {
   //product cards slider
 
   const handleScrollLeft = () => {
     let slider = document.getElementById('cards_slider')
-    console.log('left')
     slider.scrollLeft = slider.scrollLeft - 300
   }
 
   const handleScrollRight = () => {
     let slider = document.getElementById('cards_slider')
-    console.log('right')
     slider.scrollLeft = slider.scrollLeft + 300
   }
 

@@ -5,6 +5,7 @@ const productRoutes = require('./routes/productRoutes')
 const categoryRoutes = require('./routes/categoryRoutes')
 const userRoutes = require('./routes/userRoutes')
 const orderRoutes = require('./routes/orderRoutes')
+const paymentRoutes = require('./routes/paymentRoutes')
 
 const jwt = require('jsonwebtoken')
 
@@ -31,5 +32,7 @@ app.use('/categories', categoryRoutes)
 app.use('/users', userRoutes)
 
 app.use('/orders', orderRoutes)
+
+app.use('/stripe', paymentRoutes)
 
 module.exports = app
