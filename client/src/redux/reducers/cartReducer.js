@@ -56,6 +56,8 @@ export const cartReducer = (state = CART_INITIAL_STATE, action) => {
         cartSubtotal:
           state.cartSubtotal - action.payload.price * action.payload.quantity,
       }
+    case actionTypes.CLEAR_CART:
+      return (state.cartItems = [])
     default:
       return state
   }

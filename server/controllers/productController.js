@@ -93,7 +93,11 @@ const getProducts = async (req, res, next) => {
     let sort = {}
     const sortOption = req.query.sort || ''
     if (sortOption) {
+      //in client side sort option consists _
+      //so split option into two pairs array, for example [price, -1]
       let sortOpt = sortOption.split('_')
+      //create an object where key is first element from array, and value is second element of array
+      //[sortOpt] is not array is it an object with dynamic key
       sort = { [sortOpt[0]]: Number(sortOpt[1]) }
       console.log(sort)
     }
@@ -104,9 +108,9 @@ const getProducts = async (req, res, next) => {
     //get products from db based on query parameters
     const products = await Product.find(query)
 
-      //pagination: in first pages shows 3 first products from db, on the second page shows next 3 products from
+      //pagination: in 1st pages display 8 first products from db, on the second page shows next 8 products from
       .skip(productsPerPage * (pageNumber - 1))
-      .sort({ name: 'asc' })
+      .sort(sort)
 
       // limits products appear per page for pagination
       .limit(productsPerPage)
@@ -137,7 +141,7 @@ const getProductById = async (req, res, next) => {
 //get popular products (best selling products) for homepage
 const getBestsellers = async (req, res, next) => {
   try {
-    const products = await Product.find().sort({ sales: -1 }).limit(4)
+    const products = await Product.find().sort({ sales: -1 }).limit(7)
     res.json(products)
   } catch (err) {
     next(err)

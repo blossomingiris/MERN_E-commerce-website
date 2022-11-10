@@ -12,7 +12,7 @@ export const setReduxUserState = (userCreated) => (dispatch) => {
 //user logout action
 //navigate user/admin to login page after logout
 //delete cookies and user data, cart data from local storage
-//
+
 export const logout = () => (dispatch) => {
   //Navigate form react-route-dom doesn't work correctly
   document.location.href = '/login'

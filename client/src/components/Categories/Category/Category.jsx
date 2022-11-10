@@ -4,7 +4,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 
-function Category({ item }) {
+function Category({ name, image }) {
   useEffect(() => {
     AOS.init({})
   }, [])
@@ -14,15 +14,15 @@ function Category({ item }) {
       <div className={styles.category_image}>
         <Link to='/products'>
           <img
-            src={require(`../../.././assets/categories/${item.img}.jpg`)}
-            alt={item.img}
+            src={require(`../../.././assets/categories/${image}`)}
+            alt={name}
             crossOrigin='anonymous'
           />
         </Link>
       </div>
       <div className={styles.category_content} data-aos='zoom-in'>
         <a className={styles.category_content_links} href='/products'>
-          {item.title}
+          {name}
         </a>
       </div>
     </div>

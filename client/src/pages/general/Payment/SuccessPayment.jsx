@@ -4,10 +4,6 @@ import { removeItemFromCart } from '../../../redux/actions/cartActions'
 import { useEffect } from 'react'
 
 function SuccessPayment() {
-  // useEffect(() => {
-  //   reduxDispatch(removeItemFromCart(productID, quantity, price))
-  // }, [])
-
   return (
     <section className={styles.container}>
       <div className={styles.order_navigation}>

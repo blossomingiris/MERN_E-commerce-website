@@ -6,7 +6,7 @@ function ProductItem({ productID, name, size, price, images }) {
   return (
     <div className={styles.container}>
       <div className={styles.image_container}>
-        <img
+        <img className = {styles.image}
           src={require(`../../assets/products/${images[1].path}`)}
           alt={name}
         />

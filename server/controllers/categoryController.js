@@ -4,7 +4,7 @@ const Category = require('.././models/CategoryModel')
 // if there is no category in db (orFail() method) than throw an error
 const getCategories = async (req, res, next) => {
   try {
-    const categories = await Category.find({}).sort({ name: 'asc' }).orFail()
+    const categories = await Category.find({}).sort({ name: 'desc' }).orFail()
     res.json(categories)
   } catch (err) {
     next(err)

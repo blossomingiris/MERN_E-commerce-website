@@ -58,9 +58,9 @@ function SignUpPage() {
       name: 'password',
       type: 'password',
       errorMessage:
-        'Password should be 6-20 characters and include at least 1 letter, 1 number and 1 special character',
+        'Password should be at least 6 characters in length and include at least 1 letter and 1 number',
       label: 'Password',
-      // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
+      pattern: `^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$`,
       required: true,
     },
     {

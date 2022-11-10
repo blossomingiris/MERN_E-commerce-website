@@ -1,16 +1,30 @@
 import styles from './Categories.module.scss'
 import video from '../../assets/other/video.mp4'
-import { categories } from '../../data/data'
+// import { categories } from '../../data/data'
 import Category from './Category/Category'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 function Categories() {
+  const [categories, setCategories] = useState([])
+
+  const getCategories = async () => {
+    const { data } = await axios.get('/api/categories')
+    return data
+  }
+
   useEffect(() => {
     AOS.init({
       duration: 2000,
     })
+  }, [])
+
+  useEffect(() => {
+    getCategories()
+      .then((data) => setCategories(data))
+      .catch((err) => console.log(err))
   }, [])
 
   return (
@@ -25,8 +39,12 @@ function Categories() {
 
       <div className={styles.categories_wrapper}>
         <div className={styles.categories_container_left}>
-          {categories.map((item) => (
-            <Category item={item} key={item.id} />
+          {categories.map((category) => (
+            <Category
+              name={category.name}
+              key={category.id}
+              image={category.image}
+            />
           ))}
         </div>
         <div className={styles.categories_container_right}>

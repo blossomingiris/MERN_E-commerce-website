@@ -35,6 +35,15 @@ function App() {
         <Route path='/about-us' element={<AboutUsPage />} />
         <Route path='/what-makes-us-different' element={<DifferencesPage />} />
         <Route path='/products' element={<ProductsListPage />} />
+        <Route path='/products/:pageNumParam' element={<ProductsListPage />} />
+        <Route
+          path='/products/search/:searchQuery'
+          element={<ProductsListPage />}
+        />
+        <Route
+          path='/products/search/:searchQuery/:pageNumParam'
+          element={<ProductsListPage />}
+        />
         <Route path='/product-details/:id' element={<ProductDetailsPage />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/signup' element={<SignUpPage />} />

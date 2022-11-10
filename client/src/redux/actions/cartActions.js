@@ -31,3 +31,9 @@ export const removeItemFromCart =
     })
     localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
   }
+
+//clear all cart items
+export const clearCart = () => (dispatch) => {
+  localStorage.removeItem('cart')
+  dispatch({ type: actionTypes.REMOVE_ITEM_FROM_CART })
+}

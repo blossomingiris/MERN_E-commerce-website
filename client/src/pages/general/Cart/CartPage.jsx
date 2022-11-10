@@ -13,6 +13,7 @@ function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems)
   const itemsCount = useSelector((state) => state.cart.itemsCount)
   const cartSubtotal = useSelector((state) => state.cart.cartSubtotal)
+  const { userInfo } = useSelector((state) => state.userRegisterLogin)
   const reduxDispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -28,31 +29,38 @@ function CartPage() {
   }
 
   const orderHandler = () => {
-    const orderData = {
-      orderTotal: {
-        itemsCount: itemsCount,
-        cartSubtotal: cartSubtotal,
-      },
-      cartItems: cartItems.map((item) => {
-        return {
-          productID: item.productID,
-          name: item.name,
-          price: item.price,
-          image: { path: item.image ? item.image.path ?? null : null },
-          quantity: item.quantity,
-          count: item.count,
-        }
-      }),
-      paymentMethod: 'CreditCard',
+    if (Object.keys(userInfo).length === 0) {
+      window.alert(
+        'To be available to create an order please log in or create a new account'
+      )
+      document.location.href = '/signup'
+    } else {
+      const orderData = {
+        orderTotal: {
+          itemsCount: itemsCount,
+          cartSubtotal: cartSubtotal,
+        },
+        cartItems: cartItems.map((item) => {
+          return {
+            productID: item.productID,
+            name: item.name,
+            price: item.price,
+            image: { path: item.image ? item.image.path ?? null : null },
+            quantity: item.quantity,
+            count: item.count,
+          }
+        }),
+        paymentMethod: 'CreditCard',
+      }
+      createOrder(orderData)
+        .then((data) => {
+          if (data) {
+            // console.log('Order created', data)
+            navigate('/user/cart-details/' + data._id)
+          }
+        })
+        .catch((err) => console.log(err))
     }
-    createOrder(orderData)
-      .then((data) => {
-        if (data) {
-          console.log('Order created', data)
-          navigate('/user/cart-details/' + data._id)
-        }
-      })
-      .catch((err) => console.log(err))
   }
 
   // remove products from cart

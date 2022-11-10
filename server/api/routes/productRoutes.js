@@ -22,12 +22,12 @@ router.get('/search/:searchQuery', getProducts)
 router.get('/get-one/:id', getProductById)
 
 //get popular products (best selling products)
-router.get('/best/selling', getBestsellers)
+router.get('/popular', getBestsellers)
 
 router.get('/', getProducts)
 
 //check for admin or regular user
 
-router.use(verifyIsAdmin)
+// router.use(verifyIsAdmin)
 
 module.exports = router

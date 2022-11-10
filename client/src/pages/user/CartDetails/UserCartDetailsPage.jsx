@@ -5,7 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   removeItemFromCart,
   addToCart,
+  clearCart,
 } from '../../../redux/actions/cartActions'
+
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -19,7 +21,7 @@ function UserCartDetailsPage() {
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [orderButtonMessage, setOrderButtonMessage] = useState('Pay for order')
   const [userAddress, setUserAddress] = useState(false)
-  const [paymentMethod, setPaymentMethod] = useState('creditCard')
+  const [paymentMethod, setPaymentMethod] = useState('Credit Card')
   const reduxDispatch = useDispatch()
   const { id } = useParams()
 
@@ -27,6 +29,13 @@ function UserCartDetailsPage() {
   const getUser = async () => {
     const { data } = await axios.get('/api/users/profile/' + userInfo._id)
     return data
+  }
+
+  const itemsCount = useSelector((state) => state.cart.itemsCount)
+
+  //remove items from cart after successful payment
+  const clearUserCart = () => {
+    reduxDispatch(clearCart())
   }
 
   useEffect(() => {
@@ -63,10 +72,6 @@ function UserCartDetailsPage() {
     console.log('cancel')
   }
 
-  const onApproveHandler = function () {
-    console.log('onApproveHandler')
-  }
-
   const onErrorHandler = function (err) {
     console.log('error')
   }
@@ -76,6 +81,8 @@ function UserCartDetailsPage() {
     const { data } = await axios.put('/api/orders/paid/' + orderID)
     return data
   }
+
+  //update order with payment method info in db
 
   const updatePaymentMethod = async (orderID) => {
     const { data } = await axios.put('/api/orders/payment/' + orderID, {
@@ -90,7 +97,7 @@ function UserCartDetailsPage() {
     })
     if (cartItems.length === 0) {
       window.alert('Your cart is empty! Please add something to your cart.')
-    } else if (paymentMethod === 'creditCard') {
+    } else if (paymentMethod === 'Credit Card') {
       axios
         .post('/api/stripe/create-checkout-session', {
           cartItems,
@@ -103,6 +110,7 @@ function UserCartDetailsPage() {
         })
         .catch((err) => console.log(err.message))
       updateOrder(id)
+      clearUserCart()
     } else if (paymentMethod === 'PayPal') {
       setOrderButtonMessage(
         'To pay for your order click one of the buttons below'
@@ -120,11 +128,13 @@ function UserCartDetailsPage() {
         .catch((err) => {
           console.error('failed to load the PayPal JS SDK script', err)
         })
+      clearUserCart()
     } else if (paymentMethod === 'Cash') {
       window.alert(
         'Your order was successfully created. You will be pay on delivery.'
       )
       window.location.href = '/checkout-success'
+      clearUserCart()
     }
   }
 

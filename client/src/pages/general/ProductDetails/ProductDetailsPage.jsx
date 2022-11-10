@@ -16,6 +16,7 @@ function ProductDetailsPage() {
 
   const [quantity, setQuantity] = useState(1)
   const [product, setProduct] = useState([])
+  const [buttonDisabled, setButtonDisabled] = useState(false)
 
   const addToCartHandler = () => {
     dispatch(addToCart(id, quantity))
@@ -69,7 +70,7 @@ function ProductDetailsPage() {
               <p className={styles.price}>€ {product.price}</p>
 
               <div className={styles.quantity_container}>
-                <h5>{product.count > 0 ? 'In Stock' : 'Out of Stock'} </h5>
+                <h5>{product.count > 0 ? 'In Stock' : 'Out of Stock'}</h5>
                 <div className={styles.quantity_info}>
                   <h4>Quantity:</h4>
                   <input
@@ -82,9 +83,19 @@ function ProductDetailsPage() {
                     onChange={(e) => setQuantity(e.target.value)}
                   />
                 </div>
-                <button className={styles.button} onClick={addToCartHandler}>
-                  Add to Bag
-                </button>
+                {product.count === 0 ? (
+                  <button
+                    className={styles.button}
+                    onClick={addToCartHandler}
+                    disabled
+                  >
+                    Out of Stock
+                  </button>
+                ) : (
+                  <button className={styles.button} onClick={addToCartHandler}>
+                    Add to Cart
+                  </button>
+                )}
               </div>
 
               <div className={styles.desc_container}>
@@ -112,7 +123,9 @@ function ProductDetailsPage() {
           </div>
         </>
       ) : (
-        <h3>Loading...</h3>
+        <div className={styles.load_container}>
+          <h3>Loading...</h3>
+        </div>
       )}
     </section>
   )
