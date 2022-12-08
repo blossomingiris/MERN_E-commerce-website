@@ -22,6 +22,8 @@ function SignUpPage() {
     error: '',
   })
 
+  console.log(responseStateRegisterUser.error)
+
   const navigate = useNavigate()
 
   //todo: for refactoring code
@@ -57,10 +59,9 @@ function SignUpPage() {
     {
       name: 'password',
       type: 'password',
-      errorMessage:
-        'Password should be at least 6 characters in length and include at least 1 letter and 1 number',
+      errorMessage: 'Password should be at least 6 characters in length',
       label: 'Password',
-      pattern: `^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$`,
+      pattern: `^[A-Za-z0-9]{6,16}$`,
       required: true,
     },
     {
@@ -137,19 +138,18 @@ function SignUpPage() {
               handleChange={handleChange}
             />
           ))}
+          <p className='required_fields'>(*) required fields</p>
           <button className='a_submit_button'>Submit</button>
-
           <div
             className={
               responseStateRegisterUser &&
-              responseStateRegisterUser.error ===
-                'user with this email already exists'
+              responseStateRegisterUser.error === 'user exists'
                 ? 'a_user_alert_success'
                 : 'a_user_alert_hidden'
             }
           >
-            An account with email address <b>{values.email}</b> already exists.
-            Please login using this email address or reset the password.
+            An account with email address already exists. Please login using
+            this email address or reset the password.
           </div>
           <div
             className={

@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdSearch } from 'react-icons/md'
 import { RiShoppingBagLine } from 'react-icons/ri'
 import { FaRegUser } from 'react-icons/fa'
@@ -25,9 +25,8 @@ function Navbar() {
   //read products details data from redux
   const itemsCount = useSelector((state) => state.cart.itemsCount)
   const navigate = useNavigate()
+
   //submit search query
-  const { searchQuery } = useParams() || ''
-  //search query
 
   const queryHandler = (e) => {
     if (e.keyCode && e.keyCode === 13) return
@@ -46,7 +45,7 @@ function Navbar() {
         <div className={styles.wrapper_left}>
           <div className={styles.logo}>
             <Link to='/'>
-              <h2>Kipos</h2>
+              <h2>Demeter</h2>
             </Link>
           </div>
         </div>

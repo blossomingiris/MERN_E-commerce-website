@@ -56,3 +56,11 @@
   padding-top: 10px;
   border-top: 1px solid var(--border-color);
 }
+
+.message_success {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-end;
+  text-transform: uppercase;
+}

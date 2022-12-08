@@ -22,7 +22,7 @@ const UserOrdersPage = () => {
     <div className={styles.container}>
       <h4 className={styles.title}>My Orders</h4>
       <table>
-        <thead>
+        <thead className={styles.table_header}>
           <tr>
             <th>#</th>
             <th>Date</th>
@@ -32,22 +32,31 @@ const UserOrdersPage = () => {
           </tr>
         </thead>
         <tbody>
-          {orders.map((order, idx) => (
-            <tr key={idx}>
-              <td>{idx + 1}</td>
-              <td>{order.createdAt.substring(0, 10)}</td>
-              <td>€ {order.orderTotal.cartSubtotal}</td>
-              <td>{order.isDelivered ? <BsCheck2 /> : <BsX />}</td>
-              <td>
-                <Link
-                  to={`/user/order-details/${order._id}`}
-                  className={styles.table_link}
-                >
-                  go to order
-                </Link>
-              </td>
+          {orders.length === 0 ? (
+            <tr>
+              <td colSpan={5}>You don't have any orders</td>
             </tr>
-          ))}
+          ) : (
+            <>
+              {' '}
+              {orders.map((order, idx) => (
+                <tr key={idx}>
+                  <td>{idx + 1}</td>
+                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>€ {order.orderTotal.cartSubtotal}</td>
+                  <td>{order.isDelivered ? <BsCheck2 /> : <BsX />}</td>
+                  <td>
+                    <Link
+                      to={`/user/order-details/${order._id}`}
+                      className={styles.table_link}
+                    >
+                      go to order
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </>
+          )}
         </tbody>
       </table>
     </div>

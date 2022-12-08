@@ -29,7 +29,11 @@ function Categories() {
 
   return (
     <section className={styles.categories_container}>
-      <div data-aos='fade-up' className={styles.categories_desc}>
+      <div
+        data-aos='fade-down'
+        data-aos-duration='2000'
+        className={styles.categories_desc}
+      >
         <p>
           Meet our Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Dignissimos facilis laborum non iusto praesentium distinctio obcaecati
@@ -39,10 +43,10 @@ function Categories() {
 
       <div className={styles.categories_wrapper}>
         <div className={styles.categories_container_left}>
-          {categories.map((category) => (
+          {categories.map((category, idx) => (
             <Category
               name={category.name}
-              key={category.id}
+              key={`${category.name}_${idx}`}
               image={category.image}
             />
           ))}

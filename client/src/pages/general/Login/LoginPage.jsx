@@ -1,11 +1,9 @@
-import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setReduxUserState } from '../../../redux/actions/userActions'
 import { Link } from 'react-router-dom'
-import { FaGoogle } from 'react-icons/fa'
 import axios from 'axios'
-import styles from './LoginPage.module.scss'
+// import styles from './LoginPage.module.scss'
 import InputForm from '../../../components/Auth/InputForm'
 
 function LoginPage() {
@@ -51,11 +49,11 @@ function LoginPage() {
             reduxDispatch(setReduxUserState(res.userLoggedIn))
           }
 
-          if (res.success === 'user logged in' && !res.userLoggedIn.isAdmin)
-            // navigate('/user', { replace: true })
+          if (res.success === 'user logged in' && !res.userLoggedIn.isAdmin) {
             window.location.href = '/user'
-          // else navigate('/admin/users', { replace: true })
-          else window.location.href = '/user'
+          } else {
+            window.location.href = '/admin/users'
+          }
         })
 
         .catch((err) => {
@@ -94,6 +92,7 @@ function LoginPage() {
               handleChange={handleChange}
             />
           ))}
+          <p className='required_fields'>required fields(*)</p>
           <button className='a_submit_button'>Submit</button>
           {/* <div className={styles.login_options}>OR</div> */}
           <div>

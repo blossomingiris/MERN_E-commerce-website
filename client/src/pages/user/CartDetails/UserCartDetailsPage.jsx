@@ -21,7 +21,7 @@ function UserCartDetailsPage() {
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [orderButtonMessage, setOrderButtonMessage] = useState('Pay for order')
   const [userAddress, setUserAddress] = useState(false)
-  const [paymentMethod, setPaymentMethod] = useState('Credit Card')
+  const [paymentMethod, setPaymentMethod] = useState('')
   const reduxDispatch = useDispatch()
   const { id } = useParams()
 
@@ -31,9 +31,7 @@ function UserCartDetailsPage() {
     return data
   }
 
-  const itemsCount = useSelector((state) => state.cart.itemsCount)
-
-  //remove items from cart after successful payment
+  //clear product cart after successful payment
   const clearUserCart = () => {
     reduxDispatch(clearCart())
   }
@@ -119,6 +117,7 @@ function UserCartDetailsPage() {
       loadScript({
         'client-id':
           'Ad7gq9u1HmzPCiNXVRccA0fmaJQTffsUE7egau0MMns_By0GmUBz9jhG7b-TAxVu8Cpbk1qrfv5v8vSE',
+        currency: 'USD',
       })
         .then((paypal) => {
           paypal
@@ -135,6 +134,8 @@ function UserCartDetailsPage() {
       )
       window.location.href = '/checkout-success'
       clearUserCart()
+    } else {
+      window.alert('Please choose a payment method')
     }
   }
 
@@ -312,6 +313,7 @@ function UserCartDetailsPage() {
                   className={styles.select_payment_method}
                   onChange={paymentHandler}
                 >
+                  <option value='Choose payment method'>Choose option</option>
                   <option value='Credit Card'>Credit Card</option>
                   <option value='PayPal'>PayPal</option>
                   <option value='Cash'>Cash on Delivery</option>

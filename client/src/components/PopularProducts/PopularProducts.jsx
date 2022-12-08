@@ -38,7 +38,7 @@ function PopularProducts() {
   return (
     <section className={styles.popular_container}>
       <div className={styles.popular_container_wrapper}>
-        <div data-aos='fade-up' data-aos-duration='1000'>
+        <div data-aos='fade-down' data-aos-duration='2000'>
           {' '}
           <div className={styles.popular_title}>
             <h2>Your favorite scent can always be with you</h2>
@@ -65,15 +65,11 @@ function PopularProducts() {
           data-aos-duration='2000'
         >
           <div className={styles.slider} id='cards_slider'>
-            {popularProducts.map((item) => (
-              <PopularProductItem item={item} key={item.id} />
+            {popularProducts.map((item, idx) => (
+              <PopularProductItem item={item} key={idx} />
             ))}
           </div>
-          <div
-            className={styles.slider_icons_container}
-            data-aos='fade-up'
-            data-aos-duration='2000'
-          >
+          <div className={styles.slider_icons_container}>
             {' '}
             <BsArrowLeft
               className={styles.slider_icon_left}

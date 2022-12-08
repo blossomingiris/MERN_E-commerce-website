@@ -128,12 +128,42 @@ export const differences = [
     title: 'Materials',
     desc: 'text',
     image: 'materials.jpg',
-    icon: 'flower_02.png',
+    icon: 'flower_04.png',
   },
   {
-    title: 'Price ',
+    title: 'Service',
     desc: 'text',
-    image: 'price.jpg',
+    image: 'service.jpg',
     icon: 'flower_03.png',
+  },
+]
+
+export const quotes = [
+  {
+    desc: 'A good fragrance should have a certain personality that makes people identify the scent with you',
+    author: 'Shakira',
+  },
+
+  {
+    desc: "In the course of time, a woman's perfume is a more moving memory than a photograph of her",
+    author: 'Guy de Maupassant',
+  },
+  {
+    desc: 'Love is like a beautiful flower which I may not touch, but whose fragrance makes the garden a place of delight just the same',
+    author: 'Hellen Keller',
+  },
+
+  {
+    desc: 'Love is like a beautiful flower which I may not touch, but whose fragrance makes the garden a place of delight just the same',
+    author: 'Hellen Keller',
+  },
+  {
+    desc: "I don't like perfumes that are too strong or sweet. I like a fragrance that is earthy and sensual and can be worn at any time",
+    author: 'Angelina Jolie',
+  },
+
+  {
+    desc: 'A perfume is like a piece of clothing, a message, a way of presenting oneself, a costume that differs according to the woman who wears it.',
+    author: 'Paola Picasso',
   },
 ]

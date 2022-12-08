@@ -1,0 +1,1 @@
+.container{padding:20px 150px;width:100%;height:200px;display:flex;justify-content:space-evenly;margin-bottom:30px}.link_wrapper{display:flex;font-size:.8em;flex-direction:column;justify-content:flex-start;text-transform:uppercase;letter-spacing:var(--l-spacing);align-items:center;gap:10px}.search_icon{font-size:2em}.user_icon{font-size:1.5em}.cart_icon{font-size:1.7em}

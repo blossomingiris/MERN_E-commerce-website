@@ -11,7 +11,7 @@ function InputForm(props) {
 
   return (
     <div className={styles.form_input}>
-      <label>{label}</label>
+      <label>{label}*</label>
       <input
         onChange={handleChange}
         onBlur={handleFocus}

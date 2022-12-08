@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { BsCheck2, BsX } from 'react-icons/bs'
 import { FaRegEdit, FaBan } from 'react-icons/fa'
@@ -9,12 +8,30 @@ import axios from 'axios'
 import AdminLinks from '../../../components/AdminLinks/AdminLinks'
 
 function AdminUsersPage() {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([{}])
+  const [userDeleted, setUserDeleted] = useState(false)
 
   //fetch users list from db
   const getListOfUsers = async () => {
     const { data } = await axios.get('/api/users')
     return data
+  }
+
+  //delete user from db
+  const deleteUser = async (userId) => {
+    const { data } = await axios.delete(`/api/users/${userId}`)
+    setUserDeleted(!userDeleted)
+    if (data === 'user deleted') {
+      alert('User was deleted successfully!')
+    }
+    return data
+  }
+
+  //delete user from user's list
+  const deleteHandler = (userId) => {
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      deleteUser(userId)
+    }
   }
 
   const dispatch = useDispatch()
@@ -23,7 +40,7 @@ function AdminUsersPage() {
     getListOfUsers()
       .then((res) => setUsers(res))
       .catch((error) => dispatch(logout))
-  }, [])
+  }, [userDeleted])
 
   return (
     <section className={styles.container}>
@@ -55,7 +72,7 @@ function AdminUsersPage() {
                     <FaRegEdit />
                   </a>
                 </td>
-                <td>
+                <td onClick={() => deleteHandler(user._id)}>
                   <a href='#'>
                     <FaBan />
                   </a>

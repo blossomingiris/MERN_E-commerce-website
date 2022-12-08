@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 100px;
+  margin: 100px 100px 150px 100px;
 }
 
 table {
@@ -12,12 +12,11 @@ table {
   border: 1px solid var(--border-color);
 }
 
-th {
-  background-color: var(--black);
+.table_header th {
+  background-color: var(--rose);
   color: var(--white);
   text-transform: uppercase;
   letter-spacing: var(--l-spacing);
-  font-size: 0.8em;
   font-weight: 200;
 }
 

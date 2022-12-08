@@ -1,5 +1,5 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import CartItem from '../../../components/CartItem/CartItem'
 import styles from './CartPage.module.scss'
 import { useSelector, useDispatch } from 'react-redux'
@@ -14,6 +14,7 @@ function CartPage() {
   const itemsCount = useSelector((state) => state.cart.itemsCount)
   const cartSubtotal = useSelector((state) => state.cart.cartSubtotal)
   const { userInfo } = useSelector((state) => state.userRegisterLogin)
+  const [buttonDisabled, setButtonDisabled] = useState(false)
   const reduxDispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -30,36 +31,40 @@ function CartPage() {
 
   const orderHandler = () => {
     if (Object.keys(userInfo).length === 0) {
+      console.log('hi')
       window.alert(
         'To be available to create an order please log in or create a new account'
       )
       document.location.href = '/signup'
     } else {
-      const orderData = {
-        orderTotal: {
-          itemsCount: itemsCount,
-          cartSubtotal: cartSubtotal,
-        },
-        cartItems: cartItems.map((item) => {
-          return {
-            productID: item.productID,
-            name: item.name,
-            price: item.price,
-            image: { path: item.image ? item.image.path ?? null : null },
-            quantity: item.quantity,
-            count: item.count,
-          }
-        }),
-        paymentMethod: 'CreditCard',
+      if (cartSubtotal !== 0) {
+        const orderData = {
+          orderTotal: {
+            itemsCount: itemsCount,
+            cartSubtotal: cartSubtotal,
+          },
+          cartItems: cartItems.map((item) => {
+            return {
+              productID: item.productID,
+              name: item.name,
+              price: item.price,
+              image: { path: item.image ? item.image.path ?? null : null },
+              quantity: item.quantity,
+              count: item.count,
+            }
+          }),
+          paymentMethod: 'CreditCard',
+        }
+        createOrder(orderData)
+          .then((data) => {
+            if (data) {
+              navigate('/user/cart-details/' + data._id)
+            }
+          })
+          .catch((err) => console.log(err))
+      } else {
+        setButtonDisabled(true)
       }
-      createOrder(orderData)
-        .then((data) => {
-          if (data) {
-            // console.log('Order created', data)
-            navigate('/user/cart-details/' + data._id)
-          }
-        })
-        .catch((err) => console.log(err))
     }
   }
 
@@ -97,10 +102,14 @@ function CartPage() {
           <h4 className={styles.title}>My shopping cart</h4>
 
           {/* if products (array) doesn't exist show message 
-					otherwise show cart products */}
+				otherwise show cart products */}
 
           {cartItems.length === 0 ? (
-            <span className={styles.message}>Your cart is empty</span>
+            <>
+              {' '}
+              <span className={styles.message}>Your cart is empty</span>
+              <div className={styles.user_links_container}> </div>
+            </>
           ) : (
             <ul>
               {cartItems.map((item, idx) => (
@@ -130,7 +139,7 @@ function CartPage() {
                 className={styles.checkout_button}
                 onClick={orderHandler}
                 //if cart subtotal is 0 disable button
-                disabled={cartSubtotal === 0}
+                disabled={buttonDisabled}
               >
                 Place an order
               </button>

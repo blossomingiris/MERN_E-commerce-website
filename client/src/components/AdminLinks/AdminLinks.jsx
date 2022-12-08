@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './AdminLinks.module.scss'
 import { logout } from '../../redux/actions/userActions'
 import { useDispatch } from 'react-redux'
@@ -10,14 +10,17 @@ function AdminLinks() {
   return (
     <div className={styles.admin_links_container}>
       <ul>
-        <a href='#'>
-          <li>Orders</li>
-        </a>
-        <a href='#'>
+        <Link to='/admin/users'>
+          <li>Users</li>
+        </Link>
+        <Link to='/admin/products'>
           <li>Products</li>
-        </a>
+        </Link>
+        <Link to='/admin/orders'>
+          <li>Orders</li>
+        </Link>
         <a href='#'>
-          <li onClick={() => dispatch(logout())}>Logout</li>
+          <li onClick={() => dispatch(logout())}>Log Out</li>
         </a>
       </ul>
     </div>

@@ -31,11 +31,13 @@
 .wrapper_left {
   flex: 1;
 
+  .logo {
+    display: flex;
+  }
+
   .logo h2 {
     text-transform: uppercase;
-    // letter-spacing: var(--l-spacing-lg);
     font-size: 1.2em;
-    // color: var(--text-color);
     transition: 0.8s;
   }
 

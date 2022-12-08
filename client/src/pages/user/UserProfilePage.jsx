@@ -67,6 +67,7 @@ function UserProfilePage() {
       label: 'phone',
       // placeholder: 'Enter your phone number',
       placeholder: updatedUserProfile.phoneNumber,
+      required: true,
     },
     {
       name: 'address',
@@ -74,6 +75,7 @@ function UserProfilePage() {
       label: 'Address',
       // placeholder: 'Enter your street name and house number',
       placeholder: updatedUserProfile.address,
+      required: true,
     },
     {
       name: 'country',
@@ -81,6 +83,7 @@ function UserProfilePage() {
       label: 'country',
       // placeholder: 'Enter your country',
       placeholder: updatedUserProfile.country,
+      required: true,
     },
 
     {
@@ -89,6 +92,7 @@ function UserProfilePage() {
       label: 'postcode',
       // placeholder: 'Enter your postcode',
       placeholder: updatedUserProfile.postcode,
+      required: true,
     },
 
     {
@@ -97,6 +101,7 @@ function UserProfilePage() {
       label: 'city',
       // placeholder: 'Enter your city',
       placeholder: updatedUserProfile.city,
+      required: true,
     },
 
     {
@@ -105,6 +110,7 @@ function UserProfilePage() {
       label: 'state',
       // placeholder: 'Enter your state',
       placeholder: updatedUserProfile.state,
+      required: true,
     },
 
     // {
@@ -227,6 +233,7 @@ function UserProfilePage() {
               handleChange={handleChange}
             />
           ))}
+          <p className='required_fields'>(*)required fields</p>
           <button className='a_submit_button'>Submit</button>
           {updateUserMsgResponse.success &&
           updateUserMsgResponse.success === 'user updated' ? (

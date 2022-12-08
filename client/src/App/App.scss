@@ -136,7 +136,7 @@ body {
 }
 
 .navbar_animated h2 {
-  letter-spacing: 12px;
+  letter-spacing: 13px;
 }
 
 // @keyframes round {
@@ -147,6 +147,14 @@ body {
 //     transform: rotate(360deg);
 //   }
 // }
+
+.required_fields {
+  font-size: 0.8em;
+  margin-top: 10px;
+  letter-spacing: var(--l-spacing);
+  color: var(--title-color);
+  text-align: end;
+}
 
 @media screen and (min-width: 1024px) and (max-width: 1365px) {
   .a_container {

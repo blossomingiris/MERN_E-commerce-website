@@ -1,12 +1,7 @@
 import styles from './Pagination.module.scss'
 import { Link } from 'react-router-dom'
 
-function Pagination({
-  onChangePage,
-  searchQuery,
-  pageNumber,
-  paginationLinks,
-}) {
+function Pagination({ searchQuery, paginationLinks }) {
   //path for url addresses
   const search = searchQuery ? `search/${searchQuery}/` : ''
   const url = `/products/${search}`

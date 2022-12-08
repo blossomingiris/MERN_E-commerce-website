@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { MdSearch } from 'react-icons/md'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import styles from './ProductListPage.module.scss'
 import ProductItem from '../../.././components/ProductItem/ProductItem'
 import axios from 'axios'
@@ -10,6 +10,14 @@ import Pagination from '../../../components/Pagination/Pagination'
 function ProductsListPage() {
   const [products, setProducts] = useState([])
   const [totalProducts, setTotalProducts] = useState(null)
+  const [productsInStock, setProductsInStock] = useState(null)
+  const [categoryQuery, setCategoryQuery] = useState([])
+  //sort products (default state for most seeling products)
+  const [sortOption, setSortOption] = useState('sales_-1')
+  const [attributes, setAttributes] = useState([])
+  const [filter, setFilter] = useState('')
+  const [price, setPrice] = useState(200)
+  const [checkedCheckbox, setCheckedCheckbox] = useState(false)
   const navigate = useNavigate()
 
   //pagination state
@@ -31,18 +39,11 @@ function ProductsListPage() {
     }
   }
 
-  //sort products (default state most seeling products)
-  const [sortOption, setSortOption] = useState('sales_-1')
-
-  //filter products
-
   //dynamic url handle different scenarios (search, sorting, pagination)
-
   const getProducts = async () => {
     const search = searchQuery ? `search/${searchQuery}` : ''
-    // const url = `/api/products/${search}?pageNum=${pageNumParam}&sort=${sortOption}`
-    // console.log(sortOption)
-    const url = `/api/products/${search}?pageNumber=${pageNumParam}&sort=${sortOption}`
+    const url = `/api/products/${search}?pageNumber=${pageNumParam}&${filter}&sort=${sortOption}`
+    console.log('main url', url)
     const { data } = await axios.get(url)
     return data
   }
@@ -54,19 +55,66 @@ function ProductsListPage() {
         setPaginationLinks(products.paginationLinksNumber)
         setPageNumber(products.pageNumber)
         setTotalProducts(products.totalProducts)
-        // console.log(products)
+        setProductsInStock(products.productsInStock)
       })
       .catch((err) => console.log(err))
-  }, [sortOption, pageNumParam, searchQuery])
+  }, [sortOption, pageNumParam, searchQuery, filter])
 
-  //initial state  or range input
-  const [filterRanger, setFilterRange] = useState(7)
-  const handleOnChange = (e) => setFilterRange(e.target.value)
+  //initial state for price range input
+
+  const handleOnChange = (e) => setPrice(e.target.value)
+
+  //filter query for products and replace ',' with characters @, ~
+  let filterURL = [
+    ['price', price],
+    ['category', [categoryQuery.join('~')]],
+    ['attrs', [attributes.join('@')]],
+  ]
+
+  //convert query for products in correct format:
+  //price=200&sort=price_-1&category=&attrs=notes-woody-fresh
+  let filterHandler = function (array) {
+    let result = array
+      .join('&')
+      .replace(/,/g, '=')
+      .replace(/~/g, ',')
+      .replace(/@/g, '-')
+    setFilter(result)
+  }
+
+  const categoryQueryHandler = (e) => {
+    let uncheckedCheckbox = categoryQuery.filter(
+      (item) => item !== e.target.value
+      // setCheckedCheckbox(false)
+    )
+    e.target.checked
+      ? setCategoryQuery([...categoryQuery, e.target.value])
+      : setCategoryQuery(uncheckedCheckbox)
+  }
+
+  const attributesHandler = (e) => {
+    let uncheckedCheckbox = attributes.filter((item) => item !== e.target.value)
+    e.target.checked
+      ? setAttributes(['notes', ...attributes, e.target.value])
+      : setAttributes(uncheckedCheckbox)
+  }
+
+  const removeFilterHandler = (e) => {
+    setAttributes([])
+    setCategoryQuery([])
+    setPrice(200)
+    setCheckedCheckbox(false)
+  }
+  // console.log(filterURL)
+  // console.log(dataProducts)
+  // console.log(categoryQuery.join('+'))
 
   return (
     <section className={styles.container}>
       <h4 className={styles.title}>Search: {totalProducts} Products</h4>
-      <h4 className={styles.desc}>Store / Search: {totalProducts} matches</h4>
+      <h4 className={styles.desc}>
+        <Link to='/products'>Store</Link> / Search: {totalProducts} matches
+      </h4>
       <div className={styles.sort_by}>
         <h4 className={styles.desc}>Sort by:</h4>
         <select
@@ -102,7 +150,7 @@ function ProductsListPage() {
                 </button>
               </form>
             </li>
-            <li>
+            {/* <li>
               {' '}
               <div className={styles.search_desc}>Availability</div>
               <div className={styles.checkbox_container}>
@@ -110,14 +158,14 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input}
                   id='checkbox'
+                  onClick={() => setInStock(true)}
                 />
                 <label for='checkbox'>
                   In Stock
                   <span className={styles.checkbox}></span>
                 </label>
-                <div>50</div>
               </div>
-            </li>
+            </li> */}
             <li>
               {' '}
               <div className={styles.search_desc}>Price </div>
@@ -127,11 +175,11 @@ function ProductsListPage() {
                   type='range'
                   min={7}
                   max={200}
-                  value={filterRanger}
+                  value={price}
                   className={styles.price_range_slider}
                   onChange={handleOnChange}
                 />
-                <div className='value'>€ {filterRanger}</div>
+                <div className='value'>€ {price}</div>
               </div>
             </li>
             <li>
@@ -141,6 +189,9 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-home'
+                  value='Home'
+                  onClick={categoryQueryHandler}
+                  // checked={checkedCheckbox}
                 />
                 <label for='checkbox-home'>
                   Home
@@ -152,6 +203,9 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-hands'
+                  value='Hands'
+                  onClick={categoryQueryHandler}
+                  // checked={checkedCheckbox}
                 />
                 <label for='checkbox-hands'>
                   Hands
@@ -163,6 +217,9 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-perfume'
+                  value='Perfume'
+                  onClick={categoryQueryHandler}
+                  // checked={checkedCheckbox}
                 />
                 <label for='checkbox-perfume'>
                   Perfume
@@ -174,6 +231,9 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-bath'
+                  value='Bath'
+                  onClick={categoryQueryHandler}
+                  // checked={checkedCheckbox}
                 />
                 <label for='checkbox-bath'>
                   Bath
@@ -188,6 +248,9 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-fruity'
+                  value='fruity'
+                  onClick={attributesHandler}
+                  // checked={checkedCheckbox}
                 />
                 <label for='checkbox-fruity'>
                   Fruity
@@ -199,6 +262,8 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-floral'
+                  value='floral'
+                  onClick={attributesHandler}
                 />
                 <label for='checkbox-floral'>
                   Floral
@@ -210,6 +275,8 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-fresh'
+                  value='fresh'
+                  onClick={attributesHandler}
                 />
                 <label for='checkbox-fresh'>
                   Fresh
@@ -221,6 +288,8 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-oriental'
+                  value='oriental'
+                  onClick={attributesHandler}
                 />
                 <label for='checkbox-oriental'>
                   Oriental
@@ -232,6 +301,8 @@ function ProductsListPage() {
                   type='checkbox'
                   className={styles.checkbox_input_category}
                   id='checkbox-woody'
+                  value='woody'
+                  onClick={attributesHandler}
                 />
                 <label for='checkbox-woody'>
                   Woody
@@ -243,8 +314,8 @@ function ProductsListPage() {
 
           <span>Sort By</span>
           <div className={styles.button_group}>
-            <button>Filter</button>
-            <button>Clear </button>
+            <button onClick={() => filterHandler(filterURL)}>Filter</button>
+            <button onClick={removeFilterHandler}>Clear </button>
           </div>
         </div>
         <div className={styles.filter_right}>

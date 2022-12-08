@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   height: calc(100vh - 350px);
-  margin: 100px 0;
+  margin: 100px 0 0 0;
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -69,5 +69,5 @@
 
 .icon {
   font-size: 2em;
-  color: #228b22;
+  color: #4aba4a;
 }

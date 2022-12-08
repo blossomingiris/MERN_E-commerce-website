@@ -12,7 +12,7 @@ function Category({ name, image }) {
   return (
     <div className={styles.category_container}>
       <div className={styles.category_image}>
-        <Link to='/products'>
+        <Link to={`/products/category/${name}`}>
           <img
             src={require(`../../.././assets/categories/${image}`)}
             alt={name}
@@ -20,10 +20,18 @@ function Category({ name, image }) {
           />
         </Link>
       </div>
-      <div className={styles.category_content} data-aos='zoom-in'>
-        <a className={styles.category_content_links} href='/products'>
+      <div
+        className={styles.category_content}
+        data-aos='zoom-in'
+        data-aos-duration='2000'
+      >
+        <Link
+          to={`/products/category/${name}`}
+          className={styles.category_content_links}
+          href='/products'
+        >
           {name}
-        </a>
+        </Link>
       </div>
     </div>
   )

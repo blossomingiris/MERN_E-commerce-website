@@ -1,5 +1,5 @@
 const express = require('express')
-const passport = require('passport')
+// const passport = require('passport')
 const router = express.Router()
 
 const { verifyIsAdmin } = require('../../middleware/verifyIsAdmin')
@@ -13,6 +13,7 @@ const {
   updateUserProfile,
   getUserProfile,
   getUsers,
+  deleteUser,
 } = require('../../../server/controllers/userController')
 
 //user register route
@@ -53,5 +54,6 @@ router.get('/profile/:id', getUserProfile)
 //admin routes
 router.use(verifyIsAdmin)
 router.get('/', getUsers)
+router.delete('/:id', deleteUser)
 
 module.exports = router

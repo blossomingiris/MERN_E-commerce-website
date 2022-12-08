@@ -16,7 +16,7 @@ function ProductDetailsPage() {
 
   const [quantity, setQuantity] = useState(1)
   const [product, setProduct] = useState([])
-  const [buttonDisabled, setButtonDisabled] = useState(false)
+  // const [showModal, setShowModal] = useState(false)
 
   const addToCartHandler = () => {
     dispatch(addToCart(id, quantity))
@@ -31,19 +31,34 @@ function ProductDetailsPage() {
   useEffect(() => {
     getProductDetails(id)
       .then((data) => {
-        setProduct({
-          name: data.name,
-          price: data.price.toFixed(2),
-          size: data.size,
-          desc: data.description,
-          image: data.images[1].path,
-          count: data.count,
-        })
+        // console.log(data.attrs[0].value)
+        if (data.attrs.length !== 0) {
+          setProduct({
+            name: data.name,
+            price: data.price.toFixed(2),
+            size: data.size,
+            desc: data.description,
+            image: data.images[1].path,
+            count: data.count,
+            notes: data.attrs[0].value.toString(),
+          })
+        } else {
+          setProduct({
+            name: data.name,
+            price: data.price.toFixed(2),
+            size: data.size,
+            desc: data.description,
+            image: data.images[1].path,
+            count: data.count,
+          })
+        }
       })
       .catch((err) => console.log(err))
   }, [id])
 
-  console.log(product)
+  // const modalHandler = () => {
+  //   setShowModal(!showModal)
+  // }
 
   return (
     <section className={styles.container}>
@@ -56,11 +71,16 @@ function ProductDetailsPage() {
                 src={require(`../../../assets/products/${product.image}`)}
                 alt={product.name}
               />
-              {/* <div className={styles.images_details_container}>
-		<img className={styles.image_details} src={image} alt='' />
-		<img className={styles.image_details} src={image} alt='' />
-	</div> */}
             </div>
+            {/* <div className={styles.modal}>
+              <span className={styles.close_modal}>&times;</span>
+              <img
+                className={styles.modal_content}
+                src={require(`../../../assets/products/${product.image}`)}
+                alt={product.name}
+              />
+              <div className={styles.caption}></div>
+            </div> */}
           </div>
           <div className={styles.container_right}>
             <div className={styles.info_container}>
@@ -83,7 +103,7 @@ function ProductDetailsPage() {
                     onChange={(e) => setQuantity(e.target.value)}
                   />
                 </div>
-                {product.count === 0 ? (
+                {product.count <= 0 ? (
                   <button
                     className={styles.button}
                     onClick={addToCartHandler}
@@ -99,7 +119,16 @@ function ProductDetailsPage() {
               </div>
 
               <div className={styles.desc_container}>
-                <h4 className={styles}>Product details</h4>
+                {product.notes ? (
+                  <div className={styles.subtitle_inner}>
+                    <h4>Fragrance Notes:</h4>
+                    <p className={styles.notes}>{product.notes}</p>
+                  </div>
+                ) : (
+                  ''
+                )}
+
+                <h4 className={styles.subtitle}>Product details:</h4>
                 <p>{product.desc}</p>
               </div>
               <div className={styles.desc_container}>

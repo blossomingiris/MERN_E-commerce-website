@@ -35,11 +35,14 @@ function UserOrderDetailsPage() {
   useEffect(() => {
     getOrder(id)
       .then((data) => {
+        console.log(data)
         setOrderDetails({
           paymentMethod: data.paymentMethod,
           cartSubtotal: data.orderTotal.cartSubtotal,
           oderNumber: data._id,
           paidAt: data.paidAt,
+          isDelivered: data.isDelivered,
+          deliveryDate: data.deliveredAt,
         })
       })
       .catch((err) => console.log(err))
@@ -100,8 +103,16 @@ function UserOrderDetailsPage() {
                 <b>Delivery Address:</b>
               </p>
               <p>
-                {userAddress.address}, {userAddress.city}, {userAddress.country}
-                , {userAddress.postcode}
+                {userAddress &&
+                userAddress.city &&
+                userAddress.country &&
+                userAddress.state &&
+                userAddress.postcode
+                  ? (userAddress.address,
+                    userAddress.city,
+                    userAddress.country,
+                    userAddress.postcode)
+                  : ''}
               </p>
             </li>
             <li>
@@ -112,8 +123,12 @@ function UserOrderDetailsPage() {
             </li>
           </ul>
           <div className={styles.message}>
-            <p>Status:</p>
-            <p>Not delivered</p>
+            <p>Delivery status:</p>
+            {orderDetails.isDelivered ? (
+              <p>Delivered at {orderDetails.deliveryDate.substring(0, 10)}</p>
+            ) : (
+              'Not delivered'
+            )}
           </div>
         </div>
       </div>

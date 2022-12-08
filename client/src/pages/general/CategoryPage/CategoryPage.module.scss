@@ -1,0 +1,41 @@
+.container {
+  padding: 100px;
+  margin-top: 100px;
+}
+
+.title {
+  margin-bottom: 20px;
+  letter-spacing: var(--l-spacing-lg);
+  text-transform: uppercase;
+  font-family: var(--title-font);
+}
+
+.store_link_container {
+  letter-spacing: var(--l-spacing);
+}
+
+.product_items_container {
+  width: 100%;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.quote_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.store_link_container {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -2,10 +2,22 @@ const User = require('../models/UserModel')
 const { hashedPassword, comparePasswords } = require('../utils/hashedPassword')
 const generateAuthToken = require('../utils/generateAuth')
 
+//get users for admin dashboard
 const getUsers = async (req, res, next) => {
   try {
     const users = await User.find({}).select('-password')
     return res.json(users)
+  } catch (err) {
+    next(err)
+  }
+}
+
+//delete user in admin dashboard
+const deleteUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id).orFail()
+    await user.remove()
+    res.send('user deleted')
   } catch (err) {
     next(err)
   }
@@ -179,6 +191,7 @@ const getUserProfile = async (req, res, next) => {
 
 module.exports = {
   getUsers,
+  deleteUser,
   registerUser,
   loginUser,
   // loginUserGoogleFail,

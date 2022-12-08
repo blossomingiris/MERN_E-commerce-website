@@ -1,5 +1,6 @@
 import styles from './Footer.module.scss'
 import heart from '../../assets/other/heart.png'
+import { Link } from 'react-router-dom'
 import { FaInstagram, FaTiktok, FaFacebook } from 'react-icons/fa'
 
 function Footer() {
@@ -8,19 +9,19 @@ function Footer() {
       <div className={styles.footer_wrapper}>
         <div className={styles.footer_links_container}>
           <ul className={styles.footer_links}>
-            <a href='#'>
+            <Link to='products'>
+              <li>All products</li>
+            </Link>
+            <Link to='about-us'>
               <li>About Us</li>
-            </a>
-            <a href='#'>
-              <li>Social Responsibility</li>
-            </a>
-            <a href='#'>
+            </Link>
+            <Link to='what-makes-us-different'>
               <li>Transparent Beauty</li>
-            </a>
+            </Link>
           </ul>
         </div>
         <div className={styles.footer_links_container}>
-          <div className= {styles.social_decs}>
+          <div className={styles.social_decs}>
             {' '}
             <p>Let's be friends</p>
             <img src={heart} alt='heart' />
@@ -54,7 +55,7 @@ function Footer() {
         <div className={styles.footer_newsletter}>
           <p className={styles.footer_newsletter_desc}>
             We send exclusive offers and information strictly to our email list.
-            Sign up so you don't miss out.
+            Join us so you don't miss out.
           </p>
           <form className={styles.newsletter_form}>
             <input

@@ -25,6 +25,12 @@ import AdminUsersPage from '../pages/admin/AdminUsersPage/AdminUsersPage'
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop'
 import SuccessPayment from '../pages/general/Payment/SuccessPayment'
 import ErrorPage from '../pages/general/ErrorPage/ErrorPage'
+import Links from '../components/UserLinks/UserLinks'
+import AdminOrdersPage from '../pages/admin/AdminOrdersPage/AdminOrdersPage'
+import AdminProductsPage from '../pages/admin/AdminProductsPage/AdminProductsPage'
+import AdminOrderDetails from '../pages/admin/AdminOrderDetailsPage/AdminOrderDetailsPage'
+import Category from '../components/Categories/Category/Category'
+import CategoryPage from '../pages/general/CategoryPage/CategoryPage'
 
 function App() {
   return (
@@ -33,6 +39,8 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/about-us' element={<AboutUsPage />} />
+        <Route path='/products/category/:name' element={<CategoryPage />} />
+        {/* <Route path='/products/category/:categoryName' element={<Category />} /> */}
         <Route path='/what-makes-us-different' element={<DifferencesPage />} />
         <Route path='/products' element={<ProductsListPage />} />
         <Route path='/products/:pageNumParam' element={<ProductsListPage />} />
@@ -68,6 +76,12 @@ function App() {
         {/* admin protected routes: */}
         <Route element={<ProtectedRoutes admin={true} />}>
           <Route path='/admin/users' element={<AdminUsersPage />} />
+          <Route path='/admin/orders' element={<AdminOrdersPage />} />
+          <Route path='/admin/products' element={<AdminProductsPage />} />
+          <Route
+            path='/admin/order-details/:id'
+            element={<AdminOrderDetails />}
+          />
         </Route>
       </Routes>
       <Footer />

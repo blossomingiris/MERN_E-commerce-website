@@ -51,7 +51,7 @@ const getProducts = async (req, res, next) => {
         if (item) {
           let a = item.split('-')
           let values = [...a]
-          values.shift() // removes first item
+          values.shift() // removes first item - notes
           let a1 = {
             attrs: { $elemMatch: { key: a[0], value: { $in: values } } },
           }
@@ -99,16 +99,30 @@ const getProducts = async (req, res, next) => {
       //create an object where key is first element from array, and value is second element of array
       //[sortOpt] is not array is it an object with dynamic key
       sort = { [sortOpt[0]]: Number(sortOpt[1]) }
-      console.log(sort)
     }
 
     //total number of products in db
     const totalProducts = await Product.countDocuments(query)
 
+    //products in stock
+    // const productsInStock = await Product.countDocuments(query, {
+    //   count: { $not: { $eq: 0 } },
+    // })
+
+    // const productsInStock = await Product.aggregate([
+    //   { $match: query },
+    //   { $group: { count: { $not: { $eq: 0 } } } },
+    // ])
+
+    //products in stock
+    const productsInStock = await Product.countDocuments({
+      count: { $not: { $eq: 0 } },
+    })
+
     //get products from db based on query parameters
     const products = await Product.find(query)
 
-      //pagination: in 1st pages display 8 first products from db, on the second page shows next 8 products from
+      //pagination: in 1st pages display 8 first products from db, on the second page shows next 8 products
       .skip(productsPerPage * (pageNumber - 1))
       .sort(sort)
 
@@ -119,6 +133,7 @@ const getProducts = async (req, res, next) => {
       products,
       pageNumber,
       totalProducts,
+      productsInStock,
       //represents how many pages (links) will be displaying in pagination
       paginationLinksNumber: Math.ceil(totalProducts / productsPerPage),
     })
@@ -131,7 +146,7 @@ const getProducts = async (req, res, next) => {
 
 const getProductById = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id).orFail()
+    const product = await Product.findById(req.params.id).sort('-1').orFail()
     res.json(product)
   } catch (err) {
     next(err)
@@ -148,4 +163,32 @@ const getBestsellers = async (req, res, next) => {
   }
 }
 
-module.exports = { getProducts, getProductById, getBestsellers }
+//get products for admin dashboard
+const getProductsForAdmin = async (req, res, next) => {
+  try {
+    const products = await Product.find().sort({ name: 'asc' }).orFail()
+    const totalProducts = await Product.countDocuments()
+    return res.json({ products, totalProducts })
+  } catch (err) {
+    next(err)
+  }
+}
+
+//delete user in admin dashboard
+const deleteProduct = async (req, res, next) => {
+  try {
+    const product = await Product.findById(req.params.id).orFail()
+    await product.remove()
+    res.send('product deleted')
+  } catch (err) {
+    next(err)
+  }
+}
+
+module.exports = {
+  getProducts,
+  getProductById,
+  getBestsellers,
+  getProductsForAdmin,
+  deleteProduct,
+}
