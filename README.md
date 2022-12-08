@@ -1,6 +1,6 @@
 # E-commerce-website (Fullstack) :shopping:
 
-<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '500' align = "right"/> 
+<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '500' align = "right"/></br>
 
 ### Title: "Demeter" 
 
@@ -35,8 +35,6 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 ### Demo:
 Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
-<img src="https://user-images.githubusercontent.com/102720711/206447030-20ed7a9a-6cad-4e2e-93be-145c674f6b62.png" width = '500' align = "right"/> 
-
 ### User usage: 
 To start shopping you need to create an user account.<br/>
 Note: To test paypal payment method you need to have your own developer account in paypal.
@@ -50,10 +48,7 @@ password: admin@admin.com
 
 ### Running application:
 Make sure you have own credentials in server/.env for:
-
-
 - MONGO_URI
-<img src="https://user-images.githubusercontent.com/102720711/206450354-44fafd37-d522-4f60-a01d-5de28dce693f.png" width = '500' align = "right"/> 
 - PORT
 - JWT_SECRET_KEY
 - STRIPE_SECRET_KEY
