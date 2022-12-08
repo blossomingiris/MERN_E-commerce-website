@@ -55,10 +55,10 @@ Make sure you have own credentials in server/.env for:
 - STRIPE_SECRET_KEY
 - NODE_ENV = 'development' 
 
+<img src="https://user-images.githubusercontent.com/102720711/206450354-44fafd37-d522-4f60-a01d-5de28dce693f.png" width = '400' align = "right"/> 
 1. Clone the repo or download it
 2. Open your terminal on client folder and run command "npm install"
 3. Open your terminal on client folder and run command "npm install"
-
 4. Having terminal open on server run command "npm run app"
 5. If you need return web site to initial conditions run command 'npm run seeder-data'
 
