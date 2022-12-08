@@ -33,7 +33,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 ## Usage: 
 
 ### Demo:
-Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
+Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)</br>
 
 <img src="https://user-images.githubusercontent.com/102720711/206447030-20ed7a9a-6cad-4e2e-93be-145c674f6b62.png" width = '500' align = "right"/> 
 
