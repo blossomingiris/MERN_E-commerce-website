@@ -31,11 +31,14 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 | JWT | peact-parallax |
 | | animation on scroll |
  
- 
+
+<img src="https://user-images.githubusercontent.com/102720711/206443989-1af4e0f4-900b-4aef-b17b-d450c13e33c6.png" width = '450' align = "right"/> 
+
 ## Usage: 
 
 ### Demo
 Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
+
 
 ### User usage: 
 To start shopping you need to create an user account.<br/>
