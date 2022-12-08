@@ -19,9 +19,9 @@ Includes:
 ### Technologies: 
 
 Backend: 
- - Node.js
- - Express.js
- - MongoDB 
+ - node.js
+ - express.js
+ - mongoDB 
  - JWT
  - bcryptjs
  - stripe
@@ -46,4 +46,4 @@ Frontend:
 3. Open your terminal on client folder and run command "npm install"
 4. Having terminal open on server run command "npm run app"
 
-###Note: not mobile responsive
+### Note: not responsive
