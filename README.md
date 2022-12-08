@@ -6,7 +6,7 @@
 ### Description
 E-commerce website for perfumery brand </br>
 
-Includes: 
+### Features:
 - full featured shopping cart
 - user sign up and login system
 - search and sort products functionality
@@ -18,7 +18,12 @@ Includes:
 
 ### Technologies: 
 
-#### Backend: 
+|Backend | Frontend |
+| --- | --- |
+| node.js | react.js |
+| express.js | redux |
+
+####  
  - node.js
  - express.js
  - mongoDB 
