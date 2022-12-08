@@ -3,7 +3,7 @@
 ### Title
 "Demeter" 
 
-### Description: 
+### Description
 E-commerce website for perfumery brand </br>
 
 Includes: 
