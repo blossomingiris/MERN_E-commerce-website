@@ -4,7 +4,7 @@
 "Demeter" 
 
 ### Description
-E-commerce website for perfumery brand </br>
+Modern e-commerce website for perfumery brand with full functionality, easy navigation and user-friendly interface, attractive and unique design </br>
 
 ### Features:
 - full featured shopping cart
