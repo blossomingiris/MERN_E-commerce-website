@@ -29,6 +29,8 @@ E-commerce website for perfumery brand </br>
 | JWT | peact-parallax |
 | | animation on scroll |
  
+ 
+## Usage: 
 
 ### Watch live-demo is [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
@@ -40,6 +42,8 @@ Note: To test paypal payment method you need to have your own developer account 
 To have access to admin dashboard login as admin with forfard credentials:
 login: admin@admin.com 
 password: admin@admin.com 
+
+## Development
 
 ### Running application:
 - make sure you have own credentials in server/.env for MONGO_URI, PORT, JWT_SECRET_KEY, STRIPE_SECRET_KEY 
