@@ -33,7 +33,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 ## Usage: 
 
 ### Demo:
-Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)</br>
+Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
 <img src="https://user-images.githubusercontent.com/102720711/206447030-20ed7a9a-6cad-4e2e-93be-145c674f6b62.png" width = '500' align = "right"/> 
 
@@ -50,9 +50,11 @@ password: admin@admin.com
 
 ### Running application:
 Make sure you have own credentials in server/.env for:
-<img src="https://user-images.githubusercontent.com/102720711/206450354-44fafd37-d522-4f60-a01d-5de28dce693f.png" width = '500' align = "right"/> 
+
 
 - MONGO_URI
+<img src="https://user-images.githubusercontent.com/102720711/206450354-44fafd37-d522-4f60-a01d-5de28dce693f.png" width = '500' align = "right"/> 
+
 - PORT
 - JWT_SECRET_KEY
 - STRIPE_SECRET_KEY
