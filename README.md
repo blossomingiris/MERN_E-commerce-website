@@ -16,7 +16,7 @@ E-commerce website for perfumery brand </br>
 - user profile
 - admin dashboard <br />
 
-### Technologies: 
+## Technologies: 
 
 |Backend | Frontend |
 | --- | --- |
@@ -28,9 +28,10 @@ E-commerce website for perfumery brand </br>
 | cookie-session | sass|
 | JWT | peact-parallax |
 | | animation on scroll |
-
- ### Watch live-demo is [here](https://www.youtube.com/watch?v=b24oov0fmkw)
  
+
+### Watch live-demo is [here](https://www.youtube.com/watch?v=b24oov0fmkw)
+
 ### User usage: 
 To start shopping you need to create an user account.<br/>
 Note: To test paypal payment method you need to have your own developer account in paypal.
