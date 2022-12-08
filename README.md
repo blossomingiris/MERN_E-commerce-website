@@ -40,7 +40,7 @@ To start shopping you need to create an user account.<br/>
 Note: To test paypal payment method you need to have your own developer account in paypal.
 
 ### Admin usage: 
-To have access to admin dashboard login as admin with forfard credentials:
+To have access to admin dashboard login as admin with forfard credentials:<br/>
 login: admin@admin.com 
 password: admin@admin.com 
 
