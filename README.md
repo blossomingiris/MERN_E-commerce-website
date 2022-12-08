@@ -2,10 +2,10 @@
 
 <img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '500' align = "right"/> 
 
-### Title
+### Title:
 "Demeter" 
 
-### Description
+### Description:
 Modern e-commerce website for perfumery brand with full functionality, easy navigation and user-friendly interface, attractive and unique design </br>
 
 ### Features:
@@ -33,7 +33,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
  
 ## Usage: 
 
-### Demo
+### Demo:
 Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
 ### User usage: 
@@ -45,7 +45,7 @@ To have access to admin dashboard login as admin with forfard credentials:<br/>
 login: admin@admin.com 
 password: admin@admin.com 
 
-## Development
+## Development:
 
 ### Running application:
 Make sure you have own credentials in server/.env for:
