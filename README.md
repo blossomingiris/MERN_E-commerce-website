@@ -57,5 +57,6 @@ Make sure you have own credentials in server/.env for:
 2. Open your terminal on client folder and run command "npm install"
 3. Open your terminal on client folder and run command "npm install"
 4. Having terminal open on server run command "npm run app"
+5. If you need return web site to initial conditions run command 'npm run seeder-data'
 
 ### Note: not responsive
