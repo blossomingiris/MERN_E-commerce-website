@@ -35,7 +35,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 
 
 ## Usage: 
-<img src="https://user-images.githubusercontent.com/102720711/206443989-1af4e0f4-900b-4aef-b17b-d450c13e33c6.png" width = '500' align = "right"/> 
+<img src="https://user-images.githubusercontent.com/102720711/206445441-ce34a694-d992-4cbc-a54e-8e17def6913e.png" width = '500' align = "right"/>
 
 ### Demo
 Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
@@ -49,6 +49,7 @@ To have access to admin dashboard login as admin with forfard credentials:<br/>
 login: admin@admin.com 
 password: admin@admin.com 
 
+<img src="https://user-images.githubusercontent.com/102720711/206443989-1af4e0f4-900b-4aef-b17b-d450c13e33c6.png" width = '500' align = "right"/> 
 ## Development
 
 ### Running application:
@@ -59,11 +60,10 @@ Make sure you have own credentials in server/.env for:
 - STRIPE_SECRET_KEY
 - NODE_ENV = 'development' 
 
-<img src="https://user-images.githubusercontent.com/102720711/206445059-06aa381e-741d-403a-90b9-20fc630fd3ec.png" width = '500' align = "right"/>
-
 1. Clone the repo or download it
 2. Open your terminal on client folder and run command "npm install"
 3. Open your terminal on client folder and run command "npm install"
+
 4. Having terminal open on server run command "npm run app"
 5. If you need return web site to initial conditions run command 'npm run seeder-data'
 
