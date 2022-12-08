@@ -1,12 +1,11 @@
 # E-commerce-website (Fullstack) :shopping:
 
-<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '450' align = "right"/> 
-
 ### Title
 "Demeter" 
 
 ### Description
 Modern e-commerce website for perfumery brand with full functionality, easy navigation and user-friendly interface, attractive and unique design </br>
+<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '450' align = "right"/> 
 
 ### Features:
 - full featured shopping cart
