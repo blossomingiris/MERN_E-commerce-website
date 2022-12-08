@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import styles from './CategoryPage.module.scss'
 import { quotes } from '../../../data/data'
+import { getRandomQuote } from '../../../utils/randomQuote'
 import axios from 'axios'
 import ProductItem from '../../../components/ProductItem/ProductItem'
 
@@ -28,12 +29,6 @@ function CategoryPage() {
   }, [])
 
   //get random quote
-  function getRandomQuote(obj) {
-    const keys = Object.keys(obj)
-    const randomIndex = Math.floor(Math.random() * keys.length)
-    const randomObject = obj[randomIndex]
-    return randomObject
-  }
 
   return (
     <section className={styles.container}>

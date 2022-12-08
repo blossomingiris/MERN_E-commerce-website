@@ -120,32 +120,6 @@ const loginUser = async (req, res, next) => {
   }
 }
 
-// const loginUserGoogleSuccess = (req, res, next) => {
-//   try {
-//     if (req.user) {
-//       res.status(200).json({
-//         success: true,
-//         message: 'login success',
-//         user: req.user,
-//         //   cookies: req.cookies
-//       })
-//     }
-//   } catch (err) {
-//     next(err)
-//   }
-// }
-
-// const loginUserGoogleFail = (req, res, next) => {
-//   try {
-//     res.status(401).json({
-//       success: false,
-//       message: 'fail to logged in',
-//     })
-//   } catch (err) {
-//     next(err)
-//   }
-// }
-
 //updated user profile with additional information
 
 const updateUserProfile = async (req, res, next) => {

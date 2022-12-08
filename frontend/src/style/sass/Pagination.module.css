@@ -1,1 +1,0 @@
-.pagination{display:flex;justify-content:center;margin-bottom:30px;width:150px;height:30px}.page_link{width:30px;height:100%;color:var(--text-color);cursor:pointer;display:flex;justify-content:center;align-self:center;transition:.3s;margin-left:5px}.page_link:focus,.page_link:hover{background-color:var(--border-color);border-radius:3px}
