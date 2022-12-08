@@ -18,7 +18,7 @@ Includes:
 
 ### Technologies: 
 
-Backend: 
+#### Backend: 
  - node.js
  - express.js
  - mongoDB 
@@ -26,7 +26,7 @@ Backend:
  - bcryptjs
  - stripe
  
-Frontend: 
+#### Frontend: 
  - react.js
  - redux
  - sass
