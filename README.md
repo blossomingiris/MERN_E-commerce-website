@@ -51,11 +51,11 @@ password: admin@admin.com
 Make sure you have own credentials in server/.env for:
 - MONGO_URI, 
 - PORT
+<img src="https://user-images.githubusercontent.com/102720711/206450354-44fafd37-d522-4f60-a01d-5de28dce693f.png" width = '500' align = "right"/> 
 - JWT_SECRET_KEY
 - STRIPE_SECRET_KEY
 - NODE_ENV = 'development' 
 
-<img src="https://user-images.githubusercontent.com/102720711/206450354-44fafd37-d522-4f60-a01d-5de28dce693f.png" width = '400' align = "right"/> 
 1. Clone the repo or download it
 2. Open your terminal on client folder and run command "npm install"
 3. Open your terminal on client folder and run command "npm install"
