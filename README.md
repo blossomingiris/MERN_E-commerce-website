@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" align = "right"/> 
+
 # E-commerce-website (Fullstack) :shopping:
 
 ### Title
@@ -10,6 +12,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 - full featured shopping cart
 - user sign up and login system
 - search and sort products functionality
+
 - stock management
 - top carusel products
 - checkout process with credit card and paypal
@@ -60,4 +63,4 @@ Make sure you have own credentials in server/.env for:
 4. Having terminal open on server run command "npm run app"
 5. If you need return web site to initial conditions run command 'npm run seeder-data'
 
-### Note: not responsive
+## Note: not responsive
