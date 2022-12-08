@@ -51,7 +51,8 @@ Make sure you have own credentials in server/.env for:
 - MONGO_URI, 
 - PORT
 - JWT_SECRET_KEY
-- STRIPE_SECRET_KEY 
+- STRIPE_SECRET_KEY
+- NODE_ENV = 'development' 
 
 1. Clone the repo or download it
 2. Open your terminal on client folder and run command "npm install"
