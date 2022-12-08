@@ -32,7 +32,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 ## Usage: 
 
 ### Demo:
-Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
+Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
 ### User usage: 
 To start shopping you need to create an user account.<br/>
