@@ -22,24 +22,12 @@ E-commerce website for perfumery brand </br>
 | --- | --- |
 | node.js | react.js |
 | express.js | redux |
-
-####  
- - node.js
- - express.js
- - mongoDB 
- - JWT
- - bcryptjs
- - stripe
- 
-#### Frontend: 
- - react.js
- - redux
- - sass
- - axios
- - react-stripe-js
- - paypal-js
- - peact-parallax
- - aos (animation on scroll)
+| mongoDB | react-dom |
+| stripe |  react-stripe-js |
+| bcryptjs | paypal-js |
+| cookie-session | sass|
+| JWT | peact-parallax |
+| | animation on scroll |
 
  ### Watch live-demo is [here]()
  
