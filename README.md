@@ -37,6 +37,15 @@ Includes:
  - aos (animation on scroll)
 
  ### Watch live-demo is [here]()
+ 
+### User usage: 
+To start shopping you need to create an user account. 
+Note: To test paypal payment method you need to have your own developer account in paypal.
+
+### Admin usage: 
+To have access to admin dashboard login as admin with forfard credentials:
+login: admin@admin.com 
+password: admin@admin.com 
 
 ### Running application:
 - make sure you have own credentials in server/.env for MONGO_URI, PORT, JWT_SECRET_KEY, STRIPE_SECRET_KEY 
