@@ -2,7 +2,7 @@
 
 ### Title
 "Demeter" 
-<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '450' align = "right"/> 
+<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '500' align = "right"/> 
 
 ### Description
 Modern e-commerce website for perfumery brand with full functionality, easy navigation and user-friendly interface, attractive and unique design </br>
@@ -32,7 +32,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 | | animation on scroll |
  
 
-<img src="https://user-images.githubusercontent.com/102720711/206443989-1af4e0f4-900b-4aef-b17b-d450c13e33c6.png" width = '450' align = "right"/> 
+<img src="https://user-images.githubusercontent.com/102720711/206443989-1af4e0f4-900b-4aef-b17b-d450c13e33c6.png" width = '500' align = "right"/> 
 
 ## Usage: 
 
