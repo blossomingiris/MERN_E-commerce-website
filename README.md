@@ -51,7 +51,9 @@ password: admin@admin.com
 ### Running application:
 Make sure you have own credentials in server/.env for:
 - MONGO_URI
+
 <img src="https://user-images.githubusercontent.com/102720711/206450354-44fafd37-d522-4f60-a01d-5de28dce693f.png" width = '500' align = "right"/> 
+
 - PORT
 - JWT_SECRET_KEY
 - STRIPE_SECRET_KEY
