@@ -35,8 +35,8 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 
 
 ## Usage: 
-
 <img src="https://user-images.githubusercontent.com/102720711/206443989-1af4e0f4-900b-4aef-b17b-d450c13e33c6.png" width = '500' align = "right"/> 
+
 ### Demo
 Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
@@ -58,6 +58,8 @@ Make sure you have own credentials in server/.env for:
 - JWT_SECRET_KEY
 - STRIPE_SECRET_KEY
 - NODE_ENV = 'development' 
+
+<img src="https://user-images.githubusercontent.com/102720711/206445059-06aa381e-741d-403a-90b9-20fc630fd3ec.png" width = '500' align = "right"/>
 
 1. Clone the repo or download it
 2. Open your terminal on client folder and run command "npm install"
