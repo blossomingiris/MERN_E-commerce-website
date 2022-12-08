@@ -29,7 +29,7 @@ E-commerce website for perfumery brand </br>
 | JWT | peact-parallax |
 | | animation on scroll |
 
- ### Watch live-demo is [here]()
+ ### Watch live-demo is [here](https://www.youtube.com/watch?v=b24oov0fmkw)
  
 ### User usage: 
 To start shopping you need to create an user account.<br/>
