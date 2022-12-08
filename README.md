@@ -39,7 +39,7 @@ Includes:
  ### Watch live-demo is [here]()
  
 ### User usage: 
-To start shopping you need to create an user account. 
+To start shopping you need to create an user account.<br/>
 Note: To test paypal payment method you need to have your own developer account in paypal.
 
 ### Admin usage: 
