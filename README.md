@@ -1,4 +1,4 @@
-# Fullstack E-commerce-website
+# E-commerce-website (Fullstack)
 
 ### Title
 "Demeter" 
@@ -36,7 +36,7 @@ Includes:
  - peact-parallax
  - aos (animation on scroll)
 
- ### Live-demo is [here]()
+ ### Watch live-demo is [here]()
 
 ### Running application:
 - make sure you have own credentials in server/.env for MONGO_URI, PORT, JWT_SECRET_KEY, STRIPE_SECRET_KEY 
