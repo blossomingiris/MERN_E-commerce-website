@@ -1,6 +1,6 @@
-<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '500' align = "right"/> 
-
 # E-commerce-website (Fullstack) :shopping:
+
+<img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '500' align = "right"/> 
 
 ### Title
 "Demeter" 
