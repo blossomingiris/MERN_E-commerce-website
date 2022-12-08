@@ -35,9 +35,10 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 ### Demo:
 Watch live [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
+<img src="https://user-images.githubusercontent.com/102720711/206447030-20ed7a9a-6cad-4e2e-93be-145c674f6b62.png" width = '500' align = "right"/> 
+
 ### User usage: 
 To start shopping you need to create an user account.<br/>
-<img src="https://user-images.githubusercontent.com/102720711/206447030-20ed7a9a-6cad-4e2e-93be-145c674f6b62.png" width = '500' align = "right"/> 
 Note: To test paypal payment method you need to have your own developer account in paypal.
 
 ### Admin usage: 
