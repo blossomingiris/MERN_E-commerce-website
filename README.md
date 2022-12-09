@@ -1,6 +1,7 @@
 # E-commerce-website (Fullstack) :shopping:
 
 ### Title: "Demeter" 
+
 <img src="https://user-images.githubusercontent.com/102720711/206442450-d07c80b6-ea12-4ffe-986a-b4559b9a9d54.png" width = '500' align = "right"/>
 
 ### Description:
@@ -26,7 +27,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 | stripe |  react-stripe-js |
 | bcryptjs | paypal-js |
 | cookie-session | sass|
-| JWT | peact-parallax |
+| JWT | react-parallax |
 | | animation on scroll |
  
 ## Usage: 
