@@ -2,8 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { registerNewUserApiRequest } from './apiRequestRegisterNewUser'
 import { setReduxUserState } from '../../../redux/actions/userActions'
-import axios from 'axios'
+
 import InputForm from '../../.././components/Auth/InputForm'
 
 function SignUpPage() {
@@ -21,8 +22,6 @@ function SignUpPage() {
     success: '',
     error: '',
   })
-
-  console.log(responseStateRegisterUser.error)
 
   const navigate = useNavigate()
 
@@ -115,16 +114,6 @@ function SignUpPage() {
 
   //Api request to register new user
 
-  const registerNewUserApiRequest = async (name, lastName, email, password) => {
-    const { data } = await axios.post('/api/users/register', {
-      name,
-      lastName,
-      email,
-      password,
-    })
-    return data
-  }
-
   return (
     <div className='a_container'>
       <div className='a_form_wrapper'>
@@ -148,8 +137,8 @@ function SignUpPage() {
                 : 'a_user_alert_hidden'
             }
           >
-            An account with email address already exists. Please login using
-            this email address or reset the password.
+            There is already an account with this email address. Please log in
+            with this e-mail address or create a new account.
           </div>
           <div
             className={
@@ -159,7 +148,7 @@ function SignUpPage() {
                 : 'a_user_alert_hidden'
             }
           >
-            Your account was successfully created!
+            Your account has been successfully created!
           </div>
         </form>
         <div className='a_link'>

@@ -130,7 +130,7 @@ function UserCartDetailsPage() {
       clearUserCart()
     } else if (paymentMethod === 'Cash') {
       window.alert(
-        'Your order was successfully created. You will be pay on delivery.'
+        'Your order has been successfully created. You will be paid on delivery.'
       )
       window.location.href = '/checkout-success'
       clearUserCart()
@@ -226,11 +226,11 @@ function UserCartDetailsPage() {
       <div className={styles.message}>
         {orderButtonMessage === 'button disabled' ? (
           <p>
-            Before create your order please provide your{' '}
+            Before you create your order, please fill in your&nbsp;
             <Link to='/user' className={styles.link}>
               profile page
             </Link>{' '}
-            with additional information (delivery address, phone number, etc.)'
+            with additional information (delivery address, phone number, etc.)
           </p>
         ) : (
           ''

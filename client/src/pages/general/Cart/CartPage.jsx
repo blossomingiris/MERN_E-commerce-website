@@ -7,7 +7,7 @@ import {
   addToCart,
   removeItemFromCart,
 } from '../../../redux/actions/cartActions'
-import axios from 'axios'
+import { createOrder } from './apiRequestCreateOrder'
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems)
@@ -23,17 +23,11 @@ function CartPage() {
     reduxDispatch(addToCart(productID, count))
   }
 
-  //create order
-  const createOrder = async (orderData) => {
-    const { data } = await axios.post('/api/orders/create', { ...orderData })
-    return data
-  }
-
+  //create an order
   const orderHandler = () => {
     if (Object.keys(userInfo).length === 0) {
-      console.log('hi')
       window.alert(
-        'To be available to create an order please log in or create a new account'
+        'To be available to create an order please log in or create a new account.'
       )
       document.location.href = '/signup'
     } else {
@@ -70,7 +64,11 @@ function CartPage() {
 
   // remove products from cart
   const removeProductFromCartHandler = (productID, quantity, price) => {
-    if (window.confirm('Are you sure you want to remove product from cart?'))
+    if (
+      window.confirm(
+        'Are you sure you want to remove this product from the shopping cart?'
+      )
+    )
       reduxDispatch(removeItemFromCart(productID, quantity, price))
   }
 
@@ -133,7 +131,7 @@ function CartPage() {
             <li className={styles.price_container}>
               <p>Total amount:</p> <span>€{cartSubtotal.toFixed(2)}</span>
             </li>
-            <li>(Delivery cost will be calculate in the next step)</li>
+            <li>(The delivery costs are calculated in the next step)</li>
             <li>
               <button
                 className={styles.checkout_button}

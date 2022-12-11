@@ -20,7 +20,9 @@ function ProductDetailsPage() {
 
   const addToCartHandler = () => {
     dispatch(addToCart(id, quantity))
-    window.alert('Product was added successfully! Please check your cart.')
+    window.alert(
+      'The product was added successfully! Please check your shopping cart.'
+    )
   }
 
   const getProductDetails = async (id) => {

@@ -172,7 +172,7 @@ function UserProfilePage() {
           JSON.stringify({ ...data.userUpdated })
         )
 
-        window.location.href = '/cart'
+        window.history.back()
       })
       .catch((err) =>
         setUpdateUserMsgResponse({

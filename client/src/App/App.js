@@ -40,7 +40,6 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/about-us' element={<AboutUsPage />} />
         <Route path='/products/category/:name' element={<CategoryPage />} />
-        {/* <Route path='/products/category/:categoryName' element={<Category />} /> */}
         <Route path='/what-makes-us-different' element={<DifferencesPage />} />
         <Route path='/products' element={<ProductsListPage />} />
         <Route path='/products/:pageNumParam' element={<ProductsListPage />} />
