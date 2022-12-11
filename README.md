@@ -38,13 +38,19 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
 ### User usage: 
-To start shopping you need to create an user account.<br/>
-Note: To test paypal payment method you need to have your own developer account in paypal.
+- you can start adding products to the shopping cart, but to place an order you need to create an account 
+- after you have created an account, you will have access to the pages: User Profile, User Orders and Order Details
+- for checkout, you need to update the profile page with additional delivery information
+- to test the Paypal payment method, you need a separate developer account with Paypal
+- to test the credit card payment method: you can fill in the fields with any information except the card number field, you need to enter the number used for developers: 4242 4242 4242 4242
 
 ### Admin usage: 
-To have access to admin dashboard login as admin with forfard credentials:<br/>
+- to access the admin dashboard, log in as admin with your login details:<br/>
 login: admin@admin.com 
 password: admin@admin.com 
+- you have access to the pages: User List, Products, Orders and Order Details
+- you can remove the user from the user page
+- on the order details page you can update the delivery status of the order, which is automatically displayed on the user's order details page
 
 ## Development:
 
