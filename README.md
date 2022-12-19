@@ -49,7 +49,7 @@ login: admin@admin.com
 password: admin@admin.com 
 - you have access to the pages: user list, products, orders and order details
 - you can remove the user from the user page
-- on the order details page you can update the delivery status of the order, which is automatically displayed on the user's order details page
+- on the order details page, you can update the delivery status of the order, which is automatically displayed on the user's order details page
 
 ## Development:
 
