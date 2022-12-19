@@ -9,14 +9,14 @@
 Modern e-commerce website for perfumery brand with full functionality, easy navigation and user-friendly interface, attractive and exclusive design </br>
 
 ### Features:
-- full featured shopping cart
-- user sign up and login system
-- search and sort products functionality
-- stock management
-- top carusel products
-- checkout process with credit card and paypal
-- user profile
-- admin dashboard <br />
+:heavy_check_mark: full featured shopping cart
+:heavy_check_mark: user sign up and login system
+:heavy_check_mark: search and sort products functionality
+:heavy_check_mark: stock management
+:heavy_check_mark: top carusel products
+:heavy_check_mark: checkout process with credit card and paypal
+:heavy_check_mark: user profile
+:heavy_check_mark: admin dashboard <br />
 
 ## Technologies: 
 
