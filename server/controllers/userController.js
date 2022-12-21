@@ -12,6 +12,40 @@ const getUsers = async (req, res, next) => {
   }
 }
 
+//get single user
+const getUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id).select('-password').orFail()
+    return res.send(user)
+  } catch (err) {
+    next(err)
+  }
+}
+
+//update single user
+const updateUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id).orFail()
+    user.name = req.body.name || user.name
+    user.lastName = req.body.lastName || user.lastName
+    user.email = req.body.email || user.email
+    user.isAdmin = req.body.isAdmin
+    await user.save()
+    res.json({
+      success: 'user updated',
+      userUpdated: {
+        _id: user._id,
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
+    })
+  } catch (err) {
+    next(err)
+  }
+}
+
 //delete user in admin dashboard
 const deleteUser = async (req, res, next) => {
   try {
@@ -134,9 +168,6 @@ const updateUserProfile = async (req, res, next) => {
     user.postcode = req.body.postcode
     user.city = req.body.city
     user.state = req.body.state
-    // if (req.body.password !== user.password) {
-    //   user.password = hashedPassword(req.body.password)
-    // }
     await user.save()
 
     res.json({
@@ -156,20 +187,22 @@ const updateUserProfile = async (req, res, next) => {
 
 const getUserProfile = async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id).orFail()
+    const user = await User.findById(req.params.id).select('-password').orFail()
     return res.send(user)
   } catch (err) {
     next(err)
   }
 }
 
+//get particular user for admin dashboard
+
 module.exports = {
   getUsers,
+  getUser,
+  updateUser,
   deleteUser,
   registerUser,
   loginUser,
-  // loginUserGoogleFail,
-  // loginUserGoogleSuccess,
   updateUserProfile,
   getUserProfile,
 }

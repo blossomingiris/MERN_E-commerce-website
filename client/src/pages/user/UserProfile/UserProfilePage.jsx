@@ -1,56 +1,49 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setReduxUserState } from '../../redux/actions/userActions'
-import InputForm from '../../components/Auth/InputForm'
-import axios from 'axios'
+import { setReduxUserState } from '../../../redux/actions/userActions'
+import InputForm from '../../../components/Auth/InputForm'
+import {
+  updateUserProfileRequest,
+  fetchUpdatedUserProfile,
+} from './apiRequestUpdateProfile'
 
 function UserProfilePage() {
-  const [values, setValues] = useState({
-    name: '',
-    lastName: '',
-    phoneNumber: '',
-    address: '',
-    postcode: '',
-    country: '',
-    city: '',
-    state: '',
-    // password: '',
-    // confirmPassword: '',
-  })
+  //store multiple user input
+  const inputRef = useRef({})
 
+  //db message handler
   const [updateUserMsgResponse, setUpdateUserMsgResponse] = useState({
     success: '',
     error: '',
   })
 
-  //update user profile data
-
+  //store updated user profile data
   const [updatedUserProfile, setUpdatedUserProfile] = useState({})
 
   //read user id from redux to fetch user profile data
   const userInfo = useSelector((state) => state.userRegisterLogin.userInfo)
 
   //update user profile page with fetched data
-
   useEffect(() => {
     fetchUpdatedUserProfile(userInfo._id)
       .then((data) => setUpdatedUserProfile(data))
       .catch((er) => console.log(er))
   }, [])
 
+
   const inputs = [
     {
       name: 'name',
       label: 'Name',
       type: 'text',
-      placeholder: userInfo.name,
+      defaultValue: userInfo.name,
     },
 
     {
       type: 'text',
       name: 'lastName',
       label: 'Last name',
-      placeholder: userInfo.lastName,
+      defaultValue: userInfo.lastName,
     },
 
     {
@@ -65,24 +58,21 @@ function UserProfilePage() {
       name: 'phoneNumber',
       type: 'text',
       label: 'phone',
-      // placeholder: 'Enter your phone number',
-      placeholder: updatedUserProfile.phoneNumber,
       required: true,
+      defaultValue: updatedUserProfile.phoneNumber,
     },
     {
       name: 'address',
       type: 'text',
       label: 'Address',
-      // placeholder: 'Enter your street name and house number',
-      placeholder: updatedUserProfile.address,
       required: true,
+      defaultValue: updatedUserProfile.address,
     },
     {
       name: 'country',
       type: 'text',
       label: 'country',
-      // placeholder: 'Enter your country',
-      placeholder: updatedUserProfile.country,
+      defaultValue: updatedUserProfile.country,
       required: true,
     },
 
@@ -90,8 +80,7 @@ function UserProfilePage() {
       name: 'postcode',
       type: 'text',
       label: 'postcode',
-      // placeholder: 'Enter your postcode',
-      placeholder: updatedUserProfile.postcode,
+      defaultValue: updatedUserProfile.postcode,
       required: true,
     },
 
@@ -99,8 +88,7 @@ function UserProfilePage() {
       name: 'city',
       type: 'text',
       label: 'city',
-      // placeholder: 'Enter your city',
-      placeholder: updatedUserProfile.city,
+      defaultValue: updatedUserProfile.city,
       required: true,
     },
 
@@ -108,28 +96,9 @@ function UserProfilePage() {
       name: 'state',
       type: 'text',
       label: 'state',
-      // placeholder: 'Enter your state',
-      placeholder: updatedUserProfile.state,
+      defaultValue: updatedUserProfile.state,
       required: true,
     },
-
-    // {
-    //   name: 'password',
-    //   type: 'password',
-    //   errorMessage:
-    //     'Password should be 6-20 characters and include at least 1 letter, 1 number and 1 special character',
-    //   label: 'Change password',
-    //   placeholder: 'Enter new password',
-    //   // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
-    // },
-    // {
-    //   name: 'confirmPassword',
-    //   type: 'password',
-    //   errorMessage: 'Both passwords should match',
-    //   label: 'Confirm new password',
-    //   pattern: values.password,
-    //   placeholder: 'Confirm new password',
-    // },
   ]
 
   const dispatch = useDispatch()
@@ -137,15 +106,14 @@ function UserProfilePage() {
   //submit update user profile
   const handleSubmit = (e) => {
     e.preventDefault()
-    const name = values.name
-    const lastName = values.lastName
-    const address = values.address
-    const postcode = values.postcode
-    const phoneNumber = values.phoneNumber
-    const country = values.country
-    const city = values.city
-    const state = values.state
-    // const password = values.password
+    const name = inputRef.current[0].value || userInfo.name
+    const lastName = inputRef.current[1].value || userInfo.lastName
+    const phoneNumber = inputRef.current[3].value
+    const address = inputRef.current[4].value
+    const country = inputRef.current[5].value
+    const postcode = inputRef.current[6].value
+    const city = inputRef.current[7].value
+    const state = inputRef.current[8].value
 
     updateUserProfileRequest(
       name,
@@ -156,7 +124,6 @@ function UserProfilePage() {
       postcode,
       city,
       state
-      // password
     )
       .then((data) => {
         setUpdateUserMsgResponse({ success: data.success, error: '' })
@@ -171,8 +138,11 @@ function UserProfilePage() {
           'userInfo',
           JSON.stringify({ ...data.userUpdated })
         )
-
-        window.history.back()
+        if (updatedUserProfile) {
+          window.location.href = '/user'
+        } else {
+          window.history.back()
+        }
       })
       .catch((err) =>
         setUpdateUserMsgResponse({
@@ -183,58 +153,24 @@ function UserProfilePage() {
       )
   }
 
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value })
-  }
-
-  //api request to update user profile with additional information information
-  const updateUserProfileRequest = async (
-    name,
-    lastName,
-    phoneNumber,
-    address,
-    country,
-    postcode,
-    city,
-    state
-    // password
-  ) => {
-    const { data } = await axios.put('api/users/profile', {
-      name,
-      lastName,
-      phoneNumber,
-      address,
-      country,
-      postcode,
-      city,
-      state,
-      // password,
-    })
-    return data
-  }
-
-  //fetch updated user profile information from db
-
-  const fetchUpdatedUserProfile = async (id) => {
-    const { data } = await axios.get('api/users/profile/' + id)
-    return data
-  }
-
   return (
     <div className='a_container'>
       <div className='a_form_wrapper'>
         <p className='a_form_title'>My Profile</p>
-        <form className='a_inputs_group_container' onSubmit={handleSubmit}>
+        <form className='a_inputs_group_container'>
           {inputs.map((input, idx) => (
             <InputForm
-              key={idx}
+              key={`${input}${idx}`}
               {...input}
-              value={values[input.name]}
-              handleChange={handleChange}
+              // value={values[input.name]}
+              refs={(el) => (inputRef.current[idx] = el)}
+              // handleChange={handleChange}
             />
           ))}
           <p className='required_fields'>(*)required fields</p>
-          <button className='a_submit_button'>Submit</button>
+          <button className='a_submit_button' onClick={handleSubmit}>
+            Submit
+          </button>
           {updateUserMsgResponse.success &&
           updateUserMsgResponse.success === 'user updated' ? (
             <div className='a_user_alert_success'>

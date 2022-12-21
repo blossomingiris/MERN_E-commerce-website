@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { BsCheck2, BsX } from 'react-icons/bs'
 import { FaRegEdit, FaBan } from 'react-icons/fa'
 import { logout } from '../../../redux/actions/userActions'
@@ -68,9 +69,9 @@ function AdminUsersPage() {
                 <td>{user.email}</td>
                 <td>{user.isAdmin ? <BsCheck2 /> : <BsX />}</td>
                 <td>
-                  <a href='#'>
+                  <Link to={`/admin/edit-user/${user._id}`}>
                     <FaRegEdit />
-                  </a>
+                  </Link>
                 </td>
                 <td onClick={() => deleteHandler(user._id)}>
                   <a href='#'>

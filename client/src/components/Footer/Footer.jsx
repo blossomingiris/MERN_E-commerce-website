@@ -1,5 +1,6 @@
 import styles from './Footer.module.scss'
 import heart from '../../assets/other/heart.png'
+import { scrollToTop } from '../../utils/scrollToTop'
 import { Link } from 'react-router-dom'
 import { FaInstagram, FaTiktok, FaFacebook } from 'react-icons/fa'
 
@@ -9,13 +10,13 @@ function Footer() {
       <div className={styles.footer_wrapper}>
         <div className={styles.footer_links_container}>
           <ul className={styles.footer_links}>
-            <Link to='products'>
+            <Link to='products' onClick={scrollToTop}>
               <li>All products</li>
             </Link>
-            <Link to='about-us'>
+            <Link to='about-us' onClick={scrollToTop}>
               <li>About Us</li>
             </Link>
-            <Link to='what-makes-us-different'>
+            <Link to='what-makes-us-different' onClick={scrollToTop}>
               <li>Transparent Beauty</li>
             </Link>
           </ul>

@@ -1,72 +1,3 @@
-// .input_form {
-//   width: 100%;
-//   height: 60px;
-//   position: relative;
-//   overflow: hidden;
-//   margin-bottom: 5px;
-// }
-// .input_form input {
-//   width: 100%;
-//   height: 100%;
-//   color: var(--text-color);
-//   padding-top: 40px;
-//   background-color: transparent;
-// }
-// .input_form label {
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   bottom: 0px;
-//   left: 0%;
-//   pointer-events: none;
-//   border-bottom: 1px solid var(--border-color);
-//   text-transform: uppercase;
-//   letter-spacing: var(--l-spacing);
-//   font-size: 0.7em;
-// }
-
-// .input_form label::after {
-//   content: '';
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   border-bottom: 1px solid var(--gold);
-//   bottom: -1px;
-//   left: 0px;
-//   transform: translateX(-100%);
-//   transition: all 0.5s ease;
-// }
-// .content_name {
-//   position: absolute;
-//   bottom: 10px;
-//   left: 0px;
-//   transition: all 0.5s ease;
-// }
-// .input_form input:focus + .label_name .content_name,
-// .input_form input:valid + .label_name .content_name {
-//   transform: translateY(-150%);
-//   font-size: 0.8em;
-//   text-transform: uppercase;
-//   letter-spacing: var(--l-spacing);
-//   color: var(--border-color);
-// }
-// .input_form input:focus + .label_name::after,
-// .input_form input:valid + .label_name::after {
-//   transform: translateX(0%);
-// }
-
-// .error_message {
-//   color: var(--rose);
-//   width: 100%;
-//   font-weight: 300;
-//   font-size: 0.85em;
-//   display: none;
-// }
-
-// .input_form input:invalid ~ span {
-//   display: block;
-// }
-
 .form_input {
   display: flex;
   flex-direction: column;
@@ -100,4 +31,18 @@ span {
 
 .form_input input:invalid[focused='true'] ~ span {
   display: block;
+}
+
+
+input::placeholder {
+  font-family: var(--base-font);
+  color: var(--text-color);
+  font-size: 0.75rem;
+}
+
+.form_input input[type='checkbox'] {
+  accent-color: var(--black);
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-top: 10px;
 }

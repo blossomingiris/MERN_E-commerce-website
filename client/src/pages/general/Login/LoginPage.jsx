@@ -2,13 +2,11 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setReduxUserState } from '../../../redux/actions/userActions'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-// import styles from './LoginPage.module.scss'
+import { userLoginApiRequest } from './apiRequestLogin'
 import InputForm from '../../../components/Auth/InputForm'
 
 function LoginPage() {
-  //input data for form
-
+  //input data for login form
   const inputs = [
     {
       name: 'email',
@@ -67,18 +65,6 @@ function LoginPage() {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
 
-  const userLoginApiRequest = async (email, password) => {
-    const { data } = await axios.post('/api/users/login', { email, password })
-    localStorage.setItem('userInfo', JSON.stringify(data.userLoggedIn))
-    return data
-  }
-
-  //login with google account
-
-  // const google = () => {
-  //   window.open('http://localhost:5000/api/users/google/callback', '_self')
-  // }
-
   return (
     <div className='a_container'>
       <div className='a_form_wrapper'>
@@ -94,12 +80,7 @@ function LoginPage() {
           ))}
           <p className='required_fields'>required fields(*)</p>
           <button className='a_submit_button'>Submit</button>
-          {/* <div className={styles.login_options}>OR</div> */}
           <div>
-            {/* <button className={styles.button_google_login} onClick={google}>
-              <FaGoogle className={styles.icon}></FaGoogle>
-              Login with Google
-            </button> */}
             <div
               className={
                 responseState ? 'a_user_alert_show' : 'a_user_alert_hidden'

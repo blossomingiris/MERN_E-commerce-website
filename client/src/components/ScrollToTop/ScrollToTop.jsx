@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './ScrollToTop.module.css'
+import { scrollToTop } from '../../utils/scrollToTop'
 import { IoIosArrowUp } from 'react-icons/io'
 
 const ScrollToTop = () => {
@@ -11,13 +12,6 @@ const ScrollToTop = () => {
     } else {
       setIsVisable(false)
     }
-  }
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
   }
 
   useEffect(() => {

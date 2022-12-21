@@ -14,7 +14,7 @@ import DifferencesPage from '../pages/general/Differences/DifferencesPage'
 import ProtectedRoutes from '../other/ProtectedRoutes'
 
 //user routes
-import UserProfilePage from '../pages/user/UserProfilePage'
+import UserProfilePage from '../pages/user/UserProfile/UserProfilePage'
 import UserOrdersPage from '../pages/user/OrdersPage/UserOrdersPage'
 import UserCartDetailsPage from '../pages/user/CartDetails/UserCartDetailsPage'
 import UserOrderDetailsPage from '../pages/user/OrderDetails/UserOrderDetailsPage'
@@ -25,12 +25,11 @@ import AdminUsersPage from '../pages/admin/AdminUsersPage/AdminUsersPage'
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop'
 import SuccessPayment from '../pages/general/Payment/SuccessPayment'
 import ErrorPage from '../pages/general/ErrorPage/ErrorPage'
-import Links from '../components/UserLinks/UserLinks'
 import AdminOrdersPage from '../pages/admin/AdminOrdersPage/AdminOrdersPage'
 import AdminProductsPage from '../pages/admin/AdminProductsPage/AdminProductsPage'
 import AdminOrderDetails from '../pages/admin/AdminOrderDetailsPage/AdminOrderDetailsPage'
-import Category from '../components/Categories/Category/Category'
 import CategoryPage from '../pages/general/CategoryPage/CategoryPage'
+import AdminEditUserPage from '../pages/admin/AdminEditUserPage/AdminEditUserPage'
 
 function App() {
   return (
@@ -81,6 +80,7 @@ function App() {
             path='/admin/order-details/:id'
             element={<AdminOrderDetails />}
           />
+          <Route path='/admin/edit-user/:id' element={<AdminEditUserPage />} />
         </Route>
       </Routes>
       <Footer />

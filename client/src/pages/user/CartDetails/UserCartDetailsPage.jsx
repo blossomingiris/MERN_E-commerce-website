@@ -192,7 +192,11 @@ function UserCartDetailsPage() {
 
   //remove product from cart
   const removeProductFromCartHandler = (productID, quantity, price) => {
-    if (window.confirm('Are you sure you want to remove product from cart?'))
+    if (
+      window.confirm(
+        'Are you sure you want to remove this product from the shopping cart?'
+      )
+    )
       reduxDispatch(removeItemFromCart(productID, quantity, price))
   }
 
