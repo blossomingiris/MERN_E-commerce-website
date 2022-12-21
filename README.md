@@ -38,7 +38,7 @@ Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
 ### User usage: 
 - you can start adding products to the shopping cart, but to place an order you need to create an account 
-- after you have created an account, you will have access to the pages: user profile, user orders and order details
+- after you have created an account, you will have access to the pages: profile, orders and order details
 - for checkout, you need to update your user profile page with additional delivery information
 - to test the Paypal payment method, you need to have a separate developer account with Paypal
 - to test the credit card payment method: you can fill in the fields with any information except the card number field, you need to enter the number used for developers: 4242 4242 4242 4242
@@ -47,7 +47,7 @@ Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 - to access the admin dashboard, log in as admin with your login details:<br/>
 login: admin@admin.com 
 password: admin@admin.com 
-- you have access to the pages: user list, products, orders and order details
+- you have access to the pages: user list, edit user profile, products, orders and order details
 - you can remove the user from the user page
 - you can edit user profile page: change first name, last name, email, also give or remove admin role
 - on the order details page, you can update the delivery status of the order with current date, which is automatically displayed on the user's order details page
