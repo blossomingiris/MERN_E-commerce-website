@@ -45,7 +45,7 @@ Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 
 ### Admin usage: 
 - to access the admin dashboard, log in as admin with your login details:<br/>
-login: admin@admin.com 
+login: admin@admin.com <br/>
 password: admin@admin.com 
 - you have access to the pages: user list, edit user profile, products, orders and order details
 - you can remove the user from the user page
