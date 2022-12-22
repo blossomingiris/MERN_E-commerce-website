@@ -16,17 +16,13 @@ function InputForm(props) {
     setFocused(true)
   }
 
-  // const handleChanges = (e) => {
-  //   // handleChange()
-  //   checkedCheckbox(e)
-  // }
-
   return (
     <div className={styles.form_input}>
       {' '}
       <label>{label}*</label>
       <input
-        onChange={(e) => checkedCheckbox(e)}
+        onChange={handleChange}
+        onInput={checkedCheckbox}
         onBlur={handleFocus}
         onFocus={() => props.name === 'confirmPassword' && setFocused(true)}
         focused={focused.toString()}

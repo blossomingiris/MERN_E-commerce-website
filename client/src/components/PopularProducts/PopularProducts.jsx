@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
 import styles from './PopularProducts.module.scss'
-import axios from 'axios'
-import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { getBestSellingProducts } from './apiRequestBestSellingProducts'
 import PopularProductItem from './PopularProductItem/PopularProductItem'
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect, useState } from 'react'
 
 function PopularProducts() {
   //product cards slider
@@ -28,12 +28,6 @@ function PopularProducts() {
       .then((data) => setPopularProducts(data))
       .catch((err) => console.log(err))
   }, [])
-
-  //fetch best selling products from db
-  const getBestSellingProducts = async () => {
-    const { data } = await axios.get('api/products/popular')
-    return data
-  }
 
   return (
     <section className={styles.popular_container}>

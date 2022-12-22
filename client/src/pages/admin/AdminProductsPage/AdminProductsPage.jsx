@@ -5,17 +5,12 @@ import { useDispatch } from 'react-redux'
 import styles from './AdminProducts.module.scss'
 import axios from 'axios'
 import AdminLinks from '../../../components/AdminLinks/AdminLinks'
+import { getListOfProducts } from './apiRequestGetListOfProducts'
 
 function AdminProductsPage() {
   const [products, setProducts] = useState([])
   const [productDeleted, setProductDeleted] = useState(false)
   const dispatch = useDispatch()
-
-  //fetch products from db
-  const getListOfProducts = async () => {
-    const { data } = await axios.get('/api/products/admin-dashboard')
-    return data
-  }
 
   const deleteProduct = async (productId) => {
     const { data } = await axios.delete(
@@ -23,13 +18,17 @@ function AdminProductsPage() {
     )
     setProductDeleted(!productDeleted)
     if (data === 'product deleted') {
-      alert('Product was deleted successfully!')
+      alert('Product has been successfully deleted')
     }
     return data
   }
 
   const deleteHandler = (productId) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
+    if (
+      window.confirm(
+        'Are you sure you want to remove this product from the shop?'
+      )
+    ) {
       deleteProduct(productId)
     }
   }

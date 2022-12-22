@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
 import styles from './PopularProductItem.module.scss'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { scrollToTop } from '../../../utils/scrollToTop'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect } from 'react'
 
 function PopularProductItem({ item }) {
   useEffect(() => {
@@ -22,7 +23,7 @@ function PopularProductItem({ item }) {
           {item.name} ({item.size}ml)
         </div>
         <div className={styles.price}>€ {item.price.toFixed(2)}</div>
-        <Link to={`/product-details/${item._id}`}>
+        <Link to={`/product-details/${item._id}`} onClick={scrollToTop}>
           <button className={styles.button}>Buy Now</button>{' '}
         </Link>
       </div>

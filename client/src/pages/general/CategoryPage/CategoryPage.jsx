@@ -1,10 +1,9 @@
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import styles from './CategoryPage.module.scss'
+import { useParams, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getCategoryProducts } from './apiRequestGetCategory'
 import { quotes } from '../../../data/data'
 import { getRandomQuote } from '../../../utils/randomQuote'
-import axios from 'axios'
 import ProductItem from '../../../components/ProductItem/ProductItem'
 
 function CategoryPage() {
@@ -12,14 +11,8 @@ function CategoryPage() {
   const [products, setProducts] = useState([])
   const [quote, setQuote] = useState([])
 
-  //get products from specific category
-  const getProducts = async () => {
-    const { data } = await axios.get(`/api/products/category/${name}`)
-    return data
-  }
-
   useEffect(() => {
-    getProducts()
+    getCategoryProducts(name)
       .then((products) => {
         setProducts(products.products)
         let randomQuote = getRandomQuote(quotes)
@@ -27,8 +20,6 @@ function CategoryPage() {
       })
       .catch((err) => console.log(err))
   }, [])
-
-  //get random quote
 
   return (
     <section className={styles.container}>

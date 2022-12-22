@@ -1,13 +1,14 @@
+import styles from './Navbar.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { MdSearch } from 'react-icons/md'
-import { RiShoppingBagLine } from 'react-icons/ri'
-import { FaRegUser } from 'react-icons/fa'
-import { MdOutlineAdminPanelSettings } from 'react-icons/md'
+import { useState } from 'react'
 import { useScrollPosition } from '../../hooks/useScrollPosition'
 import { logout } from '../../redux/actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
-import styles from './Navbar.module.scss'
+import { scrollToTop } from '../../utils/scrollToTop'
+import { FaRegUser } from 'react-icons/fa'
+import { MdSearch } from 'react-icons/md'
+import { RiShoppingBagLine } from 'react-icons/ri'
+import { MdOutlineAdminPanelSettings } from 'react-icons/md'
 
 function Navbar() {
   //query for search products
@@ -27,7 +28,6 @@ function Navbar() {
   const navigate = useNavigate()
 
   //submit search query
-
   const queryHandler = (e) => {
     if (e.keyCode && e.keyCode === 13) return
     e.preventDefault()
@@ -43,24 +43,30 @@ function Navbar() {
     <nav className={scrollPosition > 0 ? 'navbar_animated' : 'navbar'}>
       <div className={styles.navbar_wrapper}>
         <div className={styles.wrapper_left}>
-          <div className={styles.logo}>
+          <div className={styles.logo} onClick={scrollToTop}>
             <Link to='/'>
               <h2>Demeter</h2>
             </Link>
           </div>
         </div>
         <div className={styles.wrapper_center}>
-          <Link to='/products'>Store</Link>
-          <Link to='/what-makes-us-different'>Transparent Beauty</Link>
-          <Link to='/about-us'>About us</Link>
+          <Link to='/products' onClick={scrollToTop}>
+            Store
+          </Link>
+          <Link to='/what-makes-us-different' onClick={scrollToTop}>
+            Transparent Beauty
+          </Link>
+          <Link to='/about-us' onClick={scrollToTop}>
+            About us
+          </Link>
         </div>
         <div className={styles.wrapper_right}>
           {Object.keys(userInfo).length === 0 ? (
-            <Link to='/login'>
+            <Link to='/login' onClick={scrollToTop}>
               <FaRegUser className={styles.navbar_icon_user} />
             </Link>
           ) : userInfo.name && userInfo.isAdmin ? (
-            <Link to='/admin/users'>
+            <Link to='/admin/users' onClick={scrollToTop}>
               <MdOutlineAdminPanelSettings
                 className={styles.navbar_icon_admin}
               />
@@ -72,10 +78,14 @@ function Navbar() {
               </p>
               <ul className={styles.dropdown_menu}>
                 <li>
-                  <Link to='/user'>My Profile</Link>
+                  <Link to='/user' onClick={scrollToTop}>
+                    My Profile
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/user/my-orders'>My Orders</Link>
+                  <Link to='/user/my-orders' onClick={scrollToTop}>
+                    My Orders
+                  </Link>
                 </li>
                 <li
                   className={styles.logout}
@@ -86,7 +96,7 @@ function Navbar() {
               </ul>
             </div>
           )}
-          <Link to='/cart'>
+          <Link to='/cart' onClick={scrollToTop}>
             <div className={styles.navbar_icons_group}>
               <RiShoppingBagLine className={styles.navbar_icon_bag} />
               <p>({itemsCount === 0 ? '0' : itemsCount})</p>

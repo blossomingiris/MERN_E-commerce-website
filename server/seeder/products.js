@@ -43,7 +43,7 @@ const products = [
     size: 170,
     price: 6,
     sales: 3,
-    category: 'Home/Candles',
+    category: 'Home',
     images: [{ path: 'category.png' }, { path: 'candle_01.jpg' }],
   },
   {
@@ -54,7 +54,7 @@ const products = [
     size: 85,
     price: 100,
     sales: 1,
-    category: 'Home/Diffusers',
+    category: 'Home',
     attrs: [
       {
         key: 'notes',

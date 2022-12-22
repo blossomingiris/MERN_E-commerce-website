@@ -50,9 +50,11 @@ function AdminEditUserPage() {
     },
   ]
 
-  //toggle is Administrator checkbox
+  //toggle 'is admin' checkbox
   const checkedCheckbox = (e) => {
-    setHasAdminAccess((current) => !current)
+    if (e.target.type === 'checkbox') {
+      setHasAdminAccess((current) => !current)
+    }
   }
 
   //fetch user by id from db
