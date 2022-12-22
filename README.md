@@ -49,7 +49,8 @@ login: admin@admin.com <br/>
 password: admin@admin.com 
 - you have access to the pages: user list, edit user profile, products, orders and order details
 - you can remove the user from the user page
-- you can edit user profile page: change first name, last name, email, also give or remove admin role
+- you can remove product from products page
+- you can edit the user profile page: change first name, last name, e-mail, as well as assign or remove the administrator role
 - on the order details page, you can update the delivery status of the order with current date, which is automatically reflected on the user's order details page
 
 ## Development:
