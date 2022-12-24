@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
 import styles from './UserOrderDetailsPage.module.scss'
+import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import { getUser, getOrder } from './apiRequests'
 
 function UserOrderDetailsPage() {
   const userInfo = useSelector((state) => state.userRegisterLogin.userInfo)
@@ -10,15 +10,8 @@ function UserOrderDetailsPage() {
   const [orderDetails, setOrderDetails] = useState({})
   const { id } = useParams()
 
-  //fetch user profile data from db
-
-  const getUser = async () => {
-    const { data } = await axios.get('/api/users/profile/' + userInfo._id)
-    return data
-  }
-
   useEffect(() => {
-    getUser()
+    getUser(userInfo._id)
       .then((data) => {
         setUserAddress({
           address: data.address,
@@ -47,12 +40,6 @@ function UserOrderDetailsPage() {
       })
       .catch((err) => console.log(err))
   }, [])
-
-  //fetch order details data from db
-  const getOrder = async (orderId) => {
-    const { data } = await axios.get('/api/orders/user/' + orderId)
-    return data
-  }
 
   return (
     <section className={styles.container}>

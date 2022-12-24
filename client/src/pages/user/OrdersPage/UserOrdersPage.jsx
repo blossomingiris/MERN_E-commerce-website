@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
 import styles from './UserOrdersPage.module.scss'
-import { BsCheck2, BsX } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { getOrders } from './apiRequestGetOrders'
+import { BsCheck2, BsX } from 'react-icons/bs'
 
 const UserOrdersPage = () => {
   const [orders, setOrders] = useState([])
@@ -12,11 +12,6 @@ const UserOrdersPage = () => {
       .then((orders) => setOrders(orders))
       .catch((err) => console.log(err))
   }, [])
-
-  const getOrders = async () => {
-    const { data } = await axios.get('/api/orders')
-    return data
-  }
 
   return (
     <div className={styles.container}>

@@ -30,7 +30,6 @@ function UserProfilePage() {
       .catch((er) => console.log(er))
   }, [])
 
-
   const inputs = [
     {
       name: 'name',
@@ -162,12 +161,10 @@ function UserProfilePage() {
             <InputForm
               key={`${input}${idx}`}
               {...input}
-              // value={values[input.name]}
               refs={(el) => (inputRef.current[idx] = el)}
-              // handleChange={handleChange}
             />
           ))}
-          <p className='required_fields'>(*)required fields</p>
+          <p className='required_fields'>* required fields</p>
           <button className='a_submit_button' onClick={handleSubmit}>
             Submit
           </button>

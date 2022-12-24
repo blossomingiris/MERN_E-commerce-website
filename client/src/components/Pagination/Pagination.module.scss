@@ -6,7 +6,8 @@
   height: 30px;
 }
 
-.page_link {
+.page_link,
+.page_link_active {
   width: 30px;
   height: 100%;
   color: var(--text-color);
@@ -18,8 +19,13 @@
   margin-left: 5px;
 }
 
+.page_link_active {
+  background-color: var(--border-color);
+  border-radius: 5px;
+}
+
 .page_link:focus,
 .page_link:hover {
   background-color: var(--border-color);
-  border-radius: 3px;
+  border-radius: 5px;
 }

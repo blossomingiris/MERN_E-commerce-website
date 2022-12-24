@@ -1,4 +1,4 @@
-//middleware to check user/admin access
+//middleware to check if user/admin access
 
 const verifyIsAdmin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {

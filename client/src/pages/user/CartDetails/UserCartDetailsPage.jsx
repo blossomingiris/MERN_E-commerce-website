@@ -1,16 +1,16 @@
-import CartItem from '../../../components/CartItem/CartItem'
-import { loadScript } from '@paypal/paypal-js'
 import styles from './UserCartDetailsPage.module.scss'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { loadScript } from '@paypal/paypal-js'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   removeItemFromCart,
   addToCart,
   clearCart,
 } from '../../../redux/actions/cartActions'
-
-import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
+import CartItem from '../../../components/CartItem/CartItem'
+import { getUser, updateOrder, updatePaymentMethod } from './apiRequestUserCart'
 
 function UserCartDetailsPage() {
   const cartItems = useSelector((state) => state.cart.cartItems)
@@ -25,19 +25,13 @@ function UserCartDetailsPage() {
   const reduxDispatch = useDispatch()
   const { id } = useParams()
 
-  // get user profile data
-  const getUser = async () => {
-    const { data } = await axios.get('/api/users/profile/' + userInfo._id)
-    return data
-  }
-
-  //clear product cart after successful payment
+  //delete products from shopping cart after successful payment
   const clearUserCart = () => {
     reduxDispatch(clearCart())
   }
 
   useEffect(() => {
-    getUser()
+    getUser(userInfo._id)
       .then((data) => {
         if (
           !data.address &&
@@ -63,30 +57,13 @@ function UserCartDetailsPage() {
       .catch((err) => console.log(err))
   }, [])
 
-  //TODO: remove to separate file
   //pay pal handlers
-
   const onCancelHandler = function () {
     console.log('cancel')
   }
 
   const onErrorHandler = function (err) {
     console.log('error')
-  }
-
-  //update order with paid info in db
-  const updateOrder = async (orderID) => {
-    const { data } = await axios.put('/api/orders/paid/' + orderID)
-    return data
-  }
-
-  //update order with payment method info in db
-
-  const updatePaymentMethod = async (orderID) => {
-    const { data } = await axios.put('/api/orders/payment/' + orderID, {
-      paymentMethod: paymentMethod,
-    })
-    return data
   }
 
   const handleCheckout = () => {

@@ -3,7 +3,7 @@ const salt = bcrypt.genSaltSync(10)
 
 const hashedPassword = (password) => bcrypt.hashSync(password, salt)
 
-//compare passwords when user logging in
+//compare passwords when user log in
 const comparePasswords = (inputPassword, hashPassword) =>
   bcrypt.compareSync(inputPassword, hashPassword)
 

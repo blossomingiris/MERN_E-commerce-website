@@ -1,11 +1,11 @@
 import styles from './ProductDetailsPage.module.scss'
-import { AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai'
-import { FaPinterest } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../../../redux/actions/cartActions'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../../redux/actions/cartActions'
+import { getProductDetails } from './apiRequestGetProductDetails'
+import { FaPinterest } from 'react-icons/fa'
+import { AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai'
 
 function ProductDetailsPage() {
   //get product id from url endpoint
@@ -25,15 +25,9 @@ function ProductDetailsPage() {
     )
   }
 
-  const getProductDetails = async (id) => {
-    const { data } = await axios.get(`/api/products/get-one/${id}`)
-    return data
-  }
-
   useEffect(() => {
     getProductDetails(id)
       .then((data) => {
-        // console.log(data.attrs[0].value)
         if (data.attrs.length !== 0) {
           setProduct({
             name: data.name,

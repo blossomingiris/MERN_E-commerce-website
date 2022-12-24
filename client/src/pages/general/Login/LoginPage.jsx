@@ -78,7 +78,7 @@ function LoginPage() {
               handleChange={handleChange}
             />
           ))}
-          <p className='required_fields'>required fields(*)</p>
+          <p className='required_fields'>* required fields </p>
           <button className='a_submit_button'>Submit</button>
           <div>
             <div

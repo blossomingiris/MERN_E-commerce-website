@@ -104,7 +104,7 @@ function AdminEditUserPage() {
                 checkedCheckbox={checkedCheckbox}
               />
             ))}
-            <p className='required_fields'>required fields(*)</p>
+            <p className='required_fields'>* required fields</p>
             <button className='a_submit_button' onClick={handleSubmit}>
               Update
             </button>
