@@ -37,22 +37,23 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
 Deploy link [here]()
 
-### User usage: 
+### User usage:
 - you can start adding products to the shopping cart, but to place an order you need to create an account 
 - after you have created an account, you will have access to the pages: profile, orders and order details
 - for checkout, you need to update your user profile page with additional delivery information
 - to test the Paypal payment method, you need to have a separate developer account with Paypal
 - to test the credit card payment method: you can fill in the fields with any information except the card number field, you need to enter the number used for developers: 4242 4242 4242 4242
 
-### Admin usage: 
-- to access the admin dashboard, log in as admin with your login details:<br/>
+### Admin usage:
+As admin you can:
+- have access the admin dashboard, just log in as admin with your login details:<br/>
 login: admin@admin.com <br/>
 password: admin@admin.com 
-- you have access to the pages: user list, edit user profile, products, orders and order details
-- you can remove the user from the user page
-- you can remove product from products page
-- you can edit the user profile page: change first name, last name, e-mail, as well as assign or remove the administrator role
-- on the order details page, you can update the delivery status of the order with current date, which is automatically reflected on the user's order details page
+- have access to the pages: user list, edit user profile, products, orders and order details
+- remove the user from the user page
+- remove product from products page
+- edit the user profile page: change first name, last name, e-mail, as well as assign or remove the administrator role
+- update on the order details page delivery status of order with current date, which is automatically reflected on the user's order details page
 
 ## Development:
 
