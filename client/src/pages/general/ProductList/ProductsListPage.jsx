@@ -171,7 +171,7 @@ function ProductsListPage() {
                   value='Home'
                   onClick={categoryQueryHandler}
                 />
-                <label for='checkbox-home'>
+                <label htmlFor='checkbox-home'>
                   Home
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -184,7 +184,7 @@ function ProductsListPage() {
                   value='Hands'
                   onClick={categoryQueryHandler}
                 />
-                <label for='checkbox-hands'>
+                <label htmlFor='checkbox-hands'>
                   Hands
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -197,7 +197,7 @@ function ProductsListPage() {
                   value='Perfume'
                   onClick={categoryQueryHandler}
                 />
-                <label for='checkbox-perfume'>
+                <label htmlFor='checkbox-perfume'>
                   Perfume
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -210,7 +210,7 @@ function ProductsListPage() {
                   value='Bath'
                   onClick={categoryQueryHandler}
                 />
-                <label for='checkbox-bath'>
+                <label htmlFor='checkbox-bath'>
                   Bath
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -226,7 +226,7 @@ function ProductsListPage() {
                   value='fruity'
                   onClick={attributesHandler}
                 />
-                <label for='checkbox-fruity'>
+                <label htmlFor='checkbox-fruity'>
                   Fruity
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -239,7 +239,7 @@ function ProductsListPage() {
                   value='floral'
                   onClick={attributesHandler}
                 />
-                <label for='checkbox-floral'>
+                <label htmlFor='checkbox-floral'>
                   Floral
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -252,7 +252,7 @@ function ProductsListPage() {
                   value='fresh'
                   onClick={attributesHandler}
                 />
-                <label for='checkbox-fresh'>
+                <label htmlFor='checkbox-fresh'>
                   Fresh
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -265,7 +265,7 @@ function ProductsListPage() {
                   value='oriental'
                   onClick={attributesHandler}
                 />
-                <label for='checkbox-oriental'>
+                <label htmlFor='checkbox-oriental'>
                   Oriental
                   <span className={styles.checkbox_category}></span>
                 </label>
@@ -278,7 +278,7 @@ function ProductsListPage() {
                   value='woody'
                   onClick={attributesHandler}
                 />
-                <label for='checkbox-woody'>
+                <label htmlFor='checkbox-woody'>
                   Woody
                   <span className={styles.checkbox_category}></span>
                 </label>
