@@ -52,10 +52,6 @@ function ProductDetailsPage() {
       .catch((err) => console.log(err))
   }, [id])
 
-  // const modalHandler = () => {
-  //   setShowModal(!showModal)
-  // }
-
   return (
     <section className={styles.container}>
       {product.length !== 0 ? (
@@ -68,15 +64,6 @@ function ProductDetailsPage() {
                 alt={product.name}
               />
             </div>
-            {/* <div className={styles.modal}>
-              <span className={styles.close_modal}>&times;</span>
-              <img
-                className={styles.modal_content}
-                src={require(`../../../assets/products/${product.image}`)}
-                alt={product.name}
-              />
-              <div className={styles.caption}></div>
-            </div> */}
           </div>
           <div className={styles.container_right}>
             <div className={styles.info_container}>
