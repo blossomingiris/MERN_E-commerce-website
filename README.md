@@ -71,4 +71,5 @@ Make sure you have own credentials in server/.env for:
 5. If you need return web site to initial conditions run command 'npm run seeder-data'
 
 ### Not responsive
-### Note: I will continue to work on this project and from time to time refactor the code and add new features
+### Note: 
+I will continue to work on this project and from time to time refactor the code and add new features
