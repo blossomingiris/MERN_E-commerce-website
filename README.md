@@ -35,6 +35,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 
 ### Demo:
 Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
+Deploy link [here]()
 
 ### User usage: 
 - you can start adding products to the shopping cart, but to place an order you need to create an account 
@@ -69,4 +70,5 @@ Make sure you have own credentials in server/.env for:
 4. Having terminal open on server run command "npm run app"
 5. If you need return web site to initial conditions run command 'npm run seeder-data'
 
-### Note: not responsive
+### Not responsive
+### Note: I will continue to work on this project and from time to time refactor the code and add new features
