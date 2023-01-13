@@ -2,19 +2,16 @@ const express = require('express')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const cookieSession = require('cookie-session')
-// const cors = require('cors')
 const app = express()
 require('dotenv').config()
 
 const apiRoutes = require('./api/apiRoutes')
 
 //MongoDB connection
-
 const connectDB = require('./config/db')
 connectDB()
 
 //middleware to handle errors in console
-
 app.use((error, req, res, next) => {
   if (process.env.NODE_ENV === 'development') {
     console.error(error)
