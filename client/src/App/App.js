@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CartPage from '../pages/general/Cart/CartPage'
 import HomePage from '../pages/general/HomePage/HomePage'
 import LoginPage from '../pages/general/Login/LoginPage'
@@ -20,7 +20,6 @@ import UserCartDetailsPage from '../pages/user/CartDetails/UserCartDetailsPage'
 import UserOrderDetailsPage from '../pages/user/OrderDetails/UserOrderDetailsPage'
 
 //admin routes
-
 import AdminUsersPage from '../pages/admin/AdminUsersPage/AdminUsersPage'
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop'
 import SuccessPayment from '../pages/general/Payment/SuccessPayment'
