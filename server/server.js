@@ -8,10 +8,6 @@ require('dotenv').config()
 
 const apiRoutes = require('./api/apiRoutes')
 
-app.get('/', (req, res) => {
-  res.json({ message: 'API running..' })
-})
-
 //MongoDB connection
 
 const connectDB = require('./config/db')
@@ -36,6 +32,18 @@ app.use((error, req, res, next) => {
     })
   }
 })
+
+const path = require('path')
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')))
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.json({ message: 'API running...' })
+  })
+}
 
 //middleware to read json data
 app.use(express.json())

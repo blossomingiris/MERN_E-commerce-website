@@ -8,13 +8,12 @@ body {
   margin-bottom: 100px;
 }
 
-//Style for signup and login forms
+//style for sign up and login forms
 
 .a_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  // height: calc(100vh - 350px);
   padding: 10px;
   margin: 80px 0;
   margin-bottom: 50px;
@@ -77,7 +76,6 @@ body {
   color: var(--text-color);
 }
 
-//! remove to sign up css component
 .a_user_alert_hidden {
   display: none;
 }
@@ -138,15 +136,6 @@ body {
 .navbar_animated h2 {
   letter-spacing: 13px;
 }
-
-// @keyframes round {
-//   0% {
-//     transform: rotate(0deg);
-//   }
-//   100% {
-//     transform: rotate(360deg);
-//   }
-// }
 
 .required_fields {
   font-size: 0.8em;
