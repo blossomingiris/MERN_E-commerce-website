@@ -34,8 +34,8 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 ## Usage: 
 
 ### Demo:
-Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
-Deploy link [here](https://demeter-perfume.onrender.com/)
+- Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
+- Deployed project is [here](https://demeter-perfume.onrender.com/)
 
 ### User usage:
 - you can start adding products to the shopping cart, but to place an order you need to create an account 
