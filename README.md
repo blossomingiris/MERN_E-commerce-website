@@ -61,7 +61,7 @@ password: admin@admin.com
 Make sure you have own credentials in server/.env for:
 - MONGO_URI
 - PORT
-- JWT_SECRET_KEY
+- JWT_SECRET_KEY (random string)
 - STRIPE_SECRET_KEY
 - NODE_ENV = 'development' 
 
