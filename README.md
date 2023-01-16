@@ -74,5 +74,4 @@ To return data in website to initial condition on server terminal run command 'n
 
 ### Not responsive
 ### Note: 
-The project is alive </br>
-I continiue to work on it and from time to time refactor code base, improve perfomance and add new features
+The project is alive. I continiue to work on it and from time to time refactor code base, improve perfomance and add new features.
