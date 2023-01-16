@@ -50,7 +50,7 @@ As admin you can:
 login: admin@admin.com <br/>
 password: admin@admin.com 
 - have access to the pages: user list, edit user profile, products, orders and order details
-- remove the user from the user page
+- remove the user from user page
 - remove product from products page
 - edit the user profile page: change first name, last name, e-mail, as well as assign or remove the administrator role
 - update on the order details page delivery status of order with current date, which is automatically reflected on the user's order details page
