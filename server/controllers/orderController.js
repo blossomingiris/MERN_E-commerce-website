@@ -17,7 +17,7 @@ const getUserOrders = async (req, res, next) => {
 const getOrderDetails = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id)
-      .populate('user', '-password -isAdmin')
+      .populate('user', '-password', '-isAdmin')
       .orFail()
     res.send(order)
   } catch (err) {

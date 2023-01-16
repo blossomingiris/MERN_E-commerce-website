@@ -28,7 +28,6 @@ function UserOrderDetailsPage() {
   useEffect(() => {
     getOrder(id)
       .then((data) => {
-        console.log(data)
         setOrderDetails({
           paymentMethod: data.paymentMethod,
           cartSubtotal: data.orderTotal.cartSubtotal,

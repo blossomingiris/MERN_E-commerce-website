@@ -151,8 +151,6 @@ function UserProfilePage() {
       )
   }
 
-  console.log(updateUserMsgResponse)
-
   return (
     <div className='a_container'>
       <div className='a_form_wrapper'>
