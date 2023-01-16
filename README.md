@@ -41,8 +41,8 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 - you can start adding products to the shopping cart, but to place an order you need to create an account 
 - after you have created an account, you will have access to the pages: profile, orders and order details
 - for checkout, you need to update your user profile page with additional delivery information
-- to test the Paypal payment method, you need to have a separate developer account with Paypal
-- to test the credit card payment method: you can fill in the fields with any information except the card number field, you need to enter the number used for developers: 4242 4242 4242 4242
+- to test the Paypal payment method, you need to have youe own credentials in Paypal account for developers
+- to test the credit card payment method: in payment page you can provide any information except the card number, you need to enter the number used for developers: 4242 4242 4242 4242
 
 ### Admin usage:
 As admin you can:
