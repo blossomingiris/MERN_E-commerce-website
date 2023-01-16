@@ -34,8 +34,8 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 ## Usage: 
 
 ### Demo:
-Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
-Deploy link [here]()
+- Watch video [here](https://www.youtube.com/watch?v=b24oov0fmkw)
+- Deployed project is [here](https://demeter-perfume.onrender.com/)
 
 ### User usage:
 - you can start adding products to the shopping cart, but to place an order you need to create an account 
@@ -61,7 +61,7 @@ password: admin@admin.com
 Make sure you have own credentials in server/.env for:
 - MONGO_URI
 - PORT
-- JWT_SECRET_KEY
+- JWT_SECRET_KEY (random string)
 - STRIPE_SECRET_KEY
 - NODE_ENV = 'development' 
 
