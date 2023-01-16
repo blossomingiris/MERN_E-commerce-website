@@ -73,4 +73,4 @@ Make sure you have own credentials in server/.env for:
 
 ### Not responsive
 ### Note: 
-I will continue to work on this project and from time to time refactor the code and add new features
+The project is alive. I continiue to work on it and from time to time refactor code base and add new features.
