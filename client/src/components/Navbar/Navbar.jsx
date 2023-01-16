@@ -22,7 +22,7 @@ function Navbar() {
 
   //read user data from redux
   const { userInfo } = useSelector((state) => state.userRegisterLogin)
-
+  console.log(userInfo)
   //read products details data from redux
   const itemsCount = useSelector((state) => state.cart.itemsCount)
   const navigate = useNavigate()

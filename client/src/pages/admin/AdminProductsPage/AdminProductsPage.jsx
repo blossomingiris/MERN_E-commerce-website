@@ -12,9 +12,15 @@ function AdminProductsPage() {
   const [productDeleted, setProductDeleted] = useState(false)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    getListOfProducts()
+      .then((res) => setProducts(res))
+      .catch((error) => dispatch(logout))
+  }, [productDeleted])
+
   const deleteProduct = async (productId) => {
     const { data } = await axios.delete(
-      `/api/products/admin-dashboard/delete-one/${productId}`
+      `/api/products/admin/delete-one/${productId}`
     )
     setProductDeleted(!productDeleted)
     if (data === 'product deleted') {
@@ -32,12 +38,6 @@ function AdminProductsPage() {
       deleteProduct(productId)
     }
   }
-
-  useEffect(() => {
-    getListOfProducts()
-      .then((res) => setProducts(res))
-      .catch((error) => dispatch(logout))
-  }, [productDeleted])
 
   return (
     <section className={styles.container}>

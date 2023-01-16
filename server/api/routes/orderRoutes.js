@@ -20,9 +20,8 @@ router.get('/user/:id', getOrderDetails)
 router.post('/create', createOrder)
 router.put('/paid/:id', updateOrderPaymentStatus)
 router.put('/payment/:id', updatePaymentMethod)
-
-//admin order routes
-router.use(verifyIsAdmin)
 router.put('/delivered/:id', updateOrderToBeDelivered)
+
+router.use(verifyIsAdmin)
 router.get('/admin', getUsersOrdersForAdmin)
 module.exports = router

@@ -21,7 +21,7 @@ function AdminLinks() {
           <li>Orders</li>
         </Link>
         <a href='#'>
-          <li onClick={() => dispatch(logout())} className = {styles.logout_icon}>
+          <li onClick={() => dispatch(logout())} className={styles.logout_icon}>
             <IoMdExit />
           </li>
         </a>

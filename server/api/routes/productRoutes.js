@@ -9,6 +9,7 @@ const {
 } = require('../../../server/controllers/productController')
 
 const { verifyIsAdmin } = require('../../middleware/verifyIsAdmin')
+const { verifyIsLoggedIn } = require('../../middleware/verifyIsLoggedIn')
 
 //get products from specific category
 router.get('/category/:categoryName', getProducts)
@@ -28,11 +29,12 @@ router.get('/popular', getBestsellers)
 //get all products for products page
 router.get('/', getProducts)
 
-// router.use(verifyIsAdmin)
 //get all products for admin products dashboard
-router.get('/admin-dashboard', getProductsForAdmin)
+router.use(verifyIsLoggedIn)
+router.use(verifyIsAdmin)
+router.get('/admin', getProductsForAdmin)
 
 //delete single product from admin products dashboard
-router.delete('/admin-dashboard/delete-one/:id', deleteProduct)
+router.delete('/admin/delete-one/:id', deleteProduct)
 
 module.exports = router

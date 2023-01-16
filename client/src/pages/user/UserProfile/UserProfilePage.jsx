@@ -126,7 +126,6 @@ function UserProfilePage() {
     )
       .then((data) => {
         setUpdateUserMsgResponse({ success: data.success, error: '' })
-
         dispatch(
           setReduxUserState({
             ...data.userUpdated,
@@ -151,6 +150,8 @@ function UserProfilePage() {
         })
       )
   }
+
+  console.log(updateUserMsgResponse)
 
   return (
     <div className='a_container'>

@@ -58,11 +58,12 @@
   height: 42.5px;
   line-height: 30px;
   outline: 0;
-  border: 1px solid var(--black);
+  border: 1px solid var(--title-color);
   font-size: 0.8em;
-  padding: 0 20px;
+  padding: 0 10px;
   font-family: inherit;
   margin-top: 20px;
+  border-radius: 3px;
 }
 
 .search_input:focus {

@@ -30,6 +30,7 @@ const registerUser = async (req, res, next) => {
       res
         .cookie(
           'access_token',
+          //when user register create jwt
           generateAuthToken(
             user._id,
             user.name,
@@ -39,6 +40,7 @@ const registerUser = async (req, res, next) => {
           ),
           {
             httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
           }
         )
@@ -71,7 +73,6 @@ const loginUser = async (req, res, next) => {
     //compare passwords
     if (user && comparePasswords(password, user.password)) {
       let cookieParams = {
-        maxAge: 5000,
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
@@ -124,7 +125,6 @@ const updateUserProfile = async (req, res, next) => {
     user.city = req.body.city
     user.state = req.body.state
     await user.save()
-
     res.json({
       success: 'user updated',
       userUpdated: {

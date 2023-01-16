@@ -20,15 +20,15 @@ function AdminOrderDetailsPage() {
           oderId: data._id,
           paidAt: data.paidAt,
           isDelivered: data.isDelivered,
-          userName: data.user.name,
-          userLastName: data.user.lastName,
-          userEmail: data.user.email,
-          userAddress: data.user.address,
-          userCity: data.user.city,
-          userState: data.user.state,
-          userCountry: data.user.country,
-          userPostcode: data.user.postcode,
-          userPhoneNumber: data.user.phoneNumber,
+          userName: data.user?.name,
+          userLastName: data.user?.lastName,
+          userEmail: data.user?.email,
+          userAddress: data.user?.address,
+          userCity: data.user?.city,
+          userState: data.user?.state,
+          userCountry: data.user?.country,
+          userPostcode: data.user?.postcode,
+          userPhoneNumber: data.user?.phoneNumber,
           deliveredAt: data.deliveredAt,
         })
       })
@@ -50,7 +50,6 @@ function AdminOrderDetailsPage() {
   const updateHandler = () => {
     updateDeliveryStatus(id)
       .then((data) => {
-        console.log(data)
         if (data.isDelivered) {
           setOrderDelivered(true)
           setDeliveryDate(data.deliveredAt)

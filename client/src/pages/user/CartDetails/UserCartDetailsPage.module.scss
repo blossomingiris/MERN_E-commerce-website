@@ -159,11 +159,11 @@
 
 .message {
   text-align: center;
-  color: var(--rose);
+  color: var(--title-color);
   font-style: italic;
 
   a {
-    color: var(--rose);
+    color: var(--black);
     text-decoration: underline;
   }
   a:hover {

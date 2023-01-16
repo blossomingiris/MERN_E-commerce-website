@@ -3,7 +3,7 @@
 import axios from 'axios'
 
 export const getListOfProducts = async () => {
-  const { data } = await axios.get('/api/products/admin-dashboard')
+  const { data } = await axios.get('/api/products/admin')
   return data
 }
 

@@ -9,11 +9,6 @@ const paymentRoutes = require('./routes/paymentRoutes')
 
 const jwt = require('jsonwebtoken')
 
-//logout route, delete cookies when user/admin is logged out
-app.get('/logout', (req, res) => {
-  return res.clearCookie('access_token').send('access token was deleted')
-})
-
 //route to check token for login as user or admin
 app.get('/get-token', (req, res) => {
   try {
@@ -23,6 +18,11 @@ app.get('/get-token', (req, res) => {
   } catch (err) {
     return res.status(401).send('Unauthorized. Invalid token')
   }
+})
+
+//logout route, delete cookies when user/admin is logged out
+app.get('/logout', (req, res) => {
+  return res.clearCookie('access_token').send('access token was deleted')
 })
 
 app.use('/products', productRoutes)

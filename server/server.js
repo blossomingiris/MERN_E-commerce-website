@@ -1,5 +1,4 @@
 const express = require('express')
-const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const cookieSession = require('cookie-session')
 const app = express()
@@ -30,6 +29,7 @@ app.use((error, req, res, next) => {
   }
 })
 
+//production
 const path = require('path')
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')))
@@ -45,10 +45,10 @@ if (process.env.NODE_ENV === 'production') {
 //middleware to read json data
 app.use(express.json())
 
-//middleware to handle cookies
+//middleware to read cookies
 app.use(cookieParser())
 
-//for google auth
+//stores the session data on the client within a cookie
 app.use(
   cookieSession({
     name: 'session',
@@ -56,10 +56,6 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 )
-
-//middleware for google login functionality
-app.use(passport.initialize())
-app.use(passport.session())
 
 app.use('/api', apiRoutes)
 

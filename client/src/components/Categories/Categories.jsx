@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './Categories.module.scss'
-import video from '../../assets/other/video.mp4'
+import video from '../../assets/other/intro_video.mp4'
 import Category from './Category/Category'
 import AOS from 'aos'
 import 'aos/dist/aos.css'

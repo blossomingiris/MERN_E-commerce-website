@@ -14,9 +14,8 @@ const {
   getUser,
   deleteUser,
 } = require('../../../server/controllers/userController')
-const { getUserOrders } = require('../../controllers/orderController')
 
-//user register route
+//new user register route
 router.post('/register', registerUser)
 
 //user logged in route
@@ -30,11 +29,11 @@ router.get('/logout', (req, res) => {
 // user profile info route
 router.use(verifyIsLoggedIn)
 router.put('/profile', updateUserProfile)
-
 //get user profile with added info
 router.get('/profile/:id', getUserProfile)
 
 //admin routes
+router.use(verifyIsLoggedIn)
 router.use(verifyIsAdmin)
 router.get('/', getUsers)
 router.delete('/:id', deleteUser)
