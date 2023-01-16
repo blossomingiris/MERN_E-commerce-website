@@ -70,8 +70,9 @@ Make sure you have own credentials in server/.env for:
 3. Open your terminal on client folder and run command "npm install"
 4. Having terminal open on server run command "npm run app"
 
-To return data in website to initial condition on server terminal run command 'npm run seeder-data'
+To return data in website to initial condition on server terminal run command 'npm run seeder-data' :seedling:
 
 ### Not responsive
 ### Note: 
-The project is alive. I continiue to work on it and from time to time refactor code base and add new features.
+The project is alive </br>
+I continiue to work on it and from time to time refactor code base, improve perfomance and add new features
