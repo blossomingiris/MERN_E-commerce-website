@@ -23,7 +23,7 @@ Modern e-commerce website for perfumery brand with full functionality, easy navi
 |Backend | Frontend |
 | --- | --- |
 | node.js | react.js |
-| express.js | redux |
+| express.js | react redux |
 | mongoDB | react-dom |
 | stripe |  react-stripe-js |
 | bcryptjs | paypal-js |
