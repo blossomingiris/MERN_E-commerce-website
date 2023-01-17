@@ -47,7 +47,7 @@ function AdminUsersPage() {
     <section className={styles.container}>
       <AdminLinks />
       <div className={styles.container_right}>
-        <h4 className={styles.title}>User List</h4>
+        <h4 className={styles.title}>Users List</h4>
         <table>
           <thead>
             <tr>
@@ -61,25 +61,31 @@ function AdminUsersPage() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, idx) => (
-              <tr key={idx}>
-                <td>{idx + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.lastName}</td>
-                <td>{user.email}</td>
-                <td>{user.isAdmin ? <BsCheck2 /> : <BsX />}</td>
-                <td>
-                  <Link to={`/admin/edit-user/${user._id}`}>
-                    <FaRegEdit />
-                  </Link>
-                </td>
-                <td onClick={() => deleteHandler(user._id)}>
-                  <a href='#'>
-                    <FaBan />
-                  </a>
-                </td>
+            {!users.length ? (
+              <tr>
+                <td colSpan={7}>There is no users in database</td>
               </tr>
-            ))}
+            ) : (
+              users.map((user, idx) => (
+                <tr key={idx}>
+                  <td>{idx + 1}</td>
+                  <td>{user.name}</td>
+                  <td>{user.lastName}</td>
+                  <td>{user.email}</td>
+                  <td>{user.isAdmin ? <BsCheck2 /> : <BsX />}</td>
+                  <td>
+                    <Link to={`/admin/edit-user/${user._id}`}>
+                      <FaRegEdit />
+                    </Link>
+                  </td>
+                  <td onClick={() => deleteHandler(user._id)}>
+                    <a href='#'>
+                      <FaBan />
+                    </a>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

@@ -105,6 +105,7 @@ function UserProfilePage() {
   //submit update user profile
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const name = inputRef.current[0].value || userInfo.name
     const lastName = inputRef.current[1].value || userInfo.lastName
     const phoneNumber = inputRef.current[3].value
@@ -114,41 +115,45 @@ function UserProfilePage() {
     const city = inputRef.current[7].value
     const state = inputRef.current[8].value
 
-    updateUserProfileRequest(
-      name,
-      lastName,
-      phoneNumber,
-      address,
-      country,
-      postcode,
-      city,
-      state
-    )
-      .then((data) => {
-        setUpdateUserMsgResponse({ success: data.success, error: '' })
-        dispatch(
-          setReduxUserState({
-            ...data.userUpdated,
+    if ((phoneNumber, address, country, postcode, city, state)) {
+      updateUserProfileRequest(
+        name,
+        lastName,
+        phoneNumber,
+        address,
+        country,
+        postcode,
+        city,
+        state
+      )
+        .then((data) => {
+          setUpdateUserMsgResponse({ success: data.success, error: '' })
+          dispatch(
+            setReduxUserState({
+              ...data.userUpdated,
+            })
+          )
+
+          window.localStorage.setItem(
+            'userInfo',
+            JSON.stringify({ ...data.userUpdated })
+          )
+          if (updatedUserProfile) {
+            window.location.href = '/user'
+          } else {
+            window.history.back()
+          }
+        })
+        .catch((err) =>
+          setUpdateUserMsgResponse({
+            error: err.response.data.message
+              ? err.response.data.message
+              : err.response.data,
           })
         )
-
-        window.localStorage.setItem(
-          'userInfo',
-          JSON.stringify({ ...data.userUpdated })
-        )
-        if (updatedUserProfile) {
-          window.location.href = '/user'
-        } else {
-          window.history.back()
-        }
-      })
-      .catch((err) =>
-        setUpdateUserMsgResponse({
-          error: err.response.data.message
-            ? err.response.data.message
-            : err.response.data,
-        })
-      )
+    } else {
+      window.alert('Please fill all required fields')
+    }
   }
 
   return (
