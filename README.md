@@ -73,6 +73,3 @@ Make sure you have own credentials in server/.env for:
 To return data in website to initial condition on server terminal run command 'npm run seeder-data' :seedling:
 
 ### Important: Not responsive
-
-### Note: 
-The project is alive. I continiue to work on it and from time to time refactor code base, improve perfomance and add new features.
